@@ -86,4 +86,4 @@ async function tiktokDl(url) {
   });
 }
 
-module.exports = { tiktokDl };
+module.exports = tiktokDl
