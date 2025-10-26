@@ -1,326 +1,320 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Docs • JunnAPIs</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-<style>
-:root{
-  --bg:#0b1020; --panel:#0f1736; --line:#1b2554; --text:#e8edff; --mut:#9aa4c7;
-  --accent:#7aa2ff; --accent2:#4ad295; --chip:#101c44; --ok:#7adfae;
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:radial-gradient(900px 500px at 80% -10%,rgba(122,162,255,.16),transparent 60%), radial-gradient(800px 500px at -10% -10%,rgba(74,210,149,.12),transparent 55%), linear-gradient(180deg,#111a3a,#0b1020 35%,#0b1326); color:var(--text)}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:min(1200px,100vw - 32px);margin:0 auto;padding:18px 16px 40px}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JunnAPIs • Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --bg:#0b1020; --surface:#0e1430; --card:#111736; --muted:#9aa4c7; --text:#e6ecff;
+      --line:#1b2247; --pill:#2a3471; --acc:#7aa2ff; --acc2:#4ad295;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:var(--bg);color:var(--text)}
+    a{text-decoration:none;color:inherit;word-break:break-all}
+    .wrap{max-width:min(900px,100vw - 32px);margin:0 auto;padding:24px}
 
-/* header */
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:28px;height:28px;border-radius:8px;border:1px solid #222b5a;object-fit:cover}
-h1{margin:0;font-size:22px}
-.btn{display:inline-flex;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;font-weight:800}
-.btn-ghost{background:#10193c;border:1px solid #1b2350;color:#cfe1ff}
-.btn-grad{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#051028}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand h1{font-size:22px;margin:0}
+    .tag{color:var(--muted);font-size:14px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--acc),var(--acc2));
+      color:#04102a;padding:8px 12px;border-radius:10px;font-weight:700}
 
-/* layout */
-.grid{display:grid;gap:16px;grid-template-columns:1fr}
-@media (min-width:960px){ .grid{grid-template-columns:320px 1fr} }
+    .tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);scrollbar-width:none;margin-bottom:18px}
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{padding:8px 14px;border-radius:10px;background:#141a3b;color:var(--muted);font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap}
+    .tab.active{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#04102a}
 
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 28px rgba(0,0,0,.28)}
-.card .hd{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
-.card .bd{padding:14px 16px}
-.small{color:var(--mut);font-size:13px}
+    .section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+    .grid{display:grid;gap:16px;grid-template-columns:1fr;}
+    .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+    .title{font-weight:700;margin:0}
+    .desc{color:var(--muted);font-size:14px;margin:0}
 
-/* sidebar */
-.search{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0e1836;color:#cfe1ff}
-.cat{padding:10px 14px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;font-weight:800}
-.list{padding:8px 0}
-.item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1px solid transparent;cursor:pointer}
-.item:hover{background:#0e1838}
-.item.active{border-color:#283571;background:#0f1a40}
+    .meta{display:flex;flex-direction:column;gap:6px}
+    .pill{display:flex;align-items:flex-start;gap:6px;padding:6px 8px;border:1px solid var(--pill);
+      border-radius:999px;color:#c6d2ff;font-size:12px;background:rgba(255,255,255,0.02);word-break:break-word}
+    .pill b{color:#cfe1ff;white-space:nowrap;margin-right:4px}
+    .pill .example-url{flex:1;white-space:normal;word-break:break-word;overflow-wrap:anywhere;line-height:1.5}
 
-/* runner */
-.tabs{display:flex;gap:8px;flex-wrap:wrap}
-.tab{padding:8px 10px;border-radius:10px;background:#101c44;border:1px solid #213072;color:#cfe1ff;font-weight:800;cursor:pointer}
-.tab.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#051028;border-color:transparent}
-.codebox{position:relative;background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px;overflow:auto;max-height:320px}
-pre{margin:0;white-space:pre}
-.copy{position:absolute;top:8px;right:8px;font-size:12px;background:#0e1736;border:1px solid #213072;color:#cfe1ff;border-radius:8px;padding:6px 8px;cursor:pointer}
-.run{display:flex;gap:10px;flex-wrap:wrap}
-.btn-run{padding:12px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#051028;font-weight:800;border:none;cursor:pointer}
-.btn-reset{padding:12px 14px;border-radius:12px;background:#10193c;border:1px solid #1b2350;color:#cfe1ff;font-weight:800;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}
+    .open{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--acc),var(--acc2));
+      color:#04102a;padding:9px 12px;border-radius:10px;font-weight:800;margin-top:auto;width:max-content}
+    .codebtn{display:inline-flex;align-items:center;justify-content:center;background:#141a3b;border:1px solid var(--line);
+      color:#cfe1ff;padding:9px 12px;border-radius:10px;font-weight:800;margin-top:auto}
 
-/* params */
-.kv{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
-.kv .field{display:flex;flex-direction:column;gap:6px}
-.kv input{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0e1836;color:#cfe1ff}
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 
-/* response */
-.status{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:#0e1838;border:1px solid #25356f;color:#9fb2ff;font-weight:800}
-.resp{background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px;overflow:auto;min-height:120px;max-height:420px}
-.mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;color:#cfe1ff}
+    /* ===== Modal Runner ===== */
+    .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+    .backdrop.show{display:flex}
+    .modal{width:min(980px,100%);max-height:92vh;background:#0f1736;border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;flex-direction:column}
+    .modal-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+    .modal-tt{font-weight:800}
+    .x{border:1px solid var(--line);background:#101a3c;color:#cfe1ff;border-radius:10px;padding:8px 10px;cursor:pointer}
+    .modal-bd{padding:14px 16px;overflow:auto}
 
-/* footer socials */
-.footer{margin-top:22px;text-align:center;color:#9aa4c7;font-size:13px}
-.socials{display:flex;gap:12px;justify-content:center;margin-top:8px}
-.icon-btn{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;background:#0f1736;border:1px solid var(--line)}
-.icon{width:20px;height:20px;display:block}
-</style>
+    .kv{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+    .kv .field{display:flex;flex-direction:column;gap:6px}
+    .kv input{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0e1836;color:#cfe1ff}
+
+    .rtabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+    .rtab{padding:8px 10px;border-radius:10px;background:#101c44;border:1px solid #213072;color:#cfe1ff;font-weight:800;cursor:pointer}
+    .rtab.active{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;border-color:transparent}
+
+    .codebox{position:relative;background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px;overflow:auto;max-height:320px}
+    pre{margin:0;white-space:pre}
+    .copy{position:absolute;top:8px;right:8px;font-size:12px;background:#0e1736;border:1px solid #213072;color:#cfe1ff;border-radius:8px;padding:6px 8px;cursor:pointer}
+    .run{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn-run{padding:12px 14px;border-radius:12px;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;font-weight:800;border:none;cursor:pointer}
+    .btn-reset{padding:12px 14px;border-radius:12px;background:#10193c;border:1px solid #1b2350;color:#cfe1ff;font-weight:800;cursor:pointer}
+    .status{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:#0e1838;border:1px solid #25356f;color:#9fb2ff;font-weight:800}
+    .resp{background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px;overflow:auto;min-height:120px;max-height:420px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;color:#cfe1ff}
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <nav class="nav">
-    <div class="brand">
-      <img class="logo" src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" alt="logo"/>
-      <h1>JunnAPIs • Docs</h1>
-    </div>
-    <div style="display:flex;gap:10px">
-      <a class="btn btn-ghost" href="/" title="Home">Home</a>
-      <a class="btn btn-grad" href="https://github.com/juun4/RestApi-s" target="_blank">GitHub</a>
-    </div>
-  </nav>
-
-  <div class="grid">
-    <!-- SIDEBAR -->
-    <aside class="card">
-      <div class="hd">
-        <div>Endpoints</div>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14" stroke="#7aa2ff" stroke-width="2" stroke-linecap="round"/></svg>
+        <div>
+          <h1 id="siteName">JunnAPIs</h1>
+          <div class="tag">Free & Simple REST Endpoints — <b>Docs</b></div>
+        </div>
       </div>
-      <div class="bd">
-        <div class="small" style="margin-bottom:8px">Global API Key (tersimpan lokal):</div>
-        <input id="globalKey" class="search" placeholder="Masukkan API key Anda (opsional)"/>
-        <div class="small" style="margin:10px 0 6px">Cari endpoint</div>
-        <input id="q" class="search" placeholder="Cari nama endpoint..."/>
-
-        <div id="sideList" style="margin-top:10px"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a id="repoLink" class="btn" target="_blank">GitHub</a>
+        <a class="btn" href="/">Home</a>
       </div>
-    </aside>
+    </header>
 
-    <!-- RUNNER -->
-    <main class="card">
-      <div class="hd">
-        <div id="epName">Pilih endpoint</div>
-        <span id="epCat" class="small"></span>
+    <div id="tabs" class="tabs"></div>
+    <div id="content"></div>
+
+    <footer>Made by <b id="creator">juun4</b></footer>
+  </div>
+
+  <!-- Runner Modal -->
+  <div id="runner" class="backdrop" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-hd">
+        <div class="modal-tt" id="rTitle">Example Code</div>
+        <button class="x" id="rClose">Close</button>
       </div>
-      <div class="bd">
-        <div class="small" id="epDesc" style="margin-bottom:8px">–</div>
-
-        <div class="small" style="margin:6px 0 8px">Parameter</div>
-        <div id="params" class="kv"></div>
-
-        <div class="small" style="margin:12px 0 8px">Request</div>
-        <div class="tabs" id="tabs">
-          <button class="tab active" data-tab="cURL">cURL</button>
-          <button class="tab" data-tab="CJS">Javascript (CJS)</button>
-          <button class="tab" data-tab="ESM">Javascript (ESM)</button>
-          <div style="flex:1"></div>
-          <div class="run">
-            <button id="exec" class="btn-run">Execute</button>
-            <button id="reset" class="btn-reset">Reset</button>
+      <div class="modal-bd">
+        <div class="kv" style="margin-bottom:10px">
+          <div class="field">
+            <label class="tag">Global API Key (tersimpan lokal)</label>
+            <input id="rGlobalKey" placeholder="Masukkan API key (opsional)"/>
           </div>
         </div>
 
-        <div class="codebox" style="margin-top:10px">
-          <button class="copy" id="copyBtn">Copy</button>
-          <pre id="code" class="mono"></pre>
+        <div class="tag" style="display:block;margin:6px 0 8px">Parameter</div>
+        <div id="rParams" class="kv"></div>
+
+        <div class="rtabs" id="rTabs">
+          <button class="rtab active" data-mode="cURL">cURL</button>
+          <button class="rtab" data-mode="CJS">Javascript (CJS)</button>
+          <button class="rtab" data-mode="ESM">Javascript (ESM)</button>
         </div>
 
-        <div style="display:flex;align-items:center;justify-content:space-between;margin:14px 0 6px">
-          <div class="small">Response</div>
-          <span id="respStatus" class="status">waiting</span>
+        <div class="codebox">
+          <button class="copy" id="rCopy">Copy</button>
+          <pre id="rCode" class="mono"></pre>
         </div>
-        <div id="resp" class="resp mono">{\n  "status": "waiting",\n  "message": "No response yet"\n}</div>
+
+        <div class="run">
+          <button id="rExec" class="btn-run">Execute</button>
+          <button id="rReset" class="btn-reset">Reset</button>
+          <span id="rStatus" class="status">waiting</span>
+        </div>
+        <div id="rResp" class="resp mono" style="margin-top:10px">{\n  "status":"waiting",\n  "message":"No response yet"\n}</div>
       </div>
-    </main>
-  </div>
-
-  <div class="footer">
-    © <span id="yy"></span> Made by <b>juun4</b>
-    <div class="socials">
-      <a class="icon-btn" href="https://github.com/juun4" target="_blank" title="GitHub">
-        <svg class="icon" viewBox="0 0 24 24" fill="#cfe1ff"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.54-1.37-1.33-1.73-1.33-1.73-1.09-.75.08-.74.08-.74 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.77-1.6-2.67-.31-5.48-1.34-5.48-5.96 0-1.32.47-2.39 1.23-3.23-.12-.3-.53-1.54.12-3.2 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.9.12 3.2.77.84 1.23 1.91 1.23 3.23 0 4.64-2.81 5.64-5.49 5.95.43.37.82 1.1.82 2.22v3.3c0 .32.21.69.83.57A12 12 0 0 0 12 .5Z"/></svg>
-      </a>
-      <a class="icon-btn" href="https://wa.me/628672763507" target="_blank" title="WhatsApp">
-        <svg class="icon" viewBox="0 0 24 24" fill="#7adfae"><path d="M20.5 3.5A11 11 0 0 0 2.9 18.2l-1.4 4.2 4.3-1.4A11 11 0 1 0 20.5 3.5Zm-8.1 18a9 9 0 0 1-4.6-1.3l-.3-.2-2.7.9.9-2.7-.2-.3a9 9 0 1 1 7 3.6Zm5-6.8c-.3-.2-1.7-.9-1.9-1-.2-.1-.3-.2-.5 0l-.7.8c-.1.1-.2.1-.4 0-.2-.1-1.1-.4-2.1-1.3a7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.3.1-.4l.3-.4.2-.4c.1-.1 0-.3 0-.4l-1-2.3c-.1-.3-.3-.3-.5-.3h-.4c-.2 0-.4 0-.6.3-.2.3-.8.8-.8 2s.9 2.4 1 2.6c.1.2 1.8 2.8 4.3 3.9.6.3 1 .5 1.3.6.6.3 1.2.2 1.7.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4 0-.2-.2-.3-.4-.4Z"/></svg>
-      </a>
-      <a class="icon-btn" href="https://youtube.com/@JunaaInHeree" target="_blank" title="YouTube">
-        <svg class="icon" viewBox="0 0 24 24" fill="#ff6f6f"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1C4.6 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.5 31.5 0 0 0 .6-5.8 31.5 31.5 0 0 0-.6-5.8ZM9.7 15.5v-7l6.3 3.5-6.3 3.5Z"/></svg>
-      </a>
     </div>
   </div>
-</div>
 
-<script>
-const $ = (q)=>document.querySelector(q);
-const sideList = $("#sideList");
-const codeEl = $("#code");
-const respEl = $("#resp");
-const statusEl = $("#respStatus");
-const execBtn = $("#exec"), resetBtn=$("#reset"), copyBtn=$("#copyBtn");
-const tabs = $("#tabs");
-const globalKeyEl = $("#globalKey");
-const yy = $("#yy"); yy.textContent = new Date().getFullYear();
-
-// state
-let CFG = null;
-let CURRENT = null; // {cat, item}
-let TAB = "cURL";
-
-// persist api key
-globalKeyEl.value = localStorage.getItem("JUNN_APIKEY") || "";
-globalKeyEl.addEventListener("input", ()=>localStorage.setItem("JUNN_APIKEY", globalKeyEl.value.trim()));
-
-async function loadConfig(){
-  CFG = await (await fetch("/src/web-set.json",{cache:"no-store"})).json();
-  renderSidebar();
-}
-function toLc(p){ return (p||"").replace(/\/+$/,"").toLowerCase(); }
-
-function renderSidebar(filter=""){
-  const cats = CFG?.categories || [];
-  let html = "";
-  cats.forEach(cat=>{
-    const items = (cat.items||[]).filter(i=> (i.title||"").toLowerCase().includes(filter));
-    if(items.length===0) return;
-    html += `<div class="cat"><span>${cat.icon||"📦"}</span> ${cat.title||"Category"}</div><div class="list">`;
-    items.forEach((it,idx)=>{
-      const id = `${toLc(cat.title)}__${idx}`;
-      html += `<div class="item" data-cat="${toLc(cat.title)}" data-idx="${idx}" id="it-${id}">
-        <span>•</span><div>${it.title||"Untitled"}</div>
-      </div>`;
+  <script>
+  // ---------- helpers ----------
+  const $ = (q)=>document.querySelector(q);
+  function parseParamsFromPath(path){
+    const q = (path.split('?')[1]||'').trim();
+    if(!q) return [];
+    return q.split('&').filter(Boolean).map(kv=>{
+      const [k,v] = kv.split('=');
+      return {key:k, value: decodeURIComponent(v||'')};
     });
-    html += `</div>`;
-  });
-  sideList.innerHTML = html;
-
-  sideList.querySelectorAll(".item").forEach(el=>{
-    el.addEventListener("click", ()=>{
-      sideList.querySelectorAll(".item").forEach(x=>x.classList.remove("active"));
-      el.classList.add("active");
-      const catId = el.dataset.cat;
-      const idx = +el.dataset.idx;
-      const cat = CFG.categories.find(c=>toLc(c.title)===catId);
-      const item = (cat.items||[])[idx];
-      CURRENT = {cat, item};
-      renderRunner();
-    });
-  });
-}
-$("#q").addEventListener("input", (e)=>renderSidebar((e.target.value||"").toLowerCase()));
-
-function parseParamsFromPath(path){
-  const q = (path.split("?")[1]||"").trim();
-  if(!q) return [];
-  return q.split("&").filter(Boolean).map(kv=>{
-    const [k,v] = kv.split("=");
-    return { key:k, value: decodeURIComponent(v||"") };
-  });
-}
-function buildURL(item){
-  const origin = location.origin;
-  let base = item.path || "/";
-  // isi nilai dari form
-  const fields = [...document.querySelectorAll('[data-param]')];
-  if(fields.length){
-    const q = fields.map(f=> `${encodeURIComponent(f.dataset.param)}=${encodeURIComponent(f.value)}`).join("&");
-    const root = base.split("?")[0];
-    return `${origin}${root}?${q}`;
   }
-  return `${origin}${base}`;
-}
-function renderParamsForm(item){
-  const params = parseParamsFromPath(item.path||"");
-  // auto isi apikey dari globalKey
-  params.forEach(p=>{
-    if(p.key.toLowerCase()==="apikey" && !p.value){
-      p.value = globalKeyEl.value || "";
+  function buildURL(basePath, fields){
+    const origin = location.origin;
+    const root = basePath.split('?')[0];
+    const qp = new URLSearchParams();
+    fields.forEach(f=> qp.set(f.dataset.param, f.value));
+    return `${origin}${root}?${qp.toString()}`;
+  }
+  function samples(url){
+    return {
+      cURL: `curl -s "${url}" \\\n  -H "Accept: application/json"`,
+      CJS: `const fetch = require('node-fetch');\n\nasync function main(){\n  const res = await fetch("${url}", { headers: { 'Accept':'application/json' } });\n  const json = await res.json();\n  console.log(json);\n}\nmain().catch(console.error);`,
+      ESM: `async function main(){\n  const res = await fetch("${url}", { headers: { 'Accept':'application/json' } });\n  const json = await res.json();\n  console.log(json);\n}\nmain().catch(console.error);`
+    };
+  }
+  function setRawQuery(href, example){
+    // dipakai untuk "Open Endpoint" agar url= tidak di-encode
+    if (href.includes('url=') && href.includes('apikey=')) {
+      const [base, q] = href.split('?');
+      const params = new URLSearchParams(q);
+      if (params.has('url')) params.set('url', example || '');
+      return base + '?' + params.toString()
+        .replace(/%3A/g, ':').replace(/%2F/g, '/')
+        .replace(/%3F/g, '?').replace(/%3D/g, '=').replace(/%26/g, '&');
+    } else if (href.endsWith('=') && example) {
+      return href + example;
     }
-    // isi contoh dari example kalau key match pertama (mis. url=)
-    if(!p.value && item.example && p.key.toLowerCase()==="url"){
-      p.value = item.example;
-    }
+    return href;
+  }
+
+  // ---------- main docs ----------
+  let CFG=null;
+  let CURRENT=null; // {cat,item}
+  const runner = $('#runner'), rTitle = $('#rTitle'), rParams = $('#rParams');
+  const rTabs = $('#rTabs'), rCode = $('#rCode'), rCopy = $('#rCopy');
+  const rExec = $('#rExec'), rReset = $('#rReset'), rStatus = $('#rStatus'), rResp = $('#rResp');
+  const rGlobalKey = $('#rGlobalKey');
+  let R_MODE='cURL';
+
+  rGlobalKey.value = localStorage.getItem('JUNN_DOCS_KEY') || '';
+  rGlobalKey.addEventListener('input', ()=>localStorage.setItem('JUNN_DOCS_KEY', rGlobalKey.value.trim()));
+  $('#rClose').addEventListener('click', ()=>runner.classList.remove('show'));
+  rTabs.addEventListener('click', (e)=>{
+    const b = e.target.closest('.rtab'); if(!b) return;
+    rTabs.querySelectorAll('.rtab').forEach(t=>t.classList.remove('active'));
+    b.classList.add('active'); R_MODE=b.dataset.mode;
+    if(CURRENT) updateRunnerCode();
   });
-  const html = params.map(p=>`
-    <div class="field">
-      <label class="small">${p.key}</label>
-      <input data-param="${p.key}" value="${p.value?.replace(/"/g,'&quot;')||""}" placeholder="${p.key} value"/>
-    </div>`).join("");
-  $("#params").innerHTML = html;
-}
-
-function buildSamples(item){
-  const fullURL = buildURL(item);
-  const cURL = `curl -s "${fullURL}" \\\n  -H "Accept: application/json"`;
-  const CJS = `const fetch = require('node-fetch');\n\nasync function main(){\n  const res = await fetch("${fullURL}", { headers: { 'Accept':'application/json' } });\n  const json = await res.json();\n  console.log(json);\n}\nmain().catch(console.error);`;
-  const ESM = `async function main(){\n  const res = await fetch("${fullURL}", { headers: { 'Accept':'application/json' } });\n  const json = await res.json();\n  console.log(json);\n}\nmain().catch(console.error);`;
-  return {cURL,CJS,ESM};
-}
-function showCode(item){
-  const s = buildSamples(item);
-  codeEl.textContent = TAB==="cURL" ? s.cURL : TAB==="CJS" ? s.CJS : s.ESM;
-}
-
-function renderRunner(){
-  const {cat,item} = CURRENT;
-  $("#epName").textContent = item.title || "Endpoint";
-  $("#epCat").textContent  = cat.title || "";
-  $("#epDesc").textContent = item.desc || "";
-  renderParamsForm(item);
-  showCode(item);
-  statusEl.textContent = "ready";
-}
-
-tabs.addEventListener("click",(e)=>{
-  const t = e.target.closest(".tab"); if(!t) return;
-  tabs.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-  t.classList.add("active");
-  TAB = t.dataset.tab;
-  if(CURRENT) showCode(CURRENT.item || CURRENT);
-});
-
-copyBtn.addEventListener("click", async ()=>{
-  await navigator.clipboard.writeText(codeEl.textContent||"");
-  copyBtn.textContent = "Copied!";
-  setTimeout(()=>copyBtn.textContent="Copy", 900);
-});
-
-execBtn.addEventListener("click", async ()=>{
-  if(!CURRENT){ alert("Pilih endpoint terlebih dahulu."); return; }
-  // refresh code with latest fields
-  showCode(CURRENT.item);
-  statusEl.textContent = "fetching…";
-  respEl.textContent = "";
-  try{
-    const url = buildURL(CURRENT.item);
-    const res = await fetch(url, { headers: { 'Accept':'application/json' } });
-    const text = await res.text();
-    // try pretty JSON
+  rCopy.addEventListener('click', async ()=>{
+    await navigator.clipboard.writeText(rCode.textContent||''); rCopy.textContent='Copied!'; setTimeout(()=>rCopy.textContent='Copy',800);
+  });
+  rExec.addEventListener('click', async ()=>{
+    if(!CURRENT) return;
+    const fields = [...rParams.querySelectorAll('[data-param]')];
+    const url = buildURL(CURRENT.item.path, fields);
+    rStatus.textContent='fetching…'; rResp.textContent='';
     try{
-      const obj = JSON.parse(text);
-      respEl.textContent = JSON.stringify(obj, null, 2);
-    }catch{
-      respEl.textContent = text;
+      const res = await fetch(url, { headers: { 'Accept':'application/json' } });
+      const text = await res.text();
+      try{ rResp.textContent = JSON.stringify(JSON.parse(text), null, 2); }
+      catch{ rResp.textContent = text; }
+      rStatus.textContent = `${res.status} ${res.statusText}`;
+    }catch(err){
+      rStatus.textContent='error'; rResp.textContent=String(err);
     }
-    statusEl.textContent = `${res.status} ${res.statusText}`;
-  }catch(err){
-    statusEl.textContent = "error";
-    respEl.textContent = String(err);
+  });
+  rReset.addEventListener('click', ()=>{ if(CURRENT){ fillParamFields(CURRENT.item); updateRunnerCode(); rStatus.textContent='ready'; rResp.textContent='{\n  "status":"waiting",\n  "message":"No response yet"\n}'; } });
+
+  function fillParamFields(item){
+    const params = parseParamsFromPath(item.path||'');
+    params.forEach(p=>{
+      if(p.key.toLowerCase()==='apikey' && !p.value) p.value = rGlobalKey.value || '';
+      if(!p.value && item.example && p.key.toLowerCase()==='url') p.value = item.example;
+    });
+    rParams.innerHTML = params.map(p=>`
+      <div class="field">
+        <label class="tag">${p.key}</label>
+        <input data-param="${p.key}" value="${(p.value||'').replace(/"/g,'&quot;')}" placeholder="${p.key} value"/>
+      </div>`).join('') || `<div class="tag">Endpoint ini tidak memiliki parameter query.</div>`;
   }
-});
+  function updateRunnerCode(){
+    const fields = [...rParams.querySelectorAll('[data-param]')];
+    const url = buildURL(CURRENT.item.path, fields);
+    const s = samples(url); rCode.textContent = s[R_MODE];
+  }
+  function openRunner(cat,item){
+    CURRENT = {cat,item};
+    rTitle.textContent = `${item.title || 'Endpoint'} — ${cat.title || ''}`;
+    fillParamFields(item); updateRunnerCode();
+    rStatus.textContent='ready'; rResp.textContent='{\n  "status":"waiting",\n  "message":"No response yet"\n}';
+    runner.classList.add('show');
+  }
 
-resetBtn.addEventListener("click", ()=>{
-  if(!CURRENT) return;
-  renderParamsForm(CURRENT.item);
-  showCode(CURRENT.item);
-  statusEl.textContent = "ready";
-  respEl.textContent = '{\n  "status": "waiting",\n  "message": "No response yet"\n}';
-});
+  async function main(){
+    const res = await fetch('/src/web-set.json',{cache:'no-store'});
+    const cfg = await res.json();
+    CFG = cfg;
 
-loadConfig();
-</script>
+    document.getElementById('siteName').textContent = cfg?.branding?.siteName ?? 'JunnAPIs';
+    document.getElementById('creator').textContent  = cfg?.apiSettings?.creator ?? 'unknown';
+    document.getElementById('repoLink').href = cfg?.branding?.repo || '#';
+
+    const cats = cfg.categories || [];
+    const tabs = document.getElementById('tabs');
+    const content = document.getElementById('content');
+
+    cats.forEach((cat,i)=>{
+      const tab=document.createElement('div');
+      tab.className='tab'+(i===0?' active':'');
+      tab.textContent=cat.title||'Category';
+      tab.addEventListener('click',()=>{
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active'); render(cat);
+      });
+      tabs.appendChild(tab);
+    });
+    if(cats[0]) render(cats[0]);
+
+    function render(cat){
+      content.innerHTML='';
+      const section=document.createElement('section'); section.className='section';
+      const grid=document.createElement('div'); grid.className='grid';
+
+      (cat.items||[]).forEach(it=>{
+        const card=document.createElement('div'); card.className='item';
+        const t=document.createElement('div'); t.className='title'; t.textContent=it.title||'Untitled';
+        const d=document.createElement('p'); d.className='desc'; d.textContent=it.desc||'';
+        card.appendChild(t); card.appendChild(d);
+
+        const meta=document.createElement('div'); meta.className='meta';
+        const key=document.createElement('div'); key.className='pill';
+        key.textContent=(it.requireKey ?? cfg.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
+        meta.appendChild(key);
+
+        if(it.example){
+          const ex=document.createElement('div'); ex.className='pill';
+          const label=document.createElement('b'); label.textContent='Example:';
+          const url=document.createElement('span'); url.className='example-url'; url.textContent=it.example;
+          ex.appendChild(label); ex.appendChild(url); meta.appendChild(ex);
+        }
+        card.appendChild(meta);
+
+        // actions
+        const actions = document.createElement('div'); actions.className='actions';
+
+        if(it.path){
+          const go=document.createElement('a'); go.className='open'; go.textContent='Open Endpoint';
+          let href = (it.path||'').trim();
+          href = setRawQuery(href, it.example);
+          go.href = href; go.target = '_blank';
+          actions.appendChild(go);
+
+          const codeBtn=document.createElement('button'); codeBtn.type='button'; codeBtn.className='codebtn'; codeBtn.textContent='Example Code';
+          codeBtn.addEventListener('click', ()=>openRunner(cat,it));
+          actions.appendChild(codeBtn);
+        }
+        card.appendChild(actions);
+
+        grid.appendChild(card);
+      });
+
+      section.appendChild(grid); content.appendChild(section);
+    }
+  }
+  main().catch(e=>{
+    document.getElementById('content').innerHTML=`<div class='section'><div class='item'>Error: ${e.message}</div></div>`;
+  });
+  </script>
 </body>
-</html>
+  </html>
