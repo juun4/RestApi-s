@@ -5,138 +5,142 @@ const cors = require('cors');
 
 const app = express();
 
+app.set('trust proxy', true);
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// statics
 app.use(express.static('public'));
 app.use('/src', express.static('src'));
 
 const apiConfig = require('./src/web-set.json');
 
+// ===== util =====
+const toLc = (p) => (p || '').toString().replace(/\/+$/, '').toLowerCase();
+
+// ===== loader scrapers =====
 const loadScrapers = () => {
-    const scrapers = {};
-    const endpointConfigs = {};
-    const baseDir = path.join(__dirname, 'api-setting', 'Scrape');
+  const scrapers = {};
+  const endpointConfigs = {};
+  const baseDir = path.join(__dirname, 'api-setting', 'Scrape');
 
-    apiConfig.categories.forEach(category => {
-        category.items.forEach(item => {
-            const cleanPath = item.path.split('?')[0];
-            endpointConfigs[cleanPath] = {
-                requireKey: item.requireKey !== undefined ? item.requireKey : apiConfig.apiSettings.defaultRequireKey,
-                path: item.path
-            };
-        });
+  // muat konfigurasi endpoint dari web-set.json (supaya sinkron dengan UI)
+  if (apiConfig && Array.isArray(apiConfig.categories)) {
+    apiConfig.categories.forEach((cat) => {
+      (cat.items || []).forEach((item) => {
+        const cleanPath = toLc((item.path || '').split('?')[0]);
+        if (!cleanPath) return;
+        endpointConfigs[cleanPath] = {
+          requireKey: item.requireKey !== undefined
+            ? !!item.requireKey
+            : !!apiConfig.apiSettings?.defaultRequireKey,
+          path: item.path || cleanPath
+        };
+      });
     });
+  }
 
-    const walkDir = (dir) => {
-        const files = fs.readdirSync(dir);
-        files.forEach(file => {
-            const fullPath = path.join(dir, file);
-            if (fs.statSync(fullPath).isDirectory()) {
-                walkDir(fullPath);
-            } else if (file.endsWith('.js')) {
-                const relativePath = path.relative(baseDir, fullPath);
-                const routePath = '/' + relativePath
-                    .replace(/\\/g, '/')
-                    .replace('.js', '')
-                    .toLowerCase();
-                
-                const config = endpointConfigs[routePath] || {
-                    requireKey: apiConfig.apiSettings.defaultRequireKey
-                };
-                
-                scrapers[routePath] = {
-                    handler: require(fullPath),
-                    config: config
-                };
-            }
-        });
-    };
-    
-    walkDir(baseDir);
-    return scrapers;
+  const walkDir = (dir) => {
+    if (!fs.existsSync(dir)) return;
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const full = path.join(dir, file);
+      const stat = fs.statSync(full);
+      if (stat.isDirectory()) { walkDir(full); continue; }
+      if (!file.endsWith('.js')) continue;
+
+      const relative = path.relative(baseDir, full);
+      const routePath = '/' + relative.replace(/\\/g, '/').replace(/\.js$/i, '').toLowerCase();
+
+      const config = endpointConfigs[routePath] || {
+        requireKey: !!apiConfig.apiSettings?.defaultRequireKey,
+        path: routePath
+      };
+
+      scrapers[routePath] = {
+        handler: require(full),
+        config
+      };
+    }
+  };
+
+  walkDir(baseDir);
+  return scrapers;
 };
 
 const scrapers = loadScrapers();
 
+// ===== middleware cek key per endpoint =====
 const checkApiKey = (req, res, next) => {
-    const path = req.path;
-    const endpoint = scrapers[path];
-    
-    if (!endpoint) {
-        return next();
-    }
+  const reqPath = toLc(req.path);
+  const endpoint = scrapers[reqPath];
+  if (!endpoint) return next();
 
-    
-    if (!endpoint.config.requireKey) {
-        return next();
-    }
-    
-    const apiKey = req.headers['x-api-key'] || req.query.apikey;
-    if (!apiKey) {
-        return res.status(401).json({ 
-            status: false, 
-            message: 'API key diperlukan untuk endpoint ini' 
-        });
-    }
-    
-    if (!apiConfig.apiSettings.globalKey.includes(apiKey)) {
-        return res.status(403).json({ 
-            status: false, 
-            message: 'API key tidak valid' 
-        });
-    }
-    
-    next();
+  if (!endpoint.config.requireKey) return next();
+
+  const apiKey = req.headers['x-api-key'] || req.query.apikey;
+  if (!apiKey) {
+    return res.status(401).json({ status: false, message: 'API key diperlukan untuk endpoint ini' });
+  }
+  if (!Array.isArray(apiConfig.apiSettings?.globalKey) ||
+      !apiConfig.apiSettings.globalKey.includes(apiKey)) {
+    return res.status(403).json({ status: false, message: 'API key tidak valid' });
+  }
+  next();
 };
 
+// ===== daftar route scraper otomatis =====
 Object.entries(scrapers).forEach(([route, { handler, config }]) => {
-    app.get(route, checkApiKey, async (req, res) => {
-        try {
-            const params = Object.keys(req.query)
-                .filter(key => key !== 'apikey')
-                .map(key => req.query[key]);
-            
-            const result = await handler(...params);
-            res.json({
-                status: true,
-                creator: apiConfig.apiSettings.creator,
-                result
-            });
-        } catch (error) {
-            res.status(500).json({
-                status: false,
-                message: error.message
-            });
-        }
-    });
+  app.get(route, checkApiKey, async (req, res) => {
+    try {
+      const params = Object.keys(req.query || {})
+        .filter((k) => k.toLowerCase() !== 'apikey')
+        .sort()
+        .map((k) => req.query[k]);
 
-    
-    if (config.path && config.path.includes('?')) {
-        app.get(config.path.split('?')[0], checkApiKey, (req, res) => {
-            res.status(400).json({
-                status: false,
-                message: 'Parameter diperlukan',
-                example: `${req.protocol}://${req.get('host')}${config.path}param_value`
-            });
-        });
+      const fn = typeof handler === 'function' ? handler : handler?.default;
+      if (typeof fn !== 'function') {
+        return res.status(500).json({ status: false, message: 'Handler tidak valid untuk endpoint ini' });
+      }
+      const result = await fn(...params);
+      res.json({ status: true, creator: apiConfig.apiSettings?.creator || 'unknown', result });
+    } catch (error) {
+      res.status(500).json({ status: false, message: error?.message || String(error) });
     }
+  });
+
+  // jika config.path ada tanda tanya, sediakan contoh pemakaian di base path
+  const hasQuery = !!(config.path && config.path.includes('?'));
+  if (hasQuery) {
+    const base = toLc((config.path || '').split('?')[0]);
+    app.get(base, checkApiKey, (req, res) => {
+      return res.status(400).json({
+        status: false,
+        message: 'Parameter diperlukan',
+        example: `${req.protocol}://${req.get('host')}${config.path}param_value`
+      });
+    });
+  }
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// ===== halaman utama & 404 =====
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+  const f404 = path.join(__dirname, 'public', '404.html');
+  if (fs.existsSync(f404)) return res.status(404).sendFile(f404);
+  res.status(404).json({ status: false, message: 'Halaman tidak ditemukan' });
 });
 
+// ===== start =====
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server berjalan di port ${PORT}`);
-    console.log('Endpoint yang tersedia:');
-    Object.entries(scrapers).forEach(([path, { config }]) => {
-        console.log(`- ${path} (Require Key: ${config.requireKey ? 'Ya' : 'Tidak'})`);
-    });
+  console.log(`Server berjalan di port ${PORT}`);
+  console.log('Endpoint yang tersedia:');
+  Object.entries(scrapers).forEach(([p, { config }]) => {
+    console.log(`- ${p} (Require Key: ${config.requireKey ? 'Ya' : 'Tidak'})`);
+  });
 });
 
 module.exports = app;
