@@ -2,114 +2,141 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>JunnAPIs • Free & Simple REST Endpoints</title>
-
-  <!-- Fonts (opsional) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-
-  <!-- PENTING: path-nya /style.css (tanpa /public) + cache bust -->
-  <link rel="stylesheet" href="/style.css?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RestApi-s</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#0b1020; --card:#111736; --muted:#9aa4c7; --text:#e6ecff; --acc:#7aa2ff; --acc2:#4ad295; }
+    *{ box-sizing:border-box }
+    body{ margin:0; font-family:Inter,system-ui,Segoe UI,Arial; background:var(--bg); color:var(--text) }
+    .wrap{ max-width:1024px; margin:0 auto; padding:24px }
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:24px }
+    .brand{ display:flex; gap:12px; align-items:center }
+    .brand h1{ font-size:22px; margin:0 }
+    .tag{ color:var(--muted); font-size:14px }
+    .card{ background:var(--card); border:1px solid #1b2247; border-radius:14px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.2) }
+    .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px }
+    .item{ border:1px solid #1f2754; border-radius:12px; padding:14px; transition:transform .1s ease }
+    .item:hover{ transform:translateY(-2px) }
+    .title{ font-weight:600; margin:0 0 4px }
+    .desc{ color:var(--muted); font-size:14px; margin:0 0 10px }
+    .meta{ display:flex; gap:8px; align-items:center; color:var(--muted); font-size:12px }
+    .pill{ display:inline-flex; padding:3px 8px; border-radius:999px; border:1px solid #2a3471; font-size:12px; color:#c6d2ff; gap:6px; align-items:center }
+    a.btn{ display:inline-flex; gap:8px; align-items:center; background:linear-gradient(90deg,var(--acc),var(--acc2)); color:#04102a; text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:700 }
+    footer{ margin-top:28px; color:var(--muted); font-size:13px; text-align:center }
+    code{ background:#0b1538; padding:2px 6px; border-radius:6px; border:1px solid #1c2554; color:#cfe1ff }
+  </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M5 12h14M12 5v14" stroke="#7aa2ff" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14" stroke="#7aa2ff" stroke-width="2" stroke-linecap="round"/></svg>
         <div>
-          <h1 id="siteName">JunnAPIs</h1>
-          <div class="tag" id="tagline">Free &amp; Simple REST Endpoints</div>
+          <h1 id="siteName">RestApi-s</h1>
+          <div class="tag" id="tagline">Free & Simple REST Endpoints</div>
         </div>
       </div>
-      <div class="cta">
-        <a id="repoLink" class="btn btn-ghost" target="_blank" rel="noreferrer">GitHub</a>
-        <a id="deployLink" class="btn btn-grad" target="_blank" rel="noreferrer">Open</a>
+      <div style="display:flex; gap:10px">
+        <a id="repoLink" class="btn" target="_blank" rel="noreferrer">GitHub</a>
+        <a id="deployLink" class="btn" target="_blank" rel="noreferrer">Deploy</a>
       </div>
     </header>
 
     <div id="content"></div>
 
-    <footer>Made by <b id="creator">juun4</b></footer>
+    <footer>
+      <div>Made by <b id="creator">-</b></div>
+    </footer>
   </div>
 
   <script>
     async function main(){
-      const res = await fetch('/src/web-set.json',{cache:'no-store'});
+      const res = await fetch('/src/web-set.json', { cache: 'no-store' });
       const cfg = await res.json();
 
-      // Branding
-      document.getElementById('siteName').textContent = cfg?.branding?.siteName ?? 'JunnAPIs';
-      document.getElementById('tagline').textContent  = cfg?.branding?.tagline  ?? 'Free & Simple REST Endpoints';
-      document.getElementById('creator').textContent  = cfg?.apiSettings?.creator ?? 'unknown';
-      const repo = document.getElementById('repoLink'); repo.href = cfg?.branding?.repo || '#';
-      const dep  = document.getElementById('deployLink'); dep.href = cfg?.branding?.deployUrl || '#';
+      // branding
+      document.getElementById('siteName').textContent = cfg?.branding?.siteName ?? 'RestApi-s';
+      document.getElementById('tagline').textContent  = cfg?.branding?.tagline ?? 'Free & Simple REST Endpoints';
+      const repo = document.getElementById('repoLink');
+      repo.href = cfg?.branding?.repo || '#';
+      repo.textContent = 'GitHub';
+      const dep  = document.getElementById('deployLink');
+      dep.href = cfg?.branding?.deployUrl || '#';
+      dep.textContent = 'Open';
 
-      const categories = (cfg.categories || []).slice()
-        .sort((a,b)=>(a.order??99)-(b.order??99));
+      document.getElementById('creator').textContent = cfg?.apiSettings?.creator ?? 'unknown';
 
+      // render categories & items
       const mount = document.getElementById('content');
       mount.innerHTML = '';
-
-      for (const cat of categories){
+      (cfg.categories || []).forEach(cat => {
         const sec = document.createElement('section');
-        sec.className = 'section';
+        sec.className = 'card';
+        const h = document.createElement('h2');
+        h.innerHTML = `${cat.icon || '📦'} ${cat.title || 'Kategori'}`;
+        sec.appendChild(h);
 
-        const h2 = document.createElement('h2');
-        h2.innerHTML = `${cat.icon || '📦'} <span>${cat.title || 'Category'}</span>`;
-        sec.appendChild(h2);
+        const grid = document.createElement('div');
+        grid.className = 'grid';
 
-        const grid = document.createElement('div'); grid.className='grid';
+        (cat.items || []).forEach(it => {
+          const card = document.createElement('div');
+          card.className = 'item';
 
-        for (const it of (cat.items||[])){
-          const card = document.createElement('div'); card.className='item';
-
-          const t = document.createElement('div'); t.className='title';
+          const t = document.createElement('div');
+          t.className = 'title';
           t.textContent = it.title || 'Untitled';
           card.appendChild(t);
 
-          const d = document.createElement('p'); d.className='desc';
+          const d = document.createElement('p');
+          d.className = 'desc';
           d.textContent = it.desc || '';
           card.appendChild(d);
 
-          const meta = document.createElement('div'); meta.className='meta';
+          const meta = document.createElement('div');
+          meta.className = 'meta';
 
-          const needKey = (it.requireKey ?? cfg?.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
-          const keyPill = document.createElement('span'); keyPill.className='pill';
-          keyPill.textContent = needKey; meta.appendChild(keyPill);
+          const pill = document.createElement('span');
+          pill.className = 'pill';
+          pill.textContent = (it.requireKey ?? cfg.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
+          meta.appendChild(pill);
 
-          if (it.example){
-            const ex = document.createElement('span'); ex.className='pill';
-            const base = (it.path || '').trim();
-            const href = base.endsWith('=') ? (base + encodeURIComponent(it.example)) : base;
-            ex.title = it.example; // tooltip di desktop
-            ex.innerHTML = `Example: <a href="${href}" target="_blank" rel="noreferrer"><code>${it.example}</code></a>`;
+          if (it.example) {
+            const ex = document.createElement('span');
+            ex.className = 'pill';
+            ex.innerHTML = 'Example: <code>' + (it.example || '') + '</code>';
             meta.appendChild(ex);
           }
+
           card.appendChild(meta);
 
-          const actions = document.createElement('div'); actions.className='actions';
-          const open = document.createElement('a'); open.className='open';
-          open.textContent = 'Open Endpoint';
-          const path = (it.path || '').trim();
-          open.href = (path.endsWith('=') && it.example) ? (path + encodeURIComponent(it.example)) : path;
-          open.target = '_blank'; open.rel = 'noreferrer';
-          actions.appendChild(open);
-          card.appendChild(actions);
+          // tombol GO
+          if (it.path) {
+            const go = document.createElement('a');
+            go.className = 'btn';
+            go.textContent = 'Open Endpoint';
+            const base = (it.path || '').trim();
+            // jika path berakhiran '=' dan ada example, gabungkan otomatis
+            const href = (base.endsWith('=') && it.example) ? (base + encodeURIComponent(it.example)) : base;
+            go.href = href;
+            go.target = '_blank';
+            go.rel = 'noreferrer';
+            card.appendChild(document.createElement('div')).appendChild(go);
+          }
 
           grid.appendChild(card);
-        }
+        });
 
         sec.appendChild(grid);
         mount.appendChild(sec);
-      }
+      });
     }
-    main().catch(err=>{
-      document.getElementById('content').innerHTML =
-        `<div class="section"><div class="item">Gagal memuat konfigurasi: ${err?.message||err}</div></div>`;
+    main().catch(err => {
+      const mount = document.getElementById('content');
+      mount.innerHTML = '<div class="card">Gagal memuat konfigurasi: ' + (err?.message || err) + '</div>';
     });
   </script>
 </body>
