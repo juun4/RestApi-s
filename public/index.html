@@ -1,442 +1,196 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/><title>Maelyn API - Docs</title><meta name="description" content="Documentation for Maelyn API"/><meta name="keywords" content="Maelyn API, API Maelyn, Rest API Maelyn, Penyedia Rest API Gratis, Penyedia Layanan Rest API, Rest API Bot, Rest API Bot Whatsapp, Rest API Bot Discord, Rest API Bot Telegram, Rest API AI, Rest API Downloader, Rest API Gratis, Rest API Gateway, Rest API Indonesia, REST API, Maelyn API, AI API, downloader API, anime API, komik API, kripto API, deepblue API, developer tools, web service, API Indonesia, data integration, content API, api dokumentasi, api edukasi, integrasi data, api mudah, api cepat, api terbaik indonesia, platform API, API lokal Indonesia, restful API, dokumentasi API, api public, api aman, api terintegrasi, json api, express api, maelyn group"/><meta name="author" content="Maelyn Group"/><meta name="robots" content="index, follow"/><meta name="theme-color" content="#003366"/><meta name="language" content="id-ID"/><meta name="copyright" content="© 2025 Maelyn Group. All rights reserved."/><meta name="distribution" content="global"/><meta name="rating" content="general"/><meta name="coverage" content="worldwide"/><meta name="HandheldFriendly" content="true"/><meta name="MobileOptimized" content="width"/><meta property="og:type" content="website"/><meta property="og:site_name" content="Maelyn API"/><meta property="og:title" content="Maelyn API - Docs"/><meta property="og:description" content="Documentation for Maelyn API"/><meta property="og:image" content="https://maelyn.sbs/thumb.webp"/><meta property="og:url" content="https://maelyn.sbs"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Maelyn API - Docs"/><meta name="twitter:description" content="Documentation for Maelyn API"/><meta name="twitter:image" content="https://maelyn.sbs/thumb.webp"/><link rel="stylesheet" href="/assets/root-B62gg-4Q.css"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&amp;display=swap"/></head><body class="w-full overflow-x-hidden"><header class="sticky top-0 z-50 backdrop-blur-md bg-blue-950/70 border-b border-blue-800/50 w-full"><div class="container mx-auto px-4 py-4 flex justify-between items-center"><div class="flex items-center gap-2"><div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center overflow-hidden p-1"><img src="/logo.png" alt="Logo" class="w-10 h-10 object-contain"/></div><h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-none">Maelyn API</h1></div><nav class="hidden md:flex gap-8"><a class="hover:text-blue-300 transition-colors" data-discover="true" href="/">Home</a><a class="hover:text-blue-300 transition-colors" data-discover="true" href="/docs">Docs</a><a class="hover:text-blue-300 transition-colors" data-discover="true" href="/pricing">Pricing</a><a class="hover:text-blue-300 transition-colors" data-discover="true" href="/blog">Blog</a></nav><div class="flex gap-4 items-center"><a class="hidden md:flex px-4 py-2 bg-gradient-to-r from-blue-800 to-cyan-700 rounded-md hover:opacity-90 transition-all shadow-lg shadow-blue-500/30" data-discover="true" href="/login">Login</a><button class="md:hidden p-2 rounded-md bg-blue-800/50 hover:bg-blue-700/70 transition-colors" aria-label="Toggle menu"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div></header><div class="w-full overflow-x-hidden"><div class="min-h-screen bg-gradient-to-b from-blue-950 to-blue-950/30 text-white transition-colors duration-300"><section class="py-4 md:py-6 border-b border-blue-800/30 z-10 bg-opacity-80"><div class="container mx-auto px-4"><div class="flex items-center justify-between"><div class="flex items-center"><button class="md:hidden mr-4 p-2 rounded-lg bg-blue-500/20" aria-label="Toggle categories"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M7.375 16.047h9.25m4.625-6.164v7.698a3.083 3.083 0 0 1-3.083 3.083H5.833a3.083 3.083 0 0 1-3.083-3.083V6.419a3.083 3.083 0 0 1 3.083-3.083h3.084a3.08 3.08 0 0 1 2.57 1.377l.873 1.326a1.75 1.75 0 0 0 1.449.77h4.358a3.084 3.084 0 0 1 3.083 3.074"></path><path d="m11.517 4.723l6.927-1.11a1.53 1.53 0 0 1 1.778 1.521v2.457"></path></g></svg></button><h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3 flex-wrap relative py-2"><span class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">Documentation API</span><span class="inline-flex items-center text-sm font-medium bg-blue-900/30 border border-blue-500/50 text-blue-300 px-2 py-0.5 rounded relative gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 16 16"><path fill="#fff" fill-rule="evenodd" d="M7 2.5a2.5 2.5 0 0 1-2 2.45v4.32q.224-.13.482-.2c.256-.069.551-.068.949-.068h3.07c.497 0 .648-.004.759-.034a1 1 0 0 0 .707-.707a1.3 1.3 0 0 0 .03-.31a2.5 2.5 0 1 1 1 0c-.005.217-.02.4-.065.567a1.99 1.99 0 0 1-1.41 1.41c-.256.068-.55.068-.949.068h-3.07c-.497 0-.648.004-.759.034a1 1 0 0 0-.707.707a1.3 1.3 0 0 0-.03.31a2.5 2.5 0 1 1-1 0v-6.1a2.5 2.5 0 1 1 3-2.45zM4.5 4A1.5 1.5 0 1 0 4.499.999A1.5 1.5 0 0 0 4.5 4m7 3a1.5 1.5 0 1 0-.001-3.001A1.5 1.5 0 0 0 11.5 7M6 13.5a1.5 1.5 0 1 1-3.001-.001A1.5 1.5 0 0 1 6 13.5" clip-rule="evenodd"></path></svg>13.1.0</span><div class="absolute left-0 bottom-0 h-0.5 w-24 bg-gradient-to-r from-blue-400 to-transparent"></div></h2></div></div><div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6"><div class="bg-blue-900/20 rounded-lg p-4 border border-blue-800/30"><div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">254</div><div class="text-sm text-blue-300/80 mt-1">Total Features</div></div><div class="bg-blue-900/20 rounded-lg p-4 border border-blue-800/30"><div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">237</div><div class="text-sm text-blue-300/80 mt-1">Active Features</div></div><div class="bg-blue-900/20 rounded-lg p-4 border border-blue-800/30"><div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">8</div><div class="text-sm text-blue-300/80 mt-1">Categories</div></div><div class="bg-blue-900/20 rounded-lg p-4 border border-blue-800/30"><div class="text-2xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">-</div><div class="text-sm text-blue-300/80 mt-1">Select Plugin</div></div></div></div></section><div class="container mx-auto px-4 py-4"><div class="bg-blue-900/20 rounded-lg p-3 border border-blue-800/30 flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 my-auto text-blue-300/80" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><input type="text" placeholder="Search for API endpoints..." class="bg-transparent w-full focus:outline-none text-white" value=""/></div></div><main class="container mx-auto px-4 py-6"><div class="flex flex-col lg:flex-row gap-6"><div class="lg:w-64 flex-shrink-0 hidden lg:block"><div class="bg-blue-900/20 rounded-lg p-4 border border-blue-800/30 sticky top-28"><div class="flex items-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="mr-2"><path fill="currentColor" d="M20.99 7.325v-2.15a2.29 2.29 0 0 0-1.66-2.21a2.3 2.3 0 0 0-1-.05l-6.51 1a3.7 3.7 0 0 0-1.09-.87a3.8 3.8 0 0 0-1.81-.46H5.84A3.82 3.82 0 0 0 2 6.425v11.16a3.82 3.82 0 0 0 3.84 3.83h12.33a3.82 3.82 0 0 0 2.71-1.12a3.88 3.88 0 0 0 1.12-2.71v-7.7a3.73 3.73 0 0 0-1.01-2.56m-4.34 9.76H7.4a1 1 0 0 1 0-2h9.25a1 1 0 0 1 0 2m2.88-10.71a3.8 3.8 0 0 0-1.3-.23h-4.4a1 1 0 0 1-.47-.12a1 1 0 0 1-.35-.32l-.23-.34l5.8-.93a.8.8 0 0 1 .34 0a.7.7 0 0 1 .3.16a.6.6 0 0 1 .2.27a.7.7 0 0 1 .07.33z"></path></svg><h2 class="text-lg font-semibold">Categories</h2></div><ul class="space-y-1"><li><button class="w-full text-left px-3 py-2 rounded-lg transition-all bg-blue-600/30"><div class="flex justify-between items-center"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" class="mr-2"><defs><mask id="ipSFolderCode0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M5 8a2 2 0 0 1 2-2h12l5 6h17a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path stroke="#000" stroke-linecap="round" d="m28 22l5 5l-5 5m-8-10l-5 5l5 5"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSFolderCode0)"></path></svg><span>All Features</span></div><span class="text-sm text-blue-300/80">254</span></div></button></li><li><button class="w-full text-left px-3 py-2 rounded-lg transition-all hover:bg-blue-600/20"><div class="flex justify-between items-center"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" class="mr-2"><defs><mask id="ipSFolderCode-AI"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M5 8a2 2 0 0 1 2-2h12l5 6h17a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path stroke="#000" stroke-linecap="round" d="m28 22l5 5l-5 5m-8-10l-5 5l5 5"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSFolderCode-AI)"></path></svg><span>AI</span></div><span class="text-sm text-blue-300/80">90</span></div></button></li><li><button class="w-full text-left px-3 py-2 rounded-lg transition-all hover:bg-blue-600/20"><div class="flex justify-between items-center"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" class="mr-2"><defs><mask id="ipSFolderCode-AI-LLM"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M5 8a2 2 0 0 1 2-2h12l5 6h17a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path stroke="#000" stroke-linecap="round" d="m28 22l5 5l-5 5m-8-10l-5 5l5 5"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSFolderCode-AI-LLM)"></path></svg><span>AI-LLM</span></div><span class="text-sm text-blue-300/80">2</span></div></button></li><li><button class="w-full text-left px-3 py-2 rounded-lg transition-all hover:bg-blue-600/20"><div class="flex justify-between items-center"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" class="mr-2"><defs><mask id="ipSFolderCode-Entertainment"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M5 8a2 2 0 0 1 2-2h12l5 6h17a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path stroke="#000" stroke-linecap="round" d="m28 22l5 5l-5 5m-8-10l-5 5l5 5"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSFolderCode-Entertainment)"></path></svg><span>Entertainment</span></div><span class="text-sm text-blue-300/80">81</span></div></button></li><li><button class="w-full text-left px-3 py-2 rounded-lg transition-all hover:bg-blue-600/20"><div class="flex justify-between items-center"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" class="mr-2"><defs><mask id="ipSFolderCode-Crypto"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M5 8a2 2 0 0 1 2-2h12l5 6h17a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path stroke="#000" stroke-linecap="round" d="m28 22l5 5l-5 5m-8-10l-5 5l5 5"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSFolderCode-Crypto)"></path></svg><span>Crypto</span></div><span class="text-sm text-blue-300/80">7</span></div></button></li><li><button class="w-full text-left px-3 py-2 rounded-lg transition-all hover:bg-blue-600/20"><div class="flex justify-between items-center"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" class="mr-2"><defs><mask id="ipSFolderCode-Downloader"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M5 8a2 2 0 0 1 2-2h12l5 6h17a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path stroke="#000" stroke-linecap="round" d="m28 22l5 5l-5 5m-8-10l-5 5l5 5"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSFolderCode-Downloader)"></path></svg><span>Downloader</span></div><span class="text-sm text-blue-300/80">22</span></div></button></li><li><button class="w-full text-left px-3 py-2 rounded-lg transition-all hover:bg-blue-600/20"><div class="flex justify-between items-center"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" class="mr-2"><defs><mask id="ipSFolderCode-Games"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M5 8a2 2 0 0 1 2-2h12l5 6h17a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path stroke="#000" stroke-linecap="round" d="m28 22l5 5l-5 5m-8-10l-5 5l5 5"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSFolderCode-Games)"></path></svg><span>Games</span></div><span class="text-sm text-blue-300/80">6</span></div></button></li><li><button class="w-full text-left px-3 py-2 rounded-lg transition-all hover:bg-blue-600/20"><div class="flex justify-between items-center"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" class="mr-2"><defs><mask id="ipSFolderCode-Others"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M5 8a2 2 0 0 1 2-2h12l5 6h17a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path stroke="#000" stroke-linecap="round" d="m28 22l5 5l-5 5m-8-10l-5 5l5 5"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSFolderCode-Others)"></path></svg><span>Others</span></div><span class="text-sm text-blue-300/80">41</span></div></button></li><li><button class="w-full text-left px-3 py-2 rounded-lg transition-all hover:bg-blue-600/20"><div class="flex justify-between items-center"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" class="mr-2"><defs><mask id="ipSFolderCode-Payment-Gateway"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M5 8a2 2 0 0 1 2-2h12l5 6h17a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path stroke="#000" stroke-linecap="round" d="m28 22l5 5l-5 5m-8-10l-5 5l5 5"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSFolderCode-Payment-Gateway)"></path></svg><span>Payment-Gateway</span></div><span class="text-sm text-blue-300/80">5</span></div></button></li></ul></div></div><div class="flex-1 w-full overflow-x-auto"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-semibold">All Plugins<span class="ml-2 text-sm text-blue-300/80">(<!-- -->254<!-- -->)</span></h2></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Apertus AI</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/apertusai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Bing Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/bing/chat</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Bing Create Image</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/bing/createimage</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">4<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Blackbox Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/blackbox/chat</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Blackbox Chat &amp; Image</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/blackbox/image</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Blackbox Imagine</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/blackbox/imagine</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">CharacterAI Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/cai/chat</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">4<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">CharacterAI Create Image</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/cai/createimage</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">CharacterAI Create Room</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/cai/createroom</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">CharacterAI Detail</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/cai/detail</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">CharacterAI Search</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/cai/search</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-gray-900/50 border border-gray-800/50 opacity-60 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-500">Canva Chat AI</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-purple-200 bg-purple-500/10 opacity-70 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-red-500/30 text-red-200 opacity-70 
-              backdrop-blur-sm">Inactive</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-purple-300/70 bg-purple-900/20 opacity-70">/canvaai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-purple-300/70 opacity-70">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-gray-500/20 text-gray-400">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"><span class="px-2 py-1 rounded-full text-[10px] uppercase 
-                backdrop-blur-sm
-                bg-blue-500/30 text-blue-200">HOT</span></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Chat GPT</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/chatgpt</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          border-2 border-blue-900/30 bg-gradient-to-br from-blue-950/80 via-indigo-900/70 to-blue-900/60 shadow-2xl hover:scale-[1.02] hover:shadow-2xl"><div class="absolute inset-0 pointer-events-none overflow-hidden 
-              opacity-50" style="background:radial-gradient(ellipse at center, rgba(14, 19, 48, 0.9) 0%, rgba(7, 10, 25, 0.95) 100%),
-                repeating-radial-gradient(
-                  rgba(255,255,255,0.05) 0px, 
-                  rgba(255,255,255,0.05) 1px,
-                  transparent 1px, 
-                  transparent 4px
-                );background-blend-mode:overlay;animation:starry-night 20s infinite linear"></div><div class="absolute inset-0 pointer-events-none 
-            opacity-70"><div class="absolute w-full h-full" style="background:radial-gradient(
-                    rgba(87, 160, 255, 0.1) 1px, 
-                    transparent 1px
-                  ),
-                  radial-gradient(
-                    rgba(87, 160, 255, 0.1) 1px, 
-                    transparent 1px
-                  );background-size:50px 50px;background-position:0 0, 25px 25px;animation:cosmic-particles 15s infinite linear"></div></div><div class="absolute inset-0 pointer-events-none 
-              opacity-30" style="background:linear-gradient(
-                  135deg, 
-                  rgba(87, 83, 255, 0.2) 0%, 
-                  rgba(160, 108, 255, 0.2) 50%, 
-                  rgba(255, 87, 194, 0.2) 100%
-                );mix-blend-mode:color-dodge;animation:nebula-flow 30s infinite linear"></div><div class="absolute -inset-[2px] rounded-2xl 
-              bg-gradient-to-r from-blue-900/50 via-indigo-900/50 to-purple-900/50 
-              opacity-70 blur-sm pointer-events-none
-              animate-border-cosmic"></div><div class="absolute top-4 right-4 z-10 flex gap-2"><span class="px-3 py-1 rounded-full text-xs font-bold 
-            uppercase tracking-wider 
-            shadow-lg transform hover:scale-105 transition-transform
-            relative overflow-hidden group
-            bg-gradient-to-r from-blue-600 to-indigo-700 text-white"><span class="absolute inset-0 
-                bg-white/30 animate-shimmer-fast opacity-50 group-hover:opacity-70"></span><span class="relative z-10 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1
-                " viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>Premium</span></span></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-400 animate-gradient-text">Chat GPT Audio</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/chatgpt/audio</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 
-                text-yellow-300 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-600/40 text-blue-200 backdrop-blur-sm">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Claude AI</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/claude</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Clayde AI Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/claydeai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Codeium AI Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/codeiumai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Colab AI Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/colabai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Cursor AI Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/cursorai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Deepseek Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/deepseek/chat</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">4<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">DeepSeek Create Chat Session</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/deepseek/createchat</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Devin AI Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/devinai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Dia AI Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/diaai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Doubao AI Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/doubaoai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Felo Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/felo/chat</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-gray-900/50 border border-gray-800/50 opacity-60 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-500">GPT Role Play</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-purple-200 bg-purple-500/10 opacity-70 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-red-500/30 text-red-200 opacity-70 
-              backdrop-blur-sm">Inactive</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-purple-300/70 bg-purple-900/20 opacity-70">/gptrp</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-purple-300/70 opacity-70">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-gray-500/20 text-gray-400">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">GPT Search &amp; Roleplay</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/gpt/search</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Gemini Chat &amp; Audio</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/gemini/audio</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"><span class="px-2 py-1 rounded-full text-[10px] uppercase 
-                backdrop-blur-sm
-                bg-blue-500/30 text-blue-200">HOT</span></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Gemini Chat</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/gemini/chat</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Gemini Chat &amp; Image</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/gemini/image</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Gemini Chat &amp; Pdf</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/gemini/pdf</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Gemini Chat Thinking</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/gemini/chat/thinking</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Gemini Chat &amp; Video</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/gemini/video</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Generator Text AI</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/generator</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Generator Prompt</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/generator/prompt</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Generator Story</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/generator/story</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">6<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">post</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Groq AI</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/groqai</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Humanizer Check</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/humanizer/check</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Image2Image Filter Image</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/img2img/filter</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">3<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Image2Image ESRGAN</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-sm mb-3 line-clamp-1 font-mono 
-          rounded-md px-2 py-1 backdrop-blur-sm
-          text-blue-300 bg-blue-900/30">/img2img/esrgan</div></div><div class="relative z-10 flex justify-between items-center mt-2"><span class="text-xs 
-          text-blue-300">2<!-- --> <!-- -->parameters</span><div class="flex items-center gap-2"><span class="text-xs px-2 py-1 rounded uppercase 
-            bg-blue-500/20 text-blue-300">get</span></div></div></div><div class="relative rounded-2xl p-6 transition-all group overflow-hidden 
-                          bg-blue-900/20 border-blue-800/30 hover:scale-[1.02] hover:shadow-2xl"><div class="absolute top-4 right-4 z-10 flex gap-2"></div><div class="relative z-10 flex-1"><h3 class="text-xl font-bold mb-3 line-clamp-1 
-          text-gray-100">Image2Image Ghibli</h3><div class="flex flex-wrap gap-2 mb-3"><span class="px-2 py-1 rounded-full text-xs 
-              text-blue-200 bg-blue-500/20 
-              backdrop-blur-sm">AI</span><span class="px-2 py-1 rounded-full text-xs uppercase 
-              bg-green-500/30 text-green-200 
-              backdrop-blur-sm">Active</span></div><div class="text-
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>JunnAPIs • Free & Simple REST Endpoints</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --bg:#0b1020; --surface:#0e1430; --card:#111736; --muted:#9aa4c7; --text:#e6ecff;
+      --line:#1b2247; --pill:#2a3471; --acc:#7aa2ff; --acc2:#4ad295;
+    }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{ margin:0; font-family:Inter,system-ui,Segoe UI,Arial; background:var(--bg); color:var(--text) }
+    a{ color:inherit; text-decoration:none }
+    .wrap{ max-width:min(1200px,100vw - 32px); margin:0 auto; padding:24px }
+
+    /* Header */
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; flex-wrap:wrap }
+    .brand{ display:flex; gap:12px; align-items:center }
+    .brand h1{ font-size:22px; margin:0 }
+    .tag{ color:var(--muted); font-size:14px }
+    .btn{ display:inline-flex; gap:8px; align-items:center; background:linear-gradient(90deg,var(--acc),var(--acc2)); color:#04102a; padding:8px 12px; border-radius:10px; font-weight:700 }
+
+    /* Tabs kategori */
+    .tabs{
+      display:flex; gap:8px; overflow-x:auto; border-bottom:1px solid var(--line);
+      padding-bottom:8px; margin-bottom:20px; scrollbar-width:none;
+    }
+    .tabs::-webkit-scrollbar{ display:none }
+    .tab{
+      padding:8px 14px; border-radius:10px; background:#141a3b;
+      border:1px solid transparent; font-weight:600; color:var(--muted);
+      cursor:pointer; white-space:nowrap; flex-shrink:0;
+    }
+    .tab.active{
+      background:linear-gradient(90deg,var(--acc),var(--acc2));
+      color:#04102a; border-color:var(--acc2);
+    }
+
+    /* Kartu dan grid */
+    .section{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.18); margin-bottom:16px }
+    .grid{ display:grid; gap:16px }
+    @media (min-width:520px){ .grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (min-width:900px){ .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    @media (min-width:1180px){ .grid{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
+
+    .item{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:10px; min-width:0; transition:transform .1s ease }
+    .item:hover{ transform:translateY(-2px) }
+    .title{ font-weight:700; margin:0 0 2px; line-height:1.25 }
+    .desc{ margin:0; color:var(--muted); font-size:14px; line-height:1.5; word-break:break-word }
+
+    /* meta: dua pill sebaris */
+    .meta{ display:flex; gap:8px; align-items:center; flex-wrap:nowrap }
+    .pill{
+      display:inline-flex; align-items:center; gap:6px; padding:4px 8px;
+      border:1px solid var(--pill); border-radius:999px; color:#c6d2ff;
+      min-width:0; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12px;
+    }
+    .pill.key{ flex:0 0 auto }
+    .pill.example{ flex:1 1 auto }
+    .pill code,.pill a{ display:block; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#cfe1ff }
+
+    .actions{ margin-top:auto }
+    .open{ display:inline-flex; gap:8px; align-items:center; background:linear-gradient(90deg,var(--acc),var(--acc2)); color:#04102a; padding:9px 12px; border-radius:10px; font-weight:800 }
+
+    footer{ margin-top:28px; color:var(--muted); font-size:13px; text-align:center }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12h14M12 5v14" stroke="#7aa2ff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <h1 id="siteName">JunnAPIs</h1>
+          <div class="tag" id="tagline">Free &amp; Simple REST Endpoints</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a id="repoLink" class="btn" target="_blank" rel="noreferrer">GitHub</a>
+        <a id="deployLink" class="btn" target="_blank" rel="noreferrer">Open</a>
+      </div>
+    </header>
+
+    <!-- Tab kategori -->
+    <div id="tabs" class="tabs"></div>
+
+    <!-- Konten -->
+    <div id="content"></div>
+
+    <footer>Made by <b id="creator">juun4</b></footer>
+  </div>
+
+  <script>
+    async function main(){
+      const res = await fetch('/src/web-set.json',{ cache:'no-store' });
+      const cfg = await res.json();
+
+      // branding
+      document.getElementById('siteName').textContent = cfg?.branding?.siteName ?? 'JunnAPIs';
+      document.getElementById('tagline').textContent  = cfg?.branding?.tagline  ?? 'Free & Simple REST Endpoints';
+      document.getElementById('creator').textContent  = cfg?.apiSettings?.creator ?? 'unknown';
+      document.getElementById('repoLink').href = cfg?.branding?.repo || '#';
+      document.getElementById('deployLink').href = cfg?.branding?.deployUrl || '#';
+
+      const categories = cfg.categories || [];
+      const tabs = document.getElementById('tabs');
+      const mount = document.getElementById('content');
+
+      // buat tab per kategori
+      categories.forEach((cat, i) => {
+        const tab = document.createElement('div');
+        tab.className = 'tab' + (i === 0 ? ' active' : '');
+        tab.textContent = cat.title || 'Category';
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          renderCategory(cat);
+        });
+        tabs.appendChild(tab);
+      });
+
+      // render kategori pertama
+      if (categories[0]) renderCategory(categories[0]);
+
+      function renderCategory(cat){
+        mount.innerHTML = '';
+        const sec = document.createElement('section');
+        sec.className = 'section';
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+
+        (cat.items || []).forEach(it => {
+          const card = document.createElement('div');
+          card.className = 'item';
+          const t = document.createElement('div');
+          t.className = 'title';
+          t.textContent = it.title || 'Untitled';
+          const d = document.createElement('p');
+          d.className = 'desc';
+          d.textContent = it.desc || '';
+          card.appendChild(t); card.appendChild(d);
+
+          const meta = document.createElement('div');
+          meta.className = 'meta';
+
+          const keyPill = document.createElement('span');
+          keyPill.className = 'pill key';
+          keyPill.textContent = (it.requireKey ?? cfg.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
+          meta.appendChild(keyPill);
+
+          if (it.example){
+            const ex = document.createElement('span');
+            ex.className = 'pill example';
+            const base = (it.path || '').trim();
+            const href = base.endsWith('=') ? (base + encodeURIComponent(it.example)) : base;
+            ex.title = it.example;
+            ex.innerHTML = `Example: <a href="${href}" target="_blank" rel="noreferrer"><code>${it.example}</code></a>`;
+            meta.appendChild(ex);
+          }
+
+          card.appendChild(meta);
+
+          if (it.path){
+            const actions = document.createElement('div');
+            actions.className = 'actions';
+            const go = document.createElement('a');
+            go.className = 'open';
+            go.textContent = 'Open Endpoint';
+            const base = (it.path || '').trim();
+            go.href = (base.endsWith('=') && it.example) ? (base + encodeURIComponent(it.example)) : base;
+            go.target = '_blank'; go.rel = 'noreferrer';
+            actions.appendChild(go);
+            card.appendChild(actions);
+          }
+          grid.appendChild(card);
+        });
+
+        sec.appendChild(grid);
+        mount.appendChild(sec);
+      }
+    }
+
+    main().catch(err=>{
+      document.getElementById('content').innerHTML =
+        `<div class="section"><div class="item">Gagal memuat konfigurasi: ${err?.message || err}</div></div>`;
+    });
+  </script>
+</body>
+</html>
