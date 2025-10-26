@@ -3,184 +3,97 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>JunnAPIs • Free & Simple REST Endpoints</title>
+  <title>JunnAPIs • REST API Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
     :root{
-      --bg:#0b1020; --surface:#0e1430; --card:#111736; --muted:#9aa4c7; --text:#e6ecff;
-      --line:#1b2247; --pill:#2a3471; --acc:#7aa2ff; --acc2:#4ad295;
+      --bg:#fafbff; --text:#121827; --muted:#5b6485;
+      --brand:#7c6cff; --brand2:#64d6a1; --ring:#e9ecff;
+      --card:#ffffff; --line:#edf0ff;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:var(--bg);color:var(--text)}
-    a{text-decoration:none;color:inherit;word-break:break-all}
-    .wrap{max-width:min(900px,100vw - 32px);margin:0 auto;padding:24px}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:var(--text);background:radial-gradient(1200px 600px at 70% -10%, #efeaff 0%, #fff 60%)}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:min(1100px,100vw - 32px);margin:0 auto;padding:20px}
 
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+    /* Navbar */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;align-items:center;gap:12px}
-    .brand h1{font-size:22px;margin:0}
-    .tag{color:var(--muted);font-size:14px}
-    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--acc),var(--acc2));
-      color:#04102a;padding:8px 12px;border-radius:10px;font-weight:700}
+    .brand h1{margin:0;font-size:24px;letter-spacing:.2px}
+    .menu{display:flex;gap:10px}
+    .btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;font-weight:700}
+    .btn-ghost{background:#f4f6ff;border:1px solid var(--line)}
+    .btn-grad{background:linear-gradient(90deg,var(--brand),#8ed5ff);color:#0d1335}
 
-    /* Tabs */
-    .tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);scrollbar-width:none;margin-bottom:18px}
-    .tabs::-webkit-scrollbar{display:none}
-    .tab{padding:8px 14px;border-radius:10px;background:#141a3b;color:var(--muted);font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap}
-    .tab.active{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#04102a}
+    /* Hero */
+    .hero{display:grid;gap:18px;place-items:center;text-align:center;padding:56px 0 36px}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:#f3f4ff;border:1px solid var(--ring);color:#5c63a7;padding:6px 12px;border-radius:999px;font-weight:700}
+    .title{font-size:40px;line-height:1.1;margin:6px 0}
+    .desc{max-width:760px;color:var(--muted);font-size:18px;line-height:1.6}
 
-    /* Cards */
-    .section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
-    .grid{display:grid;gap:16px;grid-template-columns:1fr;}
-    .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
-    .title{font-weight:700;margin:0}
-    .desc{color:var(--muted);font-size:14px;margin:0}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .btn-outline{border:2px solid #cfd6ff;background:#fff}
+    .btn-lg{padding:14px 18px;border-radius:14px}
 
-    /* Meta pill */
-    .meta{display:flex;flex-direction:column;gap:6px}
-    .pill{
-      display:flex;align-items:flex-start;gap:6px;
-      padding:6px 8px;border:1px solid var(--pill);
-      border-radius:999px;color:#c6d2ff;font-size:12px;
-      background:rgba(255,255,255,0.02);
-      word-break:break-word;
-    }
-    .pill b{color:#cfe1ff;white-space:nowrap;margin-right:4px}
-    .pill .example-url{flex:1;white-space:normal;word-break:break-word;overflow-wrap:anywhere;line-height:1.5}
+    .features{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));margin:36px 0}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.05)}
+    .card h3{margin:4px 0 6px}
+    .card p{margin:0;color:var(--muted)}
 
-    .open{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--acc),var(--acc2));
-      color:#04102a;padding:9px 12px;border-radius:10px;font-weight:800;margin-top:auto;width:max-content}
-    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+    .footer{margin:40px 0 16px;text-align:center;color:#7a83a6;font-size:13px}
+    @media (max-width:520px){ .title{font-size:32px} .desc{font-size:16px} }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
+    <nav class="nav">
       <div class="brand">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14" stroke="#7aa2ff" stroke-width="2" stroke-linecap="round"/></svg>
-        <div>
-          <h1 id="siteName">JunnAPIs</h1>
-          <div class="tag" id="tagline">Free & Simple REST Endpoints</div>
-        </div>
+        <span style="font-size:22px">✨</span>
+        <h1>JunnAPIs</h1>
       </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a id="repoLink" class="btn" target="_blank">GitHub</a>
-        <a id="deployLink" class="btn" target="_blank">Open</a>
+      <div class="menu">
+        <a class="btn btn-ghost" href="https://github.com/juun4/RestApi-s" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn btn-grad" href="/docs">Open Docs</a>
       </div>
-    </header>
+    </nav>
 
-    <div id="tabs" class="tabs"></div>
-    <div id="content"></div>
+    <section class="hero">
+      <span class="pill">🚀 REST API Platform</span>
+      <h2 class="title">Bangun aplikasi lebih cepat dengan API yang simpel & modern</h2>
+      <p class="desc">
+        Kumpulan endpoint gratis & minimalis untuk kebutuhan development sehari-hari:
+        downloader, AI tools, searching utilities, dan banyak lagi — dengan dokumentasi
+        jelas & respons cepat.
+      </p>
+      <div class="cta">
+        <a class="btn btn-grad btn-lg" href="/docs">Get Started</a>
+        <a class="btn btn-outline btn-lg" href="/docs">View Documentation</a>
+      </div>
+    </section>
 
-    <footer>Made by <b id="creator">juun4</b></footer>
+    <section class="features">
+      <div class="card">
+        <h3>⚡ Cepat & Sederhana</h3>
+        <p>Endpoint mudah dipakai, parameter jelas, dan respons JSON yang konsisten.</p>
+      </div>
+      <div class="card">
+        <h3>🔐 API Key Support</h3>
+        <p>Aktifkan <em>requireKey</em> kapan pun untuk melindungi endpoint publik.</p>
+      </div>
+      <div class="card">
+        <h3>🧩 Banyak Kategori</h3>
+        <p>Downloader, AI (text/image), pencarian, tools, dan seterusnya.</p>
+      </div>
+      <div class="card">
+        <h3>🛠️ Siap di Vercel</h3>
+        <p>Didesain untuk deployment mulus di Vercel dengan Node/Express.</p>
+      </div>
+    </section>
+
+    <div class="footer">© <span id="yy"></span> Made by <b>juun4</b></div>
   </div>
-
-  <script>
-  async function main(){
-    const res = await fetch('/src/web-set.json',{cache:'no-store'});
-    const cfg = await res.json();
-
-    // Branding
-    document.getElementById('siteName').textContent = cfg?.branding?.siteName ?? 'JunnAPIs';
-    document.getElementById('tagline').textContent  = cfg?.branding?.tagline  ?? 'Free & Simple REST Endpoints';
-    document.getElementById('creator').textContent  = cfg?.apiSettings?.creator ?? 'unknown';
-    document.getElementById('repoLink').href = cfg?.branding?.repo || '#';
-    document.getElementById('deployLink').href = cfg?.branding?.deployUrl || '#';
-
-    const cats = cfg.categories || [];
-    const tabs = document.getElementById('tabs');
-    const content = document.getElementById('content');
-
-    cats.forEach((cat,i)=>{
-      const tab=document.createElement('div');
-      tab.className='tab'+(i===0?' active':'');
-      tab.textContent=cat.title||'Category';
-      tab.addEventListener('click',()=>{
-        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-        tab.classList.add('active');
-        render(cat);
-      });
-      tabs.appendChild(tab);
-    });
-
-    if(cats[0]) render(cats[0]);
-
-    function render(cat){
-      content.innerHTML='';
-      const section=document.createElement('section');
-      section.className='section';
-      const grid=document.createElement('div');
-      grid.className='grid';
-
-      (cat.items||[]).forEach(it=>{
-        const card=document.createElement('div');
-        card.className='item';
-        const t=document.createElement('div');
-        t.className='title';
-        t.textContent=it.title||'Untitled';
-        const d=document.createElement('p');
-        d.className='desc';
-        d.textContent=it.desc||'';
-        card.appendChild(t);
-        card.appendChild(d);
-
-        const meta=document.createElement('div');
-        meta.className='meta';
-
-        const key=document.createElement('div');
-        key.className='pill';
-        key.textContent=(it.requireKey ?? cfg.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
-        meta.appendChild(key);
-
-        if(it.example){
-          const ex=document.createElement('div');
-          ex.className='pill';
-          const label=document.createElement('b');
-          label.textContent='Example:';
-          const url=document.createElement('span');
-          url.className='example-url';
-          url.textContent=it.example;
-          ex.appendChild(label);
-          ex.appendChild(url);
-          meta.appendChild(ex);
-        }
-        card.appendChild(meta);
-
-        // ✅ FIX raw url (no encode)
-        if(it.path){
-          const go=document.createElement('a');
-          go.className='open';
-          go.textContent='Open Endpoint';
-
-          let href = (it.path||'').trim();
-          if (href.includes('url=') && href.includes('apikey=')) {
-            const [base, q] = href.split('?');
-            const params = new URLSearchParams(q);
-            if (params.has('url')) params.set('url', it.example || '');
-            href = base + '?' + params.toString()
-              .replace(/%3A/g, ':')
-              .replace(/%2F/g, '/')
-              .replace(/%3F/g, '?')
-              .replace(/%3D/g, '=')
-              .replace(/%26/g, '&');
-          } else if (href.endsWith('=') && it.example) {
-            href += it.example; // raw
-          }
-          go.href = href;
-          go.target = '_blank';
-          card.appendChild(go);
-        }
-        grid.appendChild(card);
-      });
-      section.appendChild(grid);
-      content.appendChild(section);
-    }
-  }
-
-  main().catch(e=>{
-    document.getElementById('content').innerHTML=`<div class='section'><div class='item'>Error: ${e.message}</div></div>`;
-  });
-  </script>
+  <script>document.getElementById('yy').textContent=new Date().getFullYear()</script>
 </body>
 </html>
