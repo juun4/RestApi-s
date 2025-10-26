@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
 
-  <!-- CSS utama -->
-  <link rel="stylesheet" href="/style.css">
+  <!-- PENTING: path-nya /style.css (tanpa /public) + cache bust -->
+  <link rel="stylesheet" href="/style.css?v=2">
 </head>
 <body>
   <div class="wrap">
@@ -48,7 +48,6 @@
       const repo = document.getElementById('repoLink'); repo.href = cfg?.branding?.repo || '#';
       const dep  = document.getElementById('deployLink'); dep.href = cfg?.branding?.deployUrl || '#';
 
-      // Urutkan kategori opsional dengan field "order"
       const categories = (cfg.categories || []).slice()
         .sort((a,b)=>(a.order??99)-(b.order??99));
 
@@ -78,12 +77,10 @@
 
           const meta = document.createElement('div'); meta.className='meta';
 
-          // Badge API key
           const needKey = (it.requireKey ?? cfg?.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
           const keyPill = document.createElement('span'); keyPill.className='pill';
           keyPill.textContent = needKey; meta.appendChild(keyPill);
 
-          // Example (klik → buka endpoint dengan example yang di-encode)
           if (it.example){
             const ex = document.createElement('span'); ex.className='pill';
             const base = (it.path || '').trim();
@@ -94,7 +91,6 @@
           }
           card.appendChild(meta);
 
-          // Tombol Open Endpoint
           const actions = document.createElement('div'); actions.className='actions';
           const open = document.createElement('a'); open.className='open';
           open.textContent = 'Open Endpoint';
