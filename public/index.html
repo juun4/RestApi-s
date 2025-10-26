@@ -1,168 +1,285 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>RestApi-s</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-  <style>
-    :root{ --bg:#0b1020; --card:#111736; --muted:#9aa4c7; --text:#e6ecff; --acc:#7aa2ff; --acc2:#4ad295; --line:#1b2247; --pill:#2a3471; }
-    *{ box-sizing:border-box }
-    html,body{ height:100% }
-    body{ margin:0; font-family:Inter,system-ui,Segoe UI,Arial; background:var(--bg); color:var(--text) }
-    a{ color:inherit; text-decoration:none }
-
-    /* container */
-    .wrap{ max-width:min(1200px,100vw - 32px); margin:0 auto; padding:24px }
-    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:24px; flex-wrap:wrap }
-    .brand{ display:flex; gap:12px; align-items:center }
-    .brand h1{ font-size:22px; margin:0 }
-    .tag{ color:var(--muted); font-size:14px }
-    .btn{ display:inline-flex; gap:8px; align-items:center; background:linear-gradient(90deg,var(--acc),var(--acc2)); color:#04102a; padding:8px 12px; border-radius:10px; font-weight:700 }
-
-    /* cards */
-    .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.2); margin-bottom:16px }
-    .card h2{ margin:0 0 12px; font-size:20px; display:flex; gap:10px; align-items:center }
-
-    /* responsive grid */
-    .grid{ display:grid; gap:16px }
-    @media (min-width:520px){ .grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
-    @media (min-width:900px){ .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
-    @media (min-width:1180px){ .grid{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
-
-    .item{ border:1px solid #1f2754; border-radius:12px; padding:14px; transition:transform .1s ease; display:flex; flex-direction:column; gap:10px; min-width:0 }
-    .item:hover{ transform:translateY(-2px) }
-    .title{ font-weight:700; margin:0 0 2px; line-height:1.25 }
-    .desc{ color:var(--muted); font-size:14px; margin:0 0 6px; line-height:1.5; word-break:break-word }
-
-    /* meta pills: ANTI MELEBER */
-    .meta{ display:flex; gap:8px; align-items:center; color:var(--muted); font-size:12px; flex-wrap:wrap }
-    .pill{
-      display:inline-flex; align-items:center; gap:6px; padding:3px 8px;
-      border-radius:999px; border:1px solid var(--pill); color:#c6d2ff;
-      min-width:0; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
-    }
-    .pill code,.pill a{ display:block; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#cfe1ff }
-
-    /* actions */
-    .actions{ margin-top:auto }
-    .actions .btn{ font-weight:800 }
-
-    footer{ margin-top:28px; color:var(--muted); font-size:13px; text-align:center }
-    code{ background:#0b1538; padding:2px 6px; border-radius:6px; border:1px solid #1c2554; color:#cfe1ff }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This interactive interface allows you to explore and test our comprehensive collection of API endpoints in real-time.">
+    <meta name="theme-color" content="#ffffff">
+    <title>NekoLabs APIs.</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['Ubuntu Mono', 'monospace'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            display: none !important;
+        }
+        .glass {
+            backdrop-filter: blur(16px) saturate(180%);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+    </style>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M5 12h14M12 5v14" stroke="#7aa2ff" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <div>
-          <h1 id="siteName">RestApi-s</h1>
-          <div class="tag" id="tagline">Free & Simple REST Endpoints</div>
+<body class="bg-gradient-to-br from-slate-50 via-white to-slate-100 text-slate-800 antialiased font-mono min-h-screen">
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gradient-to-br from-slate-50 via-white to-slate-100 text-slate-800 border-r border-gray-200 transform -translate-x-full duration-300 ease-in-out z-[100] overflow-y-auto">
+        <div class="px-8 py-5 border-b border-gray-200 flex items-center justify-start">
+            <button id="sidebarClose" class="py-2 px-3 border border-gray-200 text-gray-600 hover:border-gray-600 flex items-center justify-center rounded">
+                <i class="material-icons text-xl">close</i>
+            </button>
         </div>
-      </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap">
-        <a id="repoLink" class="btn" target="_blank" rel="noreferrer">GitHub</a>
-        <a id="deployLink" class="btn" target="_blank" rel="noreferrer">Open</a>
-      </div>
+        <div class="p-8">
+            <nav>
+                <div class="space-y-2">
+                    <a href="/" class="flex items-center py-2 px-4 text-sm border border-slate-900 text-slate-900 font-semibold hover:border-gray-600 rounded">
+                        <i class="material-icons text-lg mr-3">dashboard</i> Dashboard
+                    </a>
+                </div>
+                
+                
+                    <p class="text-xs text-slate-500 my-4">Available Categories.</p>
+                    <div class="space-y-2">
+                        
+                            
+                            <a href="/category/ai" class="flex items-center justify-between py-3 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <span class="flex items-center ">
+                                    AI
+                                </span>
+                                <span class="text-xs text-gray-400">(113)</span>
+                            </a>
+                        
+                            
+                            <a href="/category/tools" class="flex items-center justify-between py-3 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <span class="flex items-center ">
+                                    Tools
+                                </span>
+                                <span class="text-xs text-gray-400">(57)</span>
+                            </a>
+                        
+                            
+                            <a href="/category/canvas" class="flex items-center justify-between py-3 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <span class="flex items-center ">
+                                    Canvas
+                                </span>
+                                <span class="text-xs text-gray-400">(8)</span>
+                            </a>
+                        
+                            
+                            <a href="/category/cloudflare-ai" class="flex items-center justify-between py-3 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <span class="flex items-center ">
+                                    Cloudflare AI
+                                </span>
+                                <span class="text-xs text-gray-400">(2)</span>
+                            </a>
+                        
+                            
+                            <a href="/category/discovery" class="flex items-center justify-between py-3 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <span class="flex items-center ">
+                                    Discovery
+                                </span>
+                                <span class="text-xs text-gray-400">(88)</span>
+                            </a>
+                        
+                            
+                            <a href="/category/downloader" class="flex items-center justify-between py-3 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <span class="flex items-center ">
+                                    Downloader
+                                </span>
+                                <span class="text-xs text-gray-400">(27)</span>
+                            </a>
+                        
+                            
+                            <a href="/category/ephoto" class="flex items-center justify-between py-3 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <span class="flex items-center ">
+                                    Ephoto
+                                </span>
+                                <span class="text-xs text-gray-400">(29)</span>
+                            </a>
+                        
+                            
+                            <a href="/category/news" class="flex items-center justify-between py-3 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <span class="flex items-center ">
+                                    News
+                                </span>
+                                <span class="text-xs text-gray-400">(96)</span>
+                            </a>
+                        
+                            
+                            <a href="/category/random" class="flex items-center justify-between py-3 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <span class="flex items-center ">
+                                    Random
+                                </span>
+                                <span class="text-xs text-gray-400">(60)</span>
+                            </a>
+                        
+                    </div>
+                
+                
+                
+                    <p class="text-xs text-slate-500 my-4">Links.</p>
+                    <div class="space-y-2">
+                        
+                            <a href="https://whatsapp.com/channel/0029VbANq6v0VycMue9vPs3u" target="_blank" class="flex items-center py-2 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <i class="material-icons text-lg mr-3">arrow_outward</i> WhatsApp Channel.
+                            </a>
+                        
+                            <a href="https://wa.me/6285182338584" target="_blank" class="flex items-center py-2 px-4 text-sm border border-gray-200 text-gray-600 hover:border-gray-600 rounded">
+                                <i class="material-icons text-lg mr-3">arrow_outward</i> Contact Admin.
+                            </a>
+                        
+                    </div>
+                
+            </nav>
+        </div>
+    </aside>
+
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 opacity-0 invisible duration-300 ease-in-out z-[90]"></div>
+    
+    <header class="glass sticky top-0 z-50 border-b border-gray-200">
+        <div class="max-w-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <button id="sidebarToggle" class="py-2 px-3 text-sm border border-gray-300 text-gray-600 hover:border-gray-600 flex items-center justify-center rounded">
+                    <i class="material-icons text-xl">menu</i>
+                </button>
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-lg text-slate-900 font-semibold leading-none">NekoLabs APIs.</h2>
+                    <p class="text-xs text-slate-500 leading-none">Fast, Reliable.</p>
+                </div>
+            </div>
+            <div class="px-3 py-1.5 bg-slate-900 text-white text-xs font-semibold rounded">
+                v3.0
+            </div>
+        </div>
     </header>
-
-    <div id="content"></div>
-
-    <footer>Made by <b id="creator">-</b></footer>
-  </div>
-
-  <script>
-    async function main(){
-      const res = await fetch('/src/web-set.json',{ cache:'no-store' });
-      const cfg = await res.json();
-
-      // branding
-      document.getElementById('siteName').textContent = cfg?.branding?.siteName ?? 'RestApi-s';
-      document.getElementById('tagline').textContent  = cfg?.branding?.tagline  ?? 'Free & Simple REST Endpoints';
-      document.getElementById('creator').textContent  = cfg?.apiSettings?.creator ?? 'unknown';
-      const repo = document.getElementById('repoLink'); repo.href = cfg?.branding?.repo || '#';
-      const dep  = document.getElementById('deployLink'); dep.href = cfg?.branding?.deployUrl || '#';
-
-      // render categories & items
-      const mount = document.getElementById('content');
-      mount.innerHTML = '';
-      (cfg.categories || []).forEach(cat => {
-        const sec = document.createElement('section');
-        sec.className = 'card';
-        const h = document.createElement('h2');
-        h.innerHTML = `${cat.icon || '📦'} <span>${cat.title || 'Kategori'}</span>`;
-        sec.appendChild(h);
-
-        const grid = document.createElement('div');
-        grid.className = 'grid';
-
-        (cat.items || []).forEach(it => {
-          const card = document.createElement('div');
-          card.className = 'item';
-
-          const t = document.createElement('div');
-          t.className = 'title';
-          t.textContent = it.title || 'Untitled';
-          card.appendChild(t);
-
-          const d = document.createElement('p');
-          d.className = 'desc';
-          d.textContent = it.desc || '';
-          card.appendChild(d);
-
-          const meta = document.createElement('div');
-          meta.className = 'meta';
-
-          // badge key
-          const pill = document.createElement('span');
-          pill.className = 'pill';
-          pill.textContent = (it.requireKey ?? cfg.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
-          meta.appendChild(pill);
-
-          // example (klik = buka endpoint dengan example yg di-encode)
-          if (it.example) {
-            const ex = document.createElement('span');
-            ex.className = 'pill';
-            const base = (it.path || '').trim();
-            const href = (base.endsWith('=') ? (base + encodeURIComponent(it.example)) : base);
-            ex.title = it.example; // tooltip full di desktop
-            ex.innerHTML = `Example: <a href="${href}" target="_blank" rel="noreferrer"><code>${it.example}</code></a>`;
-            meta.appendChild(ex);
-          }
-          card.appendChild(meta);
-
-          // tombol GO
-          if (it.path) {
-            const actions = document.createElement('div');
-            actions.className = 'actions';
-            const go = document.createElement('a');
-            go.className = 'btn';
-            go.textContent = 'Open Endpoint';
-            const base = (it.path || '').trim();
-            go.href = (base.endsWith('=') && it.example) ? (base + encodeURIComponent(it.example)) : base;
-            go.target = '_blank';
-            go.rel = 'noreferrer';
-            actions.appendChild(go);
-            card.appendChild(actions);
-          }
-
-          grid.appendChild(card);
+    
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+    
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('opacity-0', 'invisible');
+            document.body.classList.add('overflow-hidden');
+        }
+    
+        function closeSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('opacity-0', 'invisible');
+            document.body.classList.remove('overflow-hidden');
+        }
+    
+        sidebarToggle.addEventListener('click', openSidebar);
+        sidebarClose.addEventListener('click', closeSidebar);
+        overlay.addEventListener('click', closeSidebar);
+    
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSidebar();
+            }
         });
+    </script>
+    
+    <main class="max-w-2xl mx-auto px-8 py-8">
 
-        sec.appendChild(grid);
-        mount.appendChild(sec);
-      });
-    }
-    main().catch(err => {
-      const mount = document.getElementById('content');
-      mount.innerHTML = '<div class="card">Gagal memuat konfigurasi: ' + (err?.message || err) + '</div>';
-    });
-  </script>
+
+
+<div class="grid grid-cols-2 gap-4 mb-6">
+    <div class="bg-slate-900 text-white px-6 py-4 relative overflow-hidden rounded-lg">
+        <div class="absolute top-0 right-0 opacity-10">
+            <span class="material-icons text-6xl">api</span>
+        </div>
+        <div class="relative z-10">
+            <div class="text-2xl font-bold mb-1">
+                
+                    480
+                
+            </div>
+            <div class="text-xs text-slate-300 uppercase tracking-wide">Total Endpoints</div>
+        </div>
+    </div>
+    <div class="bg-white border-2 border-slate-900 px-6 py-4 relative overflow-hidden rounded-lg">
+        <div class="absolute top-0 right-0 opacity-5">
+            <span class="material-icons text-6xl">category</span>
+        </div>
+        <div class="relative z-10">
+            <div class="text-2xl font-bold text-slate-900 mb-1">
+                
+                    9
+                
+            </div>
+            <div class="text-xs text-slate-600 uppercase tracking-wide">Categories</div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-slate-50 border border-gray-300 p-6 mb-6 rounded-lg">
+    <h3 class="flex items-center font-bold text-lg text-slate-900 mb-2">@rynn-k/api</h3>
+    
+    <p class="text-xs text-slate-600 mb-4">
+        For easier integration, use our official NPM package wrapper with built-in type safety and error handling.
+    </p>
+    
+    <a href="https://www.npmjs.com/package/@rynn-k/api" target="_blank" rel="noopener noreferrer" 
+       class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium px-4 py-2 rounded transition-colors">
+        <span class="material-icons text-sm">description</span>
+        View Documentation
+    </a>
+</div>
+
+<div class="bg-slate-50 border border-gray-300 p-6 mb-6 rounded-lg">
+    <h3 class="flex items-center gap-2 font-bold text-lg text-slate-900 mb-5">
+        <span class="material-icons">rocket_launch</span>
+        Getting Started
+    </h3>
+    
+    <div class="space-y-4">
+        <div class="flex items-start gap-4">
+            <div class="bg-slate-900 text-white w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold text-sm rounded">1</div>
+            <div class="flex-1">
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Choose Your Category</h4>
+                <p class="text-xs text-slate-600">Browse through available API categories on sidebar and select what you need.</p>
+            </div>
+        </div>
+        
+        <div class="flex items-start gap-4">
+            <div class="bg-slate-900 text-white w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold text-sm rounded">2</div>
+            <div class="flex-1">
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Read the Docs</h4>
+                <p class="text-xs text-slate-600">Check endpoint parameters, response format, and example usage.</p>
+            </div>
+        </div>
+        
+        <div class="flex items-start gap-4">
+            <div class="bg-slate-900 text-white w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold text-sm rounded">3</div>
+            <div class="flex-1">
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Make Your Request</h4>
+                <p class="text-xs text-slate-600">Send HTTP requests and integrate the JSON response into your app.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="flex flex-col mt-6">
+            <p class="text-slate-600 text-xs">Thx To All Users And Contributors.</p>
+            <p class="text-slate-600 text-xs">© NekoLabs APIs. | All Rights Reserved.</p>
+        </div>
+    </main>
 </body>
 </html>
