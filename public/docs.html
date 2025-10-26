@@ -19,6 +19,7 @@
 
     header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
     .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:34px;height:34px;border-radius:10px;object-fit:cover;border:1px solid #20306d}
     .brand h1{font-size:22px;margin:0}
     .tag{color:var(--muted);font-size:14px}
     .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--acc),var(--acc2));
@@ -48,6 +49,9 @@
       color:#cfe1ff;padding:9px 12px;border-radius:10px;font-weight:800;margin-top:auto}
 
     footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+    .social{display:flex;gap:10px;justify-content:center;margin-top:8px}
+    .social a{display:inline-flex;align-items:center;gap:8px;background:#121a3a;border:1px solid #23306a;color:#cfe1ff;
+      padding:8px 12px;border-radius:10px;font-weight:700}
 
     /* ===== Modal Runner ===== */
     .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
@@ -81,7 +85,7 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14" stroke="#7aa2ff" stroke-width="2" stroke-linecap="round"/></svg>
+        <img class="logo" src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" alt="Logo" />
         <div>
           <h1 id="siteName">JunnAPIs</h1>
           <div class="tag">Free & Simple REST Endpoints — <b>Docs</b></div>
@@ -96,7 +100,14 @@
     <div id="tabs" class="tabs"></div>
     <div id="content"></div>
 
-    <footer>Made by <b id="creator">juun4</b></footer>
+    <footer>
+      <div>Made by <b id="creator">juun4</b></div>
+      <div class="social">
+        <a id="socGH" target="_blank" rel="noreferrer">GitHub</a>
+        <a id="socWA" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a id="socYT" target="_blank" rel="noreferrer">YouTube</a>
+      </div>
+    </footer>
   </div>
 
   <!-- Runner Modal -->
@@ -149,6 +160,12 @@
       return {key:k, value: decodeURIComponent(v||'')};
     });
   }
+  function pickMainParam(params){
+    const keys = params.map(p=>p.key.toLowerCase()).filter(k=>k!=='apikey');
+    const prio = ['url','text','query','prompt'];
+    for(const k of prio){ if(keys.includes(k)) return k; }
+    return keys[0] || 'text';
+  }
   function buildURL(basePath, fields){
     const origin = location.origin;
     const root = basePath.split('?')[0];
@@ -156,15 +173,19 @@
     fields.forEach(f=> qp.set(f.dataset.param, f.value));
     return `${origin}${root}?${qp.toString()}`;
   }
-  function samples(url){
+  function jsFunctionSample(url, paramName, exampleValue){
+    // gunakan fungsi seperti yang kamu minta
+    const cleanExample = exampleValue || '';
+    return `async function fetchApi(${paramName}){\n  const res = await fetch("${url}", { headers: { 'Accept':'application/json' } });\n  const json = await res.json();\n  return json;\n}\n\n// contoh pemanggilan\nfetchApi("${cleanExample}")`;
+  }
+  function samples(url, paramName, exampleValue){
     return {
       cURL: `curl -s "${url}" \\\n  -H "Accept: application/json"`,
-      CJS: `const fetch = require('node-fetch');\n\nasync function main(){\n  const res = await fetch("${url}", { headers: { 'Accept':'application/json' } });\n  const json = await res.json();\n  console.log(json);\n}\nmain().catch(console.error);`,
-      ESM: `async function main(){\n  const res = await fetch("${url}", { headers: { 'Accept':'application/json' } });\n  const json = await res.json();\n  console.log(json);\n}\nmain().catch(console.error);`
+      CJS: jsFunctionSample(url, paramName, exampleValue),
+      ESM: jsFunctionSample(url, paramName, exampleValue),
     };
   }
   function setRawQuery(href, example){
-    // dipakai untuk "Open Endpoint" agar url= tidak di-encode
     if (href.includes('url=') && href.includes('apikey=')) {
       const [base, q] = href.split('?');
       const params = new URLSearchParams(q);
@@ -180,12 +201,12 @@
 
   // ---------- main docs ----------
   let CFG=null;
-  let CURRENT=null; // {cat,item}
+  let CURRENT=null;
   const runner = $('#runner'), rTitle = $('#rTitle'), rParams = $('#rParams');
   const rTabs = $('#rTabs'), rCode = $('#rCode'), rCopy = $('#rCopy');
   const rExec = $('#rExec'), rReset = $('#rReset'), rStatus = $('#rStatus'), rResp = $('#rResp');
   const rGlobalKey = $('#rGlobalKey');
-  let R_MODE='cURL';
+  let R_MODE='cURL', R_MAIN_PARAM='text', R_EXAMPLE='';
 
   rGlobalKey.value = localStorage.getItem('JUNN_DOCS_KEY') || '';
   rGlobalKey.addEventListener('input', ()=>localStorage.setItem('JUNN_DOCS_KEY', rGlobalKey.value.trim()));
@@ -218,10 +239,12 @@
 
   function fillParamFields(item){
     const params = parseParamsFromPath(item.path||'');
+    R_MAIN_PARAM = pickMainParam(params);
     params.forEach(p=>{
       if(p.key.toLowerCase()==='apikey' && !p.value) p.value = rGlobalKey.value || '';
-      if(!p.value && item.example && p.key.toLowerCase()==='url') p.value = item.example;
+      if(!p.value && item.example && p.key.toLowerCase()===R_MAIN_PARAM) p.value = item.example;
     });
+    R_EXAMPLE = (params.find(p=>p.key.toLowerCase()===R_MAIN_PARAM)?.value) || item.example || '';
     rParams.innerHTML = params.map(p=>`
       <div class="field">
         <label class="tag">${p.key}</label>
@@ -231,7 +254,8 @@
   function updateRunnerCode(){
     const fields = [...rParams.querySelectorAll('[data-param]')];
     const url = buildURL(CURRENT.item.path, fields);
-    const s = samples(url); rCode.textContent = s[R_MODE];
+    const s = samples(url, R_MAIN_PARAM, R_EXAMPLE);
+    rCode.textContent = s[R_MODE];
   }
   function openRunner(cat,item){
     CURRENT = {cat,item};
@@ -246,9 +270,14 @@
     const cfg = await res.json();
     CFG = cfg;
 
-    document.getElementById('siteName').textContent = cfg?.branding?.siteName ?? 'JunnAPIs';
+    // branding & socials
+    const site = cfg?.branding?.siteName ?? 'JunnAPIs';
+    document.getElementById('siteName').textContent = site;
     document.getElementById('creator').textContent  = cfg?.apiSettings?.creator ?? 'unknown';
     document.getElementById('repoLink').href = cfg?.branding?.repo || '#';
+    document.getElementById('socGH').href = cfg?.branding?.repo || '#';
+    document.getElementById('socWA').href = 'https://wa.me/628672763507';
+    document.getElementById('socYT').href = 'https://youtube.com/@JunaaInHeree';
 
     const cats = cfg.categories || [];
     const tabs = document.getElementById('tabs');
@@ -290,7 +319,6 @@
         }
         card.appendChild(meta);
 
-        // actions
         const actions = document.createElement('div'); actions.className='actions';
 
         if(it.path){
@@ -317,4 +345,4 @@
   });
   </script>
 </body>
-  </html>
+</html>
