@@ -1,14 +1,14 @@
 {
   "apiSettings": {
     "creator": "juun4",
-    "defaultRequireKey": false,
+    "defaultRequireKey": true,
     "globalKey": ["free"]
   },
   "branding": {
-    "siteName": "RestApi-s",
+    "siteName": "JunnAPIs",
     "tagline": "Free & Simple REST Endpoints",
     "repo": "https://github.com/juun4/RestApi-s",
-    "deployUrl": "https://rest-api-s-nu.vercel.app"
+    "deployUrl": "https://junnapi.vercel.app"
   },
   "categories": [
     {
@@ -18,9 +18,49 @@
         {
           "title": "TikTok Downloader",
           "desc": "Ambil video (no wm / hd) atau image set",
-          "path": "/download/tiktok?url=",
+          "path": "/download/tiktok?url=&apikey=",
           "requireKey": true,
           "example": "https://vt.tiktok.com/ZGJBtcsDq/"
+        }
+      ]
+    },
+    {
+      "title": "AI",
+      "icon": "🤖",
+      "items": [
+        {
+          "title": "Gemini Text",
+          "desc": "Jawab pertanyaan berbasis teks",
+          "path": "/ai/gemini/text?prompt=&apikey=",
+          "requireKey": true,
+          "example": "jelaskan apa itu REST API"
+        },
+        {
+          "title": "Image Edit",
+          "desc": "Transform gambar via prompt",
+          "path": "/ai/image/edit?url=&prompt=&apikey=",
+          "requireKey": true,
+          "example": "https://example.com/cat.jpg&prompt=buat%20jadi%20kartun"
+        }
+      ]
+    },
+    {
+      "title": "Searching Tools",
+      "icon": "🔎",
+      "items": [
+        {
+          "title": "Google Search",
+          "desc": "Ambil 10 hasil teratas",
+          "path": "/search/google?q=&apikey=",
+          "requireKey": true,
+          "example": "fenrys bot baileys"
+        },
+        {
+          "title": "YouTube Search",
+          "desc": "Cari video youtube",
+          "path": "/search/youtube?q=&apikey=",
+          "requireKey": true,
+          "example": "tutorial baileys whatsapp bot"
         }
       ]
     }
