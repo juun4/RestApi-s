@@ -1,381 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
+<!doctype html>
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Free Rest Api. No Need Api Key And Unlimited Requests...">
-    <meta name="author" content="junn">
-    <meta property="og:image" content="https://telegra.ph/file/1b3662116971f9c342c51.jpg">
-    <title>Juna-APIs │ Docs</title>
-    <script src="https://kit.fontawesome.com/5367cb78eb.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="https://telegra.ph/file/1b3662116971f9c342c51.jpg"/> 
-    <link href="https://zeltoria.github.io/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://zeltoria.github.io/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="https://zeltoria.github.io/css/default.css" rel="stylesheet">
-    <link href="https://zeltoria.github.io/css/style.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RestApi-s</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#0b1020; --card:#111736; --muted:#9aa4c7; --text:#e6ecff; --acc:#7aa2ff; --acc2:#4ad295; }
+    *{ box-sizing:border-box }
+    body{ margin:0; font-family:Inter,system-ui,Segoe UI,Arial; background:var(--bg); color:var(--text) }
+    .wrap{ max-width:1024px; margin:0 auto; padding:24px }
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:24px }
+    .brand{ display:flex; gap:12px; align-items:center }
+    .brand h1{ font-size:22px; margin:0 }
+    .tag{ color:var(--muted); font-size:14px }
+    .card{ background:var(--card); border:1px solid #1b2247; border-radius:14px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.2) }
+    .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px }
+    .item{ border:1px solid #1f2754; border-radius:12px; padding:14px; transition:transform .1s ease }
+    .item:hover{ transform:translateY(-2px) }
+    .title{ font-weight:600; margin:0 0 4px }
+    .desc{ color:var(--muted); font-size:14px; margin:0 0 10px }
+    .meta{ display:flex; gap:8px; align-items:center; color:var(--muted); font-size:12px }
+    .pill{ display:inline-flex; padding:3px 8px; border-radius:999px; border:1px solid #2a3471; font-size:12px; color:#c6d2ff; gap:6px; align-items:center }
+    a.btn{ display:inline-flex; gap:8px; align-items:center; background:linear-gradient(90deg,var(--acc),var(--acc2)); color:#04102a; text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:700 }
+    footer{ margin-top:28px; color:var(--muted); font-size:13px; text-align:center }
+    code{ background:#0b1538; padding:2px 6px; border-radius:6px; border:1px solid #1c2554; color:#cfe1ff }
+  </style>
 </head>
-
-<body id="page-top" class="dark-mode">
-    <div id="wrapper">
-   
-        <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                <img src="https://telegra.ph/file/1b3662116971f9c342c51.jpg" class="rounded-circle shadow-4"style="width: 50px;" alt="Avatar" />
-                <div class="sidebar-brand-text mx-3">Juna</div>
-            </a>
-            <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="/statistic">
-                    <i class="fas fa-fw fa-thermometer-three-quarters"></i>
-                    <span>Statistic</span></a>
-            </li>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Feature List
-            </div>
-          <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAi" aria-expanded="true" aria-controls="collapseBootstrap">
-                  <i class="fa fa-robot"></i>
-                    <span>Ai</span>
-                </a>
-                <div id="collapseAi" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-                      <a class="collapse-item" href="/ai/chatGPT?text=" target="_blank">Chat Gpt</a>
-                      <a class="collapse-item" href="/ai/upscale?url=https://telegra.ph/file/e2b449ad186d5bb294584.jpg" target="_blank">Upscale</a>
-                     </div>
-                </div>
-            </li>
-          
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDownload" aria-expanded="true" aria-controls="collapseBootstrap">
-                  <i class="fa fa-fw fa-arrow-down"></i>
-                    <span>Download</span>
-                </a>
-                <div id="collapseDownload" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-                     <a class="collapse-item" href="/download/alldownload?url=" target="_blank">All Download</a>
-                     <a class="collapse-item" href="/download/tiktok?url=https://vt.tiktok.com/ZGJBtcsDq/" target="_blank">Tiktok</a>
-                       <a class="collapse-item" href="/download/instagram?url=https://www.instagram.com/reel/Cz_5NVqO_g0/?igshid=MzRlODBiNWFlZA==" target="_blank">Instagram</a>
-                      <a class="collapse-item" href="/download/facebook?url=https://www.facebook.com/reel/947495549897838" target="_blank">Facebook</a>
-                      <a class="collapse-item" href="/download/mediafire?url=https://www.mediafire.com/file/s9co8o5n5ftch9q/RULLMDV5.7z/file" target="_blank">Mediafire</a>
-                      <a class="collapse-item" href="/download/soundcloud?url=https://soundcloud.com/eugenia-birgitta-marsha/nadin-amizah-bertaut" target="_blank">SoundCloud</a>
-                      <a class="collapse-item" href="/download/threads?url=" target="_blank">Threads</a>
-                      <a class="collapse-item" href="/download/pinterest?url=" target="_blank">Pinterest</a>
-                      <a class="collapse-item" href="/download/spotify?url=" target="_blank">Spotify</a>
-                      <a class="collapse-item" href="/download/terabox?url=" target="_blank">Terabox</a>
-                      <a class="collapse-item" href="/download/musicaldown?url=" target="_blank">Musicaldown</a>
-                      <a class="collapse-item" href="/download/twitter?url=https://twitter.com/MemeComicIndo/status/1532598433768300544?s=20" target="_blank">Twitter</a>
-                      <a class="collapse-item" href="/download/youtube?url=https://www.youtube.com/watch?v=sAuEeM_6zpk" target="_blank">Youtube</a>
-                      <a class="collapse-item" href="/download/ytmp3?url=https://www.youtube.com/watch?v=sAuEeM_6zpk" target="_blank">Youtube Mp3</a>
-                      <a class="collapse-item" href="/download/ytmp4?url=https://www.youtube.com/watch?v=sAuEeM_6zpk" target="_blank">Youtube Mp4</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSearching" aria-expanded="true" aria-controls="collapseTable">
-                  <i class="fa fa-search"></i>
-                    <span>Searching</span>
-                </a>
-                <div id="collapseSearching" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-            <a class="collapse-item" target="_blank" href="/search/spotify?query=">Spotify Search</a>
-            <a class="collapse-item" target="_blank" href="/search/heroml?query=">Hero Ml</a>
-            <a class="collapse-item" target="_blank" href="/search/gsmarena?query=">GSM Arena</a>
-            </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSearch" aria-expanded="true" aria-controls="collapseTable">
-                  <i class="fa fa-globe fa-arrow-down"></i>
-                    <span>Internet</span>
-                </a>
-                <div id="collapseSearch" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-            <a class="collapse-item" target="_blank" href="api/search/wallpaper?q=milf">Wallpaper</a> 
-            <a class="collapse-item" target="_blank" href="api/search/pinterest?q=milf">Pinterest</a> 
-            <a class="collapse-item" target="_blank" href="api/search/unplash?q=whatsapp">Unplash</a>          
-            <a class="collapse-item" target="_blank" href="api/search/danbooru?q=milf">Danbooru</a>             <a class="collapse-item" target="_blank" href="api/search/music?q=alan walker">Music</a>
-            <a class="collapse-item" target="_blank" href="api/search/wikimedia?q=jokowi">Wikimedia</a>
-            <a class="collapse-item" target="_blank" href="api/search/soundcloud?q=dj terbaru">Soundcloud</a>
-            <a class="collapse-item" target="_blank" href="api/search/ringtone?q=dangdut">Ringtone</a>
-            <a class="collapse-item" target="_blank" href="api/search/playstore?q=whatsapp">Playstore</a>
-            <a class="collapse-item" target="_blank" href="api/search/lirik?q=different world">Lyrics</a>
-            <a class="collapse-item" target="_blank" href="api/search/kodepos?q=jakarta">KodePos</a>
-            <a class="collapse-item" target="_blank" href="api/search/bukalapak?q=baju">Bukalapak</a>
-            <a class="collapse-item" target="_blank" href="api/search/google?q=megawati">Google</a>
-            <a class="collapse-item" target="_blank" href="api/search/acaranow">AcaraNow</a>                    <a class="collapse-item" target="_blank" href="api/search/sepakbola">Sepakbola</a>
-            <a class="collapse-item" target="_blank" href="api/search/jadwaltv?q=mnctv">JadwalTv</a>
-            <a class="collapse-item" target="_blank" href="api/search/heroml?q=miya">HeroML</a>
-                      
-            </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNews" aria-expanded="true" aria-controls="collapseTable">
-                  <i class="fa fa-circle-info"></i>
-                    <span>Information</span>
-                </a>
-                <div id="collapseNews" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-            <a class="collapse-item" target="_blank" href="api/news/tixid">TixID</a>
-            <a class="collapse-item" target="_blank" href="api/news/rumahkeadilan">Rumah Keadilan</a>
-            <a class="collapse-item" target="_blank" href="api/news/kompas-global">Kompas Global</a>
-            <a class="collapse-item" target="_blank" href="api/news/kompas-news">Kompas News</a>
-            <a class="collapse-item" target="_blank" href="api/news/kompas-populer">Kompas Populer</a>
-            </div>
-                </div>
-            </li>
-          <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGame" aria-expanded="true" aria-controls="collapseTable">
-                  <i class="fa fa-gamepad"></i>
-                    <span>Games</span>
-                </a>
-                <div id="collapseGame" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-            <a class="collapse-item" target="_blank" href="api/game/asahotak">Asah Otak</a>
-            <a class="collapse-item" target="_blank" href="api/game/caklontong">Cak Lontong</a>
-            <a class="collapse-item" target="_blank" href="api/game/family100">Family 100</a>
-            <a class="collapse-item" target="_blank" href="api/game/siapakahaku">Siapakah Aku</a>
-            <a class="collapse-item" target="_blank" href="api/game/susunkata">Susun Kata</a>
-            <a class="collapse-item" target="_blank" href="api/game/tebakchara">Tebak Chara</a>
-            <a class="collapse-item" target="_blank" href="api/game/tebakgambar">Tebak Gambar</a>
-            <a class="collapse-item" target="_blank" href="api/game/tebakgame">Tebak Game</a>
-            <a class="collapse-item" target="_blank" href="api/game/lengkapikalimat">Lengkapi Kalimat</a>
-            </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTools" aria-expanded="true" aria-controls="collapseTable">
-                  <i class="fa fa-tools"></i>
-                    <span>Tools</span>
-                </a>
-                <div id="collapseTools" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-            <a class="collapse-item" target="_blank" href="api/tools/chatgpt?q=apa kabar">Gpt</a>
-            <a class="collapse-item" target="_blank" href="api/tools/blur?url=https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2022/12/21/1747825242.jpg">Blur</a>                 
-            <a class="collapse-item" target="_blank" href="api/tools/remini?url=https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2022/12/21/1747825242.jpg">Remini</a>          
-            <a class="collapse-item" target="_blank" href="api/tools/ssweb?url=https://zeltoria.site">Ss Web</a>
-            <a class="collapse-item" target="_blank" href="api/tools/translate?q=happy&lang=id">Translate</a>
-            <a class="collapse-item" target="_blank" href="api/tools/chara-genshin?q=nahida">Chara Genshin</a>          
-            <a class="collapse-item" target="_blank" href="api/tools/translate?q=happy&lang=id">Text To Speech</a>
-            </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRandom" aria-expanded="true" aria-controls="collapseTable">
-                  <i class="fa fa-camera"></i>
-                    <span>Random</span>
-                </a>
-                <div id="collapseRandom" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-            <a class="collapse-item" target="_blank" href="api/random/nekopoi">Nekopoi</a>
-            <a class="collapse-item" target="_blank" href="api/random/anime">Anime</a>
-            <a class="collapse-item" target="_blank" href="api/random/nsfw">NSFW</a>
-            <a class="collapse-item" target="_blank" href="api/random/husbu">Husbu</a>
-            <a class="collapse-item" target="_blank" href="api/random/waifu">Waifu</a>
-            <a class="collapse-item" target="_blank" href="api/random/quotes-anime">Katanime</a>
-            <a class="collapse-item" target="_blank" href="api/random/hentai">Hentai</a>
-            <a class="collapse-item" target="_blank" href="api/random/neko">Nekonime</a>
-            <a class="collapse-item" target="_blank" href="api/random/cosplay">Cosplayer</a>
-            <a class="collapse-item" target="_blank" href="api/random/icon">Icon Anime</a>
-</div>
-                </div>
-            </li>
-          <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMaker" aria-expanded="true" aria-controls="collapseTable">
-                  <i class="fa fa-paint-brush"></i>
-                    <span>Maker</span>
-                </a>
-                <div id="collapseMaker" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-            <a class="collapse-item" target="_blank" href="api/maker/attp?q=Kamu">Attp</a>          
-            <a class="collapse-item" target="_blank" href="api/maker/ttp?q=Kamu">Ttp</a>
-            <a class="collapse-item" target="_blank" href="api/maker/ttp2?q=Kamu">Ttp2</a>
-            <a class="collapse-item" target="_blank" href="api/maker/tolol?q=Kamu">Sertifikat Tolol</a>          
-</div>
-                </div>
-            </li>
-          <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOthers" aria-expanded="true" aria-controls="collapseTable">
-                  <i class="fa fa-link"></i>
-                    <span>Others</span>
-                </a>
-                <div id="collapseOthers" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-            <a class="collapse-item" target="_blank" href="api/others/simi?q=aku sange">Simi</a> 
-            <a class="collapse-item" target="_blank" href="api/others/diffusion?q=1girl">Diffusion</a>     
-            <a class="collapse-item" target="_blank" href="api/others/kisahnabi?q=muhammad">Kisah Nabi</a>
-</div>
-                </div>
-            </li>
-
-            <hr class="sidebar-divider">
-        </ul>
- 
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-              
-                <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
-                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://telegra.ph/file/1b3662116971f9c342c51.jpg" class="rounded-circle shadow-4"style="width: 50px;" alt="Avatar" />
-                                <span class="ml-2 d-none d-lg-inline small font-weight-bold"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <div class="container-fluid" id="container-wrapper">
-                    <div class="card h-50 mb-4">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-md-left font-weight-bold mb-2 text-primary">Hi! Welcome To My Rest APIs</div>
-                                    <div class="text-sm-left mb-0 font-weight-bold">Free Rest APIs
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-quote-right fa-2x text-primary"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card h-50">
-                                <div class="card-body">
-                                    <div class="row align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Response</div>
-                                            <div class="h5 mb-0 font-weight-bold" id="speed">Loading...</div>
-                                        <script>
-                                            setInterval(function() {
-                                            var xhr = new XMLHttpRequest();
-                                            xhr.open("GET", "https://zeltoria.site/api/status");
-                                            xhr.responseType = "json";
-                                            xhr.onload = () => document.getElementById('speed').innerText = '' + xhr.response.speed + '';
-                                            xhr.send()
-                                        }, 1000);
-                                        </script>
-                                        </div>
-                                        <div class="col-auto">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card h-50">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Battery</div>
-                                            <span id="battery_level" class="h5 mb-0 font-weight-bold">100 </span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa fa-battery-full" ></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     
-                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card h-50">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Status</div>
-                                            <div class="text-sm-left mb-0 font-weight-bold" id="statussites">Loading...</div>
-                                            <script>
-                                                setInterval(function() {
-                                                var xhr = new XMLHttpRequest();
-                                                xhr.open("GET", "https://zeltoria.site/api/status");
-                                                xhr.responseType = "json";
-                                                xhr.onload = () => document.getElementById('statussites').innerHTML = `<div class="text-sm-left mb-0 font-weight-bold" id="statussites"><i class="fa-solid fa-memory fa-sm"></i> ${xhr.response.memory}</div>`
-                                                xhr.send()
-                                            }, 1000);
-                                            </script>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa-solid fa-circle-info fa-2xl"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card h-50">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Time</div>
-                                            <div class="h5 mb-0 font-weight-bold" id="row-no-guttersalign-items-center">Loading...</div>
-                                            <div class="h5 mb-0 font-weight-bold" id="text-xsfont-weight-boldtext-uppercase-mb-1"></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-primary"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            Contact Me
-                            <p>
-                                <a href="https://instagram.com/juun4_" class="btn btn-primary btn-sm mr-2" target="_blank"><i class="fab fa-fw fa-instagram"></i>&nbsp;Instagram</a>
-                                <a href="https://wa.me//6285600793871" class="btn btn-primary btn-sm ml-2" target="_blank"><i class="fa-brands fa-whatsapp"></i>&nbsp;Whatsapp</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-             
-            <footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        Made by
-                        <a href="https://github.com/Juun4" target="_blank" style="color: rgb(224, 32, 7);">Junaa</a>
-                        </span>
-                    </div>
-                </div>
-            </footer>
-       
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14" stroke="#7aa2ff" stroke-width="2" stroke-linecap="round"/></svg>
+        <div>
+          <h1 id="siteName">RestApi-s</h1>
+          <div class="tag" id="tagline">Free & Simple REST Endpoints</div>
         </div>
-    </div>
+      </div>
+      <div style="display:flex; gap:10px">
+        <a id="repoLink" class="btn" target="_blank" rel="noreferrer">GitHub</a>
+        <a id="deployLink" class="btn" target="_blank" rel="noreferrer">Deploy</a>
+      </div>
+    </header>
 
-    
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+    <div id="content"></div>
 
-          
-    <script src="https://zeltoria.github.io/vendor/jquery/jquery.min.js"></script>
-    <script src="https://zeltoria.github.io/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://zeltoria.github.io/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="https://zeltoria.github.io/js/ruang-admin.min.js"></script>
-    <script src="https://zeltoria.github.io/js/menu.js"></script>
-    
+    <footer>
+      <div>Made by <b id="creator">-</b></div>
+    </footer>
+  </div>
 
+  <script>
+    async function main(){
+      const res = await fetch('/src/web-set.json', { cache: 'no-store' });
+      const cfg = await res.json();
+
+      // branding
+      document.getElementById('siteName').textContent = cfg?.branding?.siteName ?? 'RestApi-s';
+      document.getElementById('tagline').textContent  = cfg?.branding?.tagline ?? 'Free & Simple REST Endpoints';
+      const repo = document.getElementById('repoLink');
+      repo.href = cfg?.branding?.repo || '#';
+      repo.textContent = 'GitHub';
+      const dep  = document.getElementById('deployLink');
+      dep.href = cfg?.branding?.deployUrl || '#';
+      dep.textContent = 'Open';
+
+      document.getElementById('creator').textContent = cfg?.apiSettings?.creator ?? 'unknown';
+
+      // render categories & items
+      const mount = document.getElementById('content');
+      mount.innerHTML = '';
+      (cfg.categories || []).forEach(cat => {
+        const sec = document.createElement('section');
+        sec.className = 'card';
+        const h = document.createElement('h2');
+        h.innerHTML = `${cat.icon || '📦'} ${cat.title || 'Kategori'}`;
+        sec.appendChild(h);
+
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+
+        (cat.items || []).forEach(it => {
+          const card = document.createElement('div');
+          card.className = 'item';
+
+          const t = document.createElement('div');
+          t.className = 'title';
+          t.textContent = it.title || 'Untitled';
+          card.appendChild(t);
+
+          const d = document.createElement('p');
+          d.className = 'desc';
+          d.textContent = it.desc || '';
+          card.appendChild(d);
+
+          const meta = document.createElement('div');
+          meta.className = 'meta';
+
+          const pill = document.createElement('span');
+          pill.className = 'pill';
+          pill.textContent = (it.requireKey ?? cfg.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
+          meta.appendChild(pill);
+
+          if (it.example) {
+            const ex = document.createElement('span');
+            ex.className = 'pill';
+            ex.innerHTML = 'Example: <code>' + (it.example || '') + '</code>';
+            meta.appendChild(ex);
+          }
+
+          card.appendChild(meta);
+
+          // tombol GO
+          if (it.path) {
+            const go = document.createElement('a');
+            go.className = 'btn';
+            go.textContent = 'Open Endpoint';
+            const base = (it.path || '').trim();
+            // jika path berakhiran '=' dan ada example, gabungkan otomatis
+            const href = (base.endsWith('=') && it.example) ? (base + encodeURIComponent(it.example)) : base;
+            go.href = href;
+            go.target = '_blank';
+            go.rel = 'noreferrer';
+            card.appendChild(document.createElement('div')).appendChild(go);
+          }
+
+          grid.appendChild(card);
+        });
+
+        sec.appendChild(grid);
+        mount.appendChild(sec);
+      });
+    }
+    main().catch(err => {
+      const mount = document.getElementById('content');
+      mount.innerHTML = '<div class="card">Gagal memuat konfigurasi: ' + (err?.message || err) + '</div>';
+    });
+  </script>
 </body>
-
 </html>
