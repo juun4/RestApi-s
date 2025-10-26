@@ -39,7 +39,6 @@ async function tiktokDl(url){
       }
 
       resolve({
-        status:true,
         title:res.title,
         taken_at:formatDate(res.create_time),
         region:res.region,
