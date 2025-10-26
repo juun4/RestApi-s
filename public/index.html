@@ -40,13 +40,14 @@
     /* Meta pill */
     .meta{display:flex;flex-direction:column;gap:6px}
     .pill{
-      display:flex;align-items:flex-start;flex-wrap:wrap;gap:6px;
+      display:flex;align-items:flex-start;gap:6px;
       padding:6px 8px;border:1px solid var(--pill);
       border-radius:999px;color:#c6d2ff;font-size:12px;
       background:rgba(255,255,255,0.02);
+      word-break:break-word;
     }
-    .pill b{color:#cfe1ff;margin-right:4px;white-space:nowrap}
-    .pill code{color:#cfe1ff;word-break:break-all;font-size:12px}
+    .pill b{color:#cfe1ff;white-space:nowrap;margin-right:4px}
+    .pill .example-url{flex:1;white-space:normal;word-break:break-word;overflow-wrap:anywhere;line-height:1.5}
 
     .open{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--acc),var(--acc2));
       color:#04102a;padding:9px 12px;border-radius:10px;font-weight:800;margin-top:auto;width:max-content}
@@ -135,26 +136,36 @@
         if(it.example){
           const ex=document.createElement('div');
           ex.className='pill';
-          ex.innerHTML = `<b>Example:</b> <code>${it.example}</code>`;
+          const label=document.createElement('b');
+          label.textContent='Example:';
+          const url=document.createElement('span');
+          url.className='example-url';
+          url.textContent=it.example;
+          ex.appendChild(label);
+          ex.appendChild(url);
           meta.appendChild(ex);
         }
         card.appendChild(meta);
 
-        // ✅ FIX: proper raw URL (no encode)
+        // ✅ FIX raw url (no encode)
         if(it.path){
           const go=document.createElement('a');
           go.className='open';
           go.textContent='Open Endpoint';
 
           let href = (it.path||'').trim();
-          // detect query params
           if (href.includes('url=') && href.includes('apikey=')) {
             const [base, q] = href.split('?');
             const params = new URLSearchParams(q);
             if (params.has('url')) params.set('url', it.example || '');
-            href = `${base}?${params.toString()}`;
+            href = base + '?' + params.toString()
+              .replace(/%3A/g, ':')
+              .replace(/%2F/g, '/')
+              .replace(/%3F/g, '?')
+              .replace(/%3D/g, '=')
+              .replace(/%26/g, '&');
           } else if (href.endsWith('=') && it.example) {
-            href += it.example; // raw, no encode
+            href += it.example; // raw
           }
           go.href = href;
           go.target = '_blank';
