@@ -14,7 +14,7 @@
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:var(--bg);color:var(--text)}
-    a{text-decoration:none;color:inherit}
+    a{text-decoration:none;color:inherit;word-break:break-all}
     .wrap{max-width:min(900px,100vw - 32px);margin:0 auto;padding:24px}
 
     header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
@@ -32,21 +32,21 @@
 
     /* Cards */
     .section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
-    .grid{display:grid;gap:16px;grid-template-columns:1fr;} /* scroll vertikal */
+    .grid{display:grid;gap:16px;grid-template-columns:1fr;}
     .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
     .title{font-weight:700;margin:0}
     .desc{color:var(--muted);font-size:14px;margin:0}
 
-    /* Meta pills */
-    .meta{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}
+    /* Meta pill */
+    .meta{display:flex;flex-direction:column;gap:6px}
     .pill{
-      display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border:1px solid var(--pill);
-      border-radius:999px;color:#c6d2ff;font-size:12px;word-break:break-all;
-      overflow-wrap:break-word;white-space:normal;line-height:1.4;max-width:100%;
+      display:flex;align-items:flex-start;flex-wrap:wrap;gap:6px;
+      padding:6px 8px;border:1px solid var(--pill);
+      border-radius:999px;color:#c6d2ff;font-size:12px;
+      background:rgba(255,255,255,0.02);
     }
-    .pill.key{flex:0 0 auto}
-    .pill.example{flex:1 1 100%;border-radius:10px}
-    .pill code,.pill a{color:#cfe1ff;word-break:break-all}
+    .pill b{color:#cfe1ff;margin-right:4px;white-space:nowrap}
+    .pill code{color:#cfe1ff;word-break:break-all;font-size:12px}
 
     .open{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--acc),var(--acc2));
       color:#04102a;padding:9px 12px;border-radius:10px;font-weight:800;margin-top:auto;width:max-content}
@@ -127,50 +127,43 @@
         const meta=document.createElement('div');
         meta.className='meta';
 
-        const key=document.createElement('span');
-        key.className='pill key';
+        const key=document.createElement('div');
+        key.className='pill';
         key.textContent=(it.requireKey ?? cfg.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
         meta.appendChild(key);
 
         if(it.example){
-          const ex=document.createElement('span');
-          ex.className='pill example';
-          const href = buildEndpoint(it.path,it.example);
-          ex.title=it.example;
-          ex.innerHTML=`Example: <a href="${href}" target="_blank"><code>${it.example}</code></a>`;
+          const ex=document.createElement('div');
+          ex.className='pill';
+          ex.innerHTML = `<b>Example:</b> <code>${it.example}</code>`;
           meta.appendChild(ex);
         }
         card.appendChild(meta);
 
+        // ✅ FIX: proper raw URL (no encode)
         if(it.path){
           const go=document.createElement('a');
           go.className='open';
           go.textContent='Open Endpoint';
-          go.href=buildEndpoint(it.path,it.example);
-          go.target='_blank';
+
+          let href = (it.path||'').trim();
+          // detect query params
+          if (href.includes('url=') && href.includes('apikey=')) {
+            const [base, q] = href.split('?');
+            const params = new URLSearchParams(q);
+            if (params.has('url')) params.set('url', it.example || '');
+            href = `${base}?${params.toString()}`;
+          } else if (href.endsWith('=') && it.example) {
+            href += it.example; // raw, no encode
+          }
+          go.href = href;
+          go.target = '_blank';
           card.appendChild(go);
         }
         grid.appendChild(card);
       });
       section.appendChild(grid);
       content.appendChild(section);
-    }
-
-    // ✅ Fix: smart query builder
-    function buildEndpoint(path,example){
-      if(!path) return '#';
-      let p = path.trim();
-      if(!example) return p;
-      const encoded = encodeURIComponent(example);
-
-      // case: contains ?url= & apikey=
-      if(p.includes('?url=') && p.includes('&apikey=')){
-        return p.replace('?url=&', `?url=${encoded}&`);
-      }
-      // case: ends with '='
-      if(p.endsWith('=')) return p + encoded;
-      // default
-      return p + '?q=' + encoded;
     }
   }
 
