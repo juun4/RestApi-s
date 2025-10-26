@@ -7,47 +7,89 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+
   <style>
     :root{
-      --bg:#fafbff; --text:#121827; --muted:#5b6485;
-      --brand:#7c6cff; --brand2:#64d6a1; --ring:#e9ecff;
-      --card:#ffffff; --line:#edf0ff;
+      /* palet gelap + gradasi */
+      --bg:#0b1020;                /* latar dasar */
+      --text:#e8edff;              /* teks utama */
+      --muted:#9aa4c7;            /* teks sekunder */
+      --line:#19224b;             /* garis/border tipis */
+
+      --grad-1:#131a3a;           /* gradasi latar */
+      --grad-2:#0d1536;
+      --grad-3:#0d2237;
+      --brand:#7aa2ff;            /* aksen utama (biru) */
+      --brand2:#4ad295;           /* aksen sekunder (hijau) */
+
+      --card:#121832;             /* kartu hero kecil */
+      --feature:#0f1531;          /* kartu fitur */
+      --feature-border:#1a234a;
+      --feature-shadow:0 16px 40px rgba(0,0,0,.35);
     }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:var(--text);background:radial-gradient(1200px 600px at 70% -10%, #efeaff 0%, #fff 60%)}
-    a{text-decoration:none;color:inherit}
-    .wrap{max-width:min(1100px,100vw - 32px);margin:0 auto;padding:20px}
+    body{
+      margin:0; font-family:Inter,system-ui,Segoe UI,Arial; color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(122,162,255,.18), transparent 60%),
+        radial-gradient(900px 500px at -10% -10%, rgba(74,210,149,.14), transparent 60%),
+        linear-gradient(180deg, var(--grad-1), var(--grad-2) 40%, var(--grad-3));
+    }
+    a{ color:inherit; text-decoration:none }
 
-    /* Navbar */
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand h1{margin:0;font-size:24px;letter-spacing:.2px}
-    .menu{display:flex;gap:10px}
-    .btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;font-weight:700}
-    .btn-ghost{background:#f4f6ff;border:1px solid var(--line)}
-    .btn-grad{background:linear-gradient(90deg,var(--brand),#8ed5ff);color:#0d1335}
+    .wrap{ max-width:min(1100px, 100vw - 32px); margin:0 auto; padding:20px 16px 40px }
 
-    /* Hero */
-    .hero{display:grid;gap:18px;place-items:center;text-align:center;padding:56px 0 36px}
-    .pill{display:inline-flex;gap:8px;align-items:center;background:#f3f4ff;border:1px solid var(--ring);color:#5c63a7;padding:6px 12px;border-radius:999px;font-weight:700}
-    .title{font-size:40px;line-height:1.1;margin:6px 0}
-    .desc{max-width:760px;color:var(--muted);font-size:18px;line-height:1.6}
+    /* NAV */
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .brand{ display:flex; align-items:center; gap:12px }
+    .brand h1{ margin:0; font-size:24px; letter-spacing:.2px }
+    .menu{ display:flex; gap:10px }
+    .btn{ display:inline-flex; gap:8px; align-items:center; padding:10px 14px; border-radius:12px; font-weight:800 }
+    .btn-ghost{ background:#10193c; border:1px solid #1b2350; color:#cfe1ff }
+    .btn-grad{ background:linear-gradient(90deg,var(--brand),var(--brand2)); color:#051028 }
+    .btn-lg{ padding:14px 18px; border-radius:14px }
 
-    .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .btn-outline{border:2px solid #cfd6ff;background:#fff}
-    .btn-lg{padding:14px 18px;border-radius:14px}
+    /* HERO */
+    .hero{ display:grid; gap:18px; place-items:center; text-align:center; padding:56px 0 28px }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center; background:#111a3d;
+      border:1px solid #1c2655; color:#cfe1ff; padding:6px 12px; border-radius:999px; font-weight:700
+    }
+    .title{ font-size:42px; line-height:1.1; margin:6px 0; text-wrap:balance }
+    .desc{ max-width:760px; color:var(--muted); font-size:18px; line-height:1.7 }
+    .cta{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center }
 
-    .features{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));margin:36px 0}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.05)}
-    .card h3{margin:4px 0 6px}
-    .card p{margin:0;color:var(--muted)}
+    /* WHY */
+    .why{ margin-top:32px }
+    .why-grid{ display:grid; gap:20px; grid-template-columns:1fr; }
+    @media (min-width:720px){ .why-grid{ grid-template-columns:1fr 1fr; } }
 
-    .footer{margin:40px 0 16px;text-align:center;color:#7a83a6;font-size:13px}
-    @media (max-width:520px){ .title{font-size:32px} .desc{font-size:16px} }
+    .why-card{
+      background:var(--feature);
+      border:1px solid var(--feature-border);
+      border-radius:18px;
+      padding:20px 18px;
+      box-shadow:var(--feature-shadow);
+    }
+    .why-icon{
+      width:56px; height:56px; border-radius:14px;
+      display:grid; place-items:center; margin-bottom:10px;
+      background:#0e1a3b; border:1px solid #202a58;
+    }
+    .why-title{ font-size:22px; font-weight:800; margin:6px 0 10px }
+    .why-desc{ color:var(--muted); margin:0; line-height:1.7 }
+
+    .footer{ margin:40px 0 10px; text-align:center; color:#93a0c8; font-size:13px }
+
+    /* haluskan */
+    .btn-grad:hover{ transform:translateY(-1px) }
+    .btn-ghost:hover{ background:#0f1736 }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <!-- NAV -->
     <nav class="nav">
       <div class="brand">
         <span style="font-size:22px">✨</span>
@@ -59,41 +101,85 @@
       </div>
     </nav>
 
+    <!-- HERO -->
     <section class="hero">
       <span class="pill">🚀 REST API Platform</span>
-      <h2 class="title">Bangun aplikasi lebih cepat dengan API yang simpel & modern</h2>
+      <h2 class="title">Bangun aplikasi lebih cepat dengan API yang simpel &amp; modern</h2>
       <p class="desc">
-        Kumpulan endpoint gratis & minimalis untuk kebutuhan development sehari-hari:
-        downloader, AI tools, searching utilities, dan banyak lagi — dengan dokumentasi
-        jelas & respons cepat.
+        Kumpulan endpoint gratis &amp; minimalis untuk kebutuhan development sehari-hari:
+        downloader, AI tools, searching utilities, dan banyak lagi — dokumentasi jelas &amp; respons cepat.
       </p>
       <div class="cta">
-        <a class="btn btn-grad btn-lg" href="/docs">Get Started</a>
-        <a class="btn btn-outline btn-lg" href="/docs">View Documentation</a>
+        <a id="btnGetStarted" class="btn btn-grad btn-lg" href="#why">Get Started</a>
+        <a class="btn btn-ghost btn-lg" href="/docs">View Documentation</a>
       </div>
     </section>
 
-    <section class="features">
-      <div class="card">
-        <h3>⚡ Cepat & Sederhana</h3>
-        <p>Endpoint mudah dipakai, parameter jelas, dan respons JSON yang konsisten.</p>
-      </div>
-      <div class="card">
-        <h3>🔐 API Key Support</h3>
-        <p>Aktifkan <em>requireKey</em> kapan pun untuk melindungi endpoint publik.</p>
-      </div>
-      <div class="card">
-        <h3>🧩 Banyak Kategori</h3>
-        <p>Downloader, AI (text/image), pencarian, tools, dan seterusnya.</p>
-      </div>
-      <div class="card">
-        <h3>🛠️ Siap di Vercel</h3>
-        <p>Didesain untuk deployment mulus di Vercel dengan Node/Express.</p>
+    <!-- WHY (section yang digulir dari Get Started) -->
+    <section id="why" class="why">
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">
+            <!-- petir -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="#71b7ff"/>
+            </svg>
+          </div>
+          <div class="why-title">Lightning Fast</div>
+          <p class="why-desc">Optimized REST APIs dengan latensi minim untuk aplikasi real-time. Rata-rata respons di bawah 100ms.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <!-- shield -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z" fill="#7adfae"/>
+              <path d="M9 12l2 2 4-4" stroke="#0b1432" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="why-title">Enterprise Security</div>
+          <p class="why-desc">Semua request diamankan dengan HTTPS & rate-limits. Beberapa fitur mendukung API key untuk akses privat.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <!-- brackets -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M7 4L3 8l4 4M17 4l4 4-4 4" stroke="#71b7ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="why-title">Developer First</div>
+          <p class="why-desc">RESTful, parameter jelas, contoh siap pakai, dan struktur JSON konsisten untuk integrasi kilat.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <!-- headset -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3a8 8 0 00-8 8v5a2 2 0 002 2h2v-6H6v-1a6 6 0 1112 0v1h-2v6h2a2 2 0 002-2v-5a8 8 0 00-8-8z" fill="#7adfae"/>
+            </svg>
+          </div>
+          <div class="why-title">24/7 Support</div>
+          <p class="why-desc">Dukungan teknis responsif & siap bantu troubleshooting untuk kebutuhan production.</p>
+        </div>
       </div>
     </section>
 
     <div class="footer">© <span id="yy"></span> Made by <b>juun4</b></div>
   </div>
-  <script>document.getElementById('yy').textContent=new Date().getFullYear()</script>
+
+  <script>
+    // tahun footer
+    document.getElementById('yy').textContent = new Date().getFullYear();
+
+    // smooth scroll (agar scroll elegan ketika klik Get Started)
+    document.getElementById('btnGetStarted').addEventListener('click', (e) => {
+      const target = document.querySelector('#why');
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior:'smooth', block:'start' });
+      history.replaceState(null, '', '#why'); // update hash
+    });
+  </script>
 </body>
 </html>
