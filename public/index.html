@@ -32,18 +32,19 @@
 
     /* Cards */
     .section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
-    .grid{display:grid;gap:16px;grid-template-columns:1fr;} /* <- hanya 1 kolom */
+    .grid{display:grid;gap:16px;grid-template-columns:1fr;}
     .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
     .title{font-weight:700;margin:0}
     .desc{color:var(--muted);font-size:14px;margin:0}
 
     /* Meta pill */
-    .meta{display:flex;gap:8px;align-items:center;flex-wrap:nowrap;overflow:hidden}
+    .meta{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;overflow:hidden}
     .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border:1px solid var(--pill);
-      border-radius:999px;color:#c6d2ff;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+      border-radius:999px;color:#c6d2ff;font-size:12px;white-space:normal;line-height:1.4;
+      word-break:break-all;background:rgba(255,255,255,0.02)}
     .pill.key{flex:0 0 auto}
-    .pill.example{flex:1 1 auto}
-    .pill code,.pill a{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#cfe1ff}
+    .pill.example{flex:1 1 100%} /* biar turun ke bawah di HP */
+    .pill code,.pill a{display:inline;word-break:break-all;color:#cfe1ff}
 
     .open{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--acc),var(--acc2));
       color:#04102a;padding:9px 12px;border-radius:10px;font-weight:800;margin-top:auto;width:max-content}
@@ -132,21 +133,31 @@
         if(it.example){
           const ex=document.createElement('span');
           ex.className='pill example';
-          const base=(it.path||'').trim();
-          const href=base.endsWith('=') ? (base+encodeURIComponent(it.example)) : base;
-          ex.title=it.example;
-          ex.innerHTML=`Example: <a href="${href}" target="_blank"><code>${it.example}</code></a>`;
+          ex.innerHTML=`Example: <code>${it.example}</code>`;
           meta.appendChild(ex);
         }
         card.appendChild(meta);
 
+        // ✅ FIX: url & apikey placement
         if(it.path){
           const go=document.createElement('a');
           go.className='open';
           go.textContent='Open Endpoint';
-          const base=(it.path||'').trim();
-          go.href=(base.endsWith('=') && it.example) ? (base+encodeURIComponent(it.example)) : base;
-          go.target='_blank';
+
+          let href = (it.path||'').trim();
+          // kalau ada ?url= dan apikey=
+          if (href.includes('url=') && href.includes('apikey=')) {
+            const [base, q] = href.split('?');
+            const params = new URLSearchParams(q);
+            if (params.has('url')) params.set('url', encodeURIComponent(it.example || ''));
+            // biarkan apikey kosong
+            href = `${base}?${params.toString()}`;
+          }
+          else if (href.endsWith('=') && it.example) {
+            href += encodeURIComponent(it.example);
+          }
+          go.href = href;
+          go.target = '_blank';
           card.appendChild(go);
         }
         grid.appendChild(card);
