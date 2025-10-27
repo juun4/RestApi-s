@@ -193,7 +193,7 @@ Sertakan contoh pada web-set.json supaya muncul di /docs
 
 MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
 
-<div align="center"><!-- FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p><p></p>
+<div align="center"><!-- FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p></p><p><p></p>
   <a href="https://github.com/juun4/RestApi-s">
     <img alt="GitHub" height="28"
          src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white">
