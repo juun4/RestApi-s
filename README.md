@@ -1,4 +1,3 @@
----
 <div align="center">
 
 <!-- RGB BORDER ATAS -->
@@ -213,4 +212,3 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
 
 <!-- RGB BORDER BAWAH FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/></div>
 ```
----
