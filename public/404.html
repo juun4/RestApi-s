@@ -5,118 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 - Halaman Tidak Ditemukan</title>
 
-  <!-- Font  &  Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/6a6a6f4cc4.js" crossorigin="anonymous"></script>
-
   <style>
-    :root {
-      --bg: #f8f9fb;
-      --text: #2c2f33;
-      --subtext: #6b7280;
-      --accent: #7c3aed;
-      --accent-dark: #5b21b6;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0e0f11;
-        --text: #f9fafb;
-        --subtext: #9ca3af;
-        --accent: #8b5cf6;
-        --accent-dark: #6d28d9;
-      }
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: "Poppins", sans-serif;
+      font-family: "Poppins", "Segoe UI", sans-serif;
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100vh;
       text-align: center;
+      background: radial-gradient(circle at top, #111 0%, #0b0b0b 100%);
+      color: #fff;
       overflow: hidden;
     }
 
-    .astronaut {
-      width: 180px;
-      margin-bottom: 1.5rem;
+    .image-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      flex: 1;
+    }
+
+    .image-container img {
+      max-width: 340px;
+      width: 80%;
+      height: auto;
       animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.3));
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      50% { transform: translateY(-8px); }
     }
 
-    h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--accent);
+    .footer {
+      text-align: center;
+      padding-bottom: 10px;
+      width: 100%;
     }
 
-    h2 {
-      font-size: 1.8rem;
-      margin-top: .5rem;
-      margin-bottom: 1rem;
+    .footer img {
+      display: block;
+      margin: 0 auto 8px;
     }
 
-    p {
-      font-size: 1rem;
-      color: var(--subtext);
-      margin-bottom: 2rem;
+    .footer-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-direction: column;
+      font-size: 14px;
+      opacity: 0.9;
     }
 
-    .home-btn {
-      background: var(--accent);
-      color: #fff;
-      padding: 12px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background .3s;
-    }
-
-    .home-btn:hover {
-      background: var(--accent-dark);
-    }
-
-    footer {
-      position: fixed;
-      bottom: 10px;
-      font-size: 0.9rem;
-      color: var(--subtext);
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+    .footer-text img {
+      height: 22px;
+      margin-top: 4px;
     }
   </style>
 </head>
 
 <body>
-  <img src="https://cdn.jsdelivr.net/gh/juun4/RestApi-s@main/.github/astronaut.svg" alt="Astronot" class="astronaut" />
-  <h1>404</h1>
-  <h2>Halaman Tidak Ditemukan</h2>
-  <p>Maaf, halaman yang Anda cari tidak ada atau telah dipindahkan.</p>
-  <a href="/" class="home-btn"><i class="fa-solid fa-house"></i> Kembali ke Beranda</a>
+  <div class="image-container">
+    <img src="https://cdn.jsdelivr.net/gh/juun4/RestApi-s@main/.github/404-construction.jpg" alt="404 Page Not Found" />
+  </div>
 
-  <footer>
-    Developer by <a href="https://github.com/juun4">juun4</a>
-  </footer>
+  <div class="footer">
+    <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Top" />
+    <div class="footer-text">
+      <img src="./.github/rgb-text.svg" alt="Made with 💙 by juun4" />
+    </div>
+    <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Bottom" />
+  </div>
 </body>
 </html>
