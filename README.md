@@ -1,5 +1,3 @@
----
-
 <div align="center">
 
   <img src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" width="120" style="border-radius:20px;" alt="JunnAPIs Logo"/>
@@ -58,7 +56,7 @@
 
 ## 🗂️ Struktur Proyek
 
-<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Top Divider"/></p>
 
 ```plaintext
 RestApi-s/
@@ -81,28 +79,20 @@ RestApi-s/
 ├─ vercel.json
 └─ README.md
 
-<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>📄 Penjelasan singkat
-
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Bottom Divider"/></p>
+📄 Penjelasan singkat
 api-setting/Scrape → semua handler endpoint (auto-register)
-
 src/web-set.json → branding, kategori, path, example
-
 public/docs.html → dokumentasi interaktif
-
 index.js → router otomatis untuk Vercel
-
-
-
----
-
 ⚙️ Konfigurasi (src/web-set.json)
-
-<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>{
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Top Divider"/></p>
+{
   "branding": {
     "siteName": "JunnAPIs",
     "tagline": "Free & Simple REST Endpoints",
-    "repo": "https://github.com/juun4/RestApi-s",
-    "deployUrl": "https://junnapi.vercel.app"
+    "repo": "[https://github.com/juun4/RestApi-s](https://github.com/juun4/RestApi-s)",
+    "deployUrl": "[https://junnapi.vercel.app](https://junnapi.vercel.app)"
   },
   "apiSettings": {
     "creator": "juun4",
@@ -119,7 +109,7 @@ index.js → router otomatis untuk Vercel
           "desc": "Ambil video (no wm / hd)",
           "path": "/download/tiktok?url=&apikey=",
           "requireKey": true,
-          "example": "https://vt.tiktok.com/ZGJBtcsDq/"
+          "example": "[https://vt.tiktok.com/ZGJBtcsDq/](https://vt.tiktok.com/ZGJBtcsDq/)"
         }
       ]
     },
@@ -139,12 +129,10 @@ index.js → router otomatis untuk Vercel
   ]
 }
 
-<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
----
-
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Bottom Divider"/></p>
 🧩 Contoh Endpoint
-
-<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>GET /downloader/capcut?url=<videoURL>&apikey=<key>
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Top Divider"/></p>
+GET /downloader/capcut?url=<videoURL>&apikey=<key>
 GET /download/tiktok?url=<videoURL>&apikey=<key>
 GET /facebook?url=<fbURL>&apikey=<key>
 GET /instagram?url=<igURL>&apikey=<key>
@@ -158,77 +146,42 @@ Response umum
   "result": { "...": "..." }
 }
 
-<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
----
-
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Bottom Divider"/></p>
 ☁️ Deploy ke Vercel
-
-<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>1. Fork repo ini
-
-
-2. Buka https://vercel.com → Add New Project → import repo
-
-
-3. Klik Deploy 🎉
-
-
-
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Top Divider"/></p>
+ * Fork repo ini
+ * Buka https://vercel.com → Add New Project → import repo
+ * Klik Deploy 🎉
 URL otomatis
-
 Landing → https://<project>.vercel.app
-
 Docs → https://<project>.vercel.app/docs
-
-
-<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
----
-
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Bottom Divider"/></p>
 💬 FAQ
-
-<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>❓ 401 / 403 Unauthorized?
-
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Top Divider"/></p>
+❓ 401 / 403 Unauthorized?
 > Endpoint butuh API key (apikey atau header x-api-key).
-
-
-
+> 
 ❓ Jalan di VPS?
-
 > Fokus Vercel. Bisa manual via node index.js tapi tidak didokumentasikan di repo ini.
-
-
-
+> 
 ❓ Tambah kategori baru?
-
 > Tambahkan file/folder di api-setting/Scrape/, lalu daftarkan item di src/web-set.json.
-
-
-
-<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
----
-
+> 
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Bottom Divider"/></p>
 🤝 Kontribusi
-
-<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>Fork → buat branch → PR
-
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Top Divider"/></p>
+Fork → buat branch → PR
 Ikuti struktur folder
-
 Sertakan contoh pada web-set.json supaya muncul di /docs
-
-
-<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
----
-
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Bottom Divider"/></p>
 ⚖️ Lisensi
-
-<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
-
-<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
----
-
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Top Divider"/></p>
+MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
+<p align="center"><img src="https://www.google.com/url?sa=E&source=gmail&q=https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Bottom Divider"/></p>
 <div align="center">
-  <sub>Made with 💙 by <b>juun4</b></sub><br/>
-  <a href="https://github.com/juun4/RestApi-s">GitHub</a> •
-  <a href="https://wa.me/628672763507">WhatsApp</a> •
-  <a href="https://youtube.com/@JunaaInHeree">YouTube</a>
+<sub>Made with 💙 by <b>juun4</b></sub>
+
+<a href="https://github.com/juun4/RestApi-s">GitHub</a> •
+<a href="https://wa.me/628672763507">WhatsApp</a> •
+<a href="https://youtube.com/@JunaaInHeree">YouTube</a>
 </div>
-```
