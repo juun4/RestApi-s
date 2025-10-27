@@ -88,7 +88,7 @@ RestApi-s/
 └─ README.md
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
----
+```
 
 ⚙️ Konfigurasi (src/web-set.json)
 
@@ -174,7 +174,6 @@ Docs → https://<project>.vercel.app/docs
 
 
 
----
 
 🤝 Kontribusi
 
@@ -186,14 +185,10 @@ Sertakan contoh pada web-set.json supaya muncul di /docs
 
 
 
----
-
-⚖️ Lisensi
+️ Lisensi
 
 MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
 
-
----
 
 <div align="center"><!-- RGB BORDER ATAS FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p align="center">
   <a href="https://github.com/juun4/RestApi-s">
@@ -208,4 +203,3 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
 </p><sub>Made with 💙 by <b>juun4</b></sub>
 
 <!-- RGB BORDER BAWAH FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/></div>
-```
