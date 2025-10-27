@@ -197,7 +197,7 @@ Sertakan contoh pada web-set.json supaya muncul di /docs
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
-## ⚖️ Lisensi
+## ⚖️ <img src="./.github/rgb-text.svg" alt="License" height="22">
 
 MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
 
