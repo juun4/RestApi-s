@@ -21,10 +21,10 @@
       background: radial-gradient(1200px 600px at 50% -10%, #151922 0%, #0f1116 55%, var(--bg) 100%);
       overflow:hidden;
       display:grid;
-      grid-template-rows: 1fr auto; /* konten & footer */
+      grid-template-rows: 1fr auto;
     }
 
-    /* ========== AURORA LAYER ========== */
+    /* AURORA */
     .aurora{
       position:fixed; inset:-10vmax;
       pointer-events:none;
@@ -44,7 +44,7 @@
       100% { transform: translate3d(0,0,0) rotate(360deg); }
     }
 
-    /* ========== CONTENT ========== */
+    /* CONTENT */
     main{
       display:grid; place-items:center; text-align:center; padding:24px;
     }
@@ -61,7 +61,9 @@
       max-width:min(90vw,520px);
     }
     .emoji{
-      font-size:56px; margin-bottom:10px; animation: float 5s ease-in-out infinite;
+      font-size:56px;
+      margin-bottom:10px;
+      animation: float 5s ease-in-out infinite;
       text-shadow: 0 6px 24px rgba(0,229,255,.35);
     }
     @keyframes float{
@@ -92,24 +94,25 @@
       transition: transform .15s ease, box-shadow .2s ease, opacity .2s ease;
       border:1px solid rgba(255,255,255,.12);
     }
-    a.home:hover{ transform: translateY(-2px); opacity:.95; box-shadow: 0 10px 26px rgba(0,229,255,.26); }
-
-    /* divider rgb murni css */
-    .divider{
-      height:8px; width:100%; border-radius:6px; margin:18px 0 8px;
-      background: linear-gradient(90deg,var(--rgb1),var(--rgb2),var(--rgb3));
-      opacity:.85;
+    a.home:hover{
+      transform: translateY(-2px);
+      opacity:.95;
+      box-shadow: 0 10px 26px rgba(0,229,255,.26);
     }
 
-    footer{ text-align:center; padding:0 12px 14px; }
+    footer{
+      text-align:center;
+      padding:0 12px 14px;
+    }
     .sig{
-      font-size:14px; font-weight:600;
+      font-size:14px;
+      font-weight:600;
       background: linear-gradient(90deg,var(--rgb1),var(--rgb2),var(--rgb3));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      display:inline-block; margin:6px 0 10px;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      display:inline-block;
     }
 
-    /* Respect reduced-motion */
     @media (prefers-reduced-motion: reduce){
       .aurora, .emoji { animation: none }
     }
@@ -124,13 +127,11 @@
       <h1 id="t404">404</h1>
       <p class="desc">Ups! Halaman yang kamu cari tidak ditemukan atau telah dipindahkan.</p>
       <a href="/" class="home">Kembali ke Beranda</a>
-      <div class="divider" aria-hidden="true"></div>
     </section>
   </main>
 
   <footer>
     <div class="sig">Made with 💙 by <b>juun4</b></div>
-    <div class="divider" aria-hidden="true"></div>
   </footer>
 </body>
 </html>
