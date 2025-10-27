@@ -5,10 +5,10 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0f172a",
-  "description": "Simple Free REST API.",
+  "description": "Free & Simple REST API.",
   "icons": [
     {
-      "src": "/src/icon.png",
+      "src": "/icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
