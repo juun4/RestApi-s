@@ -4,9 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>JunnAPIs • Docs</title>
+
+  <!-- icons / theme -->
+  <link rel="icon" type="image/png" href="https://cdn.yupra.my.id/yp/rpvaywxy.jpg">
+  <link rel="apple-touch-icon" href="https://cdn.yupra.my.id/yp/rpvaywxy.jpg">
+  <meta name="theme-color" content="#0b1020"/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+
   <style>
     :root{
       --bg:#0b1020; --surface:#0e1430; --card:#111736; --muted:#9aa4c7; --text:#e6ecff;
@@ -73,12 +80,18 @@
     /* codebox: tombol copy fixed di luar area scroll */
     .codebox{position:relative;background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px}
     .code-scroll{max-height:320px;overflow:auto}
-    pre{margin:0;white-space:pre}
+    pre{margin:0;white-space:pre-wrap;word-break:break-word}
     .copy{position:absolute;top:8px;right:8px;font-size:12px;background:#0e1736;border:1px solid #213072;color:#cfe1ff;border-radius:8px;padding:6px 8px;cursor:pointer}
     .run{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
     .btn-run{padding:12px 14px;border-radius:12px;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;font-weight:800;border:none;cursor:pointer}
     .btn-reset{padding:12px 14px;border-radius:12px;background:#10193c;border:1px solid #1b2350;color:#cfe1ff;font-weight:800;cursor:pointer}
     .status{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:#0e1838;border:1px solid #25356f;color:#9fb2ff;font-weight:800}
+
+    /* response viewer */
+    .resp-wrap{margin-top:10px}
+    .rview-tabs{display:flex;gap:8px;margin-bottom:8px}
+    .rview{padding:6px 10px;border-radius:10px;background:#10193c;border:1px solid #1b2350;color:#cfe1ff;font-weight:700;cursor:pointer}
+    .rview.active{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;border-color:transparent}
     .resp{background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px;overflow:auto;min-height:120px;max-height:420px}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;color:#cfe1ff}
 
@@ -155,9 +168,16 @@
         <div class="run">
           <button id="rExec" class="btn-run">Execute</button>
           <button id="rReset" class="btn-reset">Reset</button>
-          <span id="rStatus" class="status">waiting</span>
+          <span id="rStatus" class="status">ready</span>
         </div>
-        <div id="rResp" class="resp mono" style="margin-top:10px">{\n  "status":"waiting",\n  "message":"No response yet"\n}</div>
+
+        <div class="resp-wrap">
+          <div class="rview-tabs" id="rViewTabs">
+            <button class="rview active" data-view="clean">Clean</button>
+            <button class="rview" data-view="json">JSON</button>
+          </div>
+          <pre id="rResp" class="resp mono">{ "status":"waiting", "message":"No response yet" }</pre>
+        </div>
       </div>
     </div>
   </div>
@@ -180,7 +200,7 @@
     return keys[0] || 'text';
   }
   function buildURL(basePath, fields){
-    // URL untuk eksekusi nyata -> aman (auto encode)
+    // URL eksekusi nyata → aman (auto encode)
     const origin = location.origin;
     const root = basePath.split('?')[0];
     const qp = new URLSearchParams();
@@ -188,12 +208,10 @@
     return `${origin}${root}?${qp.toString()}`;
   }
   function jsFunctionSample(basePath, paramName, requiresKey){
-    // Contoh kode tampil bersih tanpa encoding otomatis
     const origin = location.origin;
     const root = basePath.split('?')[0];
     const keyLine = requiresKey ? `  const apiKey = localStorage.getItem('JUNN_DOCS_KEY') || 'free';\n` : '';
     const keyQS   = requiresKey ? `&apikey=\${apiKey}` : '';
-    // nama fungsi selalu fetchApi(<param>)
     return `async function fetchApi(${paramName}){\n${keyLine}  const url = \`${origin}${root}?${paramName}=\${${paramName}}${keyQS}\`;\n  const res = await fetch(url, { headers: { 'Accept':'application/json' } });\n  const json = await res.json();\n  return json;\n}\n\n// contoh pemanggilan\nfetchApi("${paramName==='url' ? 'https://example.com' : 'your text here'}")`;
   }
   function samples(basePath, fields, mainParam){
@@ -201,12 +219,9 @@
     const origin = location.origin;
     const root = basePath.split('?')[0];
 
-    // ambil nilai saat ini di form (untuk cURL live preview, tetapi tidak di-encode manual)
     const current = {};
     fields.forEach(f=> current[f.key] = f.value || '');
-    const curlQS = Object.entries(current)
-      .map(([k,v])=>`${k}=${v}`)
-      .join('&');
+    const curlQS = Object.entries(current).map(([k,v])=>`${k}=${v}`).join('&');
     const curlURL = `${origin}${root}?${curlQS}`;
 
     return {
@@ -216,48 +231,101 @@
     };
   }
 
-  // ---------- main docs ----------
+  // Clean formatter (tanpa tanda kutip & koma)
+  function toCleanView(value, depth=0){
+    const pad = '  '.repeat(depth);
+    if (value === null) return 'null';
+    if (Array.isArray(value)) {
+      if (value.length === 0) return '[]';
+      return '[\n' + value.map(v => pad+'  - '+ (typeof v==='object' ? '\n'+toCleanView(v, depth+2) : String(v))).join('\n') + '\n'+pad+']';
+    }
+    if (typeof value === 'object') {
+      const entries = Object.entries(value);
+      if (!entries.length) return '{}';
+      return '{\n' + entries.map(([k,v])=>{
+        const valStr = (typeof v==='object') ? '\n'+toCleanView(v, depth+1) : String(v);
+        return `${pad}  ${k}: ${typeof v==='object' ? '' : valStr}${typeof v==='object' ? valStr : ''}`;
+      }).join('\n') + '\n' + pad + '}';
+    }
+    return String(value);
+  }
+
+  // ---------- state ----------
   let CFG=null;
   let CURRENT=null;
   const runner = $('#runner'), rTitle = $('#rTitle'), rParams = $('#rParams');
   const rTabs = $('#rTabs'), rCode = $('#rCode'), rCopy = $('#rCopy');
   const rExec = $('#rExec'), rReset = $('#rReset'), rStatus = $('#rStatus'), rResp = $('#rResp');
   const rGlobalKey = $('#rGlobalKey');
-  let R_MODE='cURL', R_MAIN_PARAM='text';
+  const rViewTabs = $('#rViewTabs');
+  let R_MODE='cURL', R_MAIN_PARAM='text', R_VIEW='clean';
 
   rGlobalKey.value = localStorage.getItem('JUNN_DOCS_KEY') || '';
   rGlobalKey.addEventListener('input', ()=>localStorage.setItem('JUNN_DOCS_KEY', rGlobalKey.value.trim()));
   $('#rClose').addEventListener('click', ()=>runner.classList.remove('show'));
+
   rTabs.addEventListener('click', (e)=>{
     const b = e.target.closest('.rtab'); if(!b) return;
     rTabs.querySelectorAll('.rtab').forEach(t=>t.classList.remove('active'));
     b.classList.add('active'); R_MODE=b.dataset.mode;
     if(CURRENT) updateRunnerCode();
   });
+
+  rViewTabs.addEventListener('click', (e)=>{
+    const b = e.target.closest('.rview'); if(!b) return;
+    rViewTabs.querySelectorAll('.rview').forEach(t=>t.classList.remove('active'));
+    b.classList.add('active'); R_VIEW=b.dataset.view;
+    // re-render last response if we already have one
+    if (CURRENT && rResp.dataset.raw) {
+      try {
+        const obj = JSON.parse(rResp.dataset.raw);
+        rResp.textContent = (R_VIEW==='json')
+          ? JSON.stringify(obj, null, 2)
+          : toCleanView(obj, 0);
+      } catch { /* keep raw */ }
+    }
+  });
+
   rCopy.addEventListener('click', async ()=>{
     await navigator.clipboard.writeText(rCode.textContent||''); rCopy.textContent='Copied!'; setTimeout(()=>rCopy.textContent='Copy',800);
   });
+
   rExec.addEventListener('click', async ()=>{
     if(!CURRENT) return;
     const fields = [...rParams.querySelectorAll('[data-param]')];
     const url = buildURL(CURRENT.item.path, fields);
-    rStatus.textContent='fetching…'; rResp.textContent='';
+    rStatus.textContent='fetching…'; rResp.textContent=''; rResp.dataset.raw='';
     try{
       const res = await fetch(url, { headers: { 'Accept':'application/json' } });
       const text = await res.text();
-      try{ rResp.textContent = JSON.stringify(JSON.parse(text), null, 2); }
-      catch{ rResp.textContent = text; }
       rStatus.textContent = `${res.status} ${res.statusText}`;
+      // simpan raw utk toggle view
+      rResp.dataset.raw = text;
+      try{
+        const obj = JSON.parse(text);
+        rResp.textContent = (R_VIEW==='json')
+          ? JSON.stringify(obj, null, 2)
+          : toCleanView(obj, 0);
+      }catch{
+        rResp.textContent = text; // kalau bukan JSON
+      }
     }catch(err){
-      rStatus.textContent='error'; rResp.textContent=String(err);
+      rStatus.textContent='error'; rResp.textContent=String(err); rResp.dataset.raw='';
     }
   });
-  rReset.addEventListener('click', ()=>{ if(CURRENT){ fillParamFields(CURRENT.item); updateRunnerCode(); rStatus.textContent='ready'; rResp.textContent='{\n  "status":"waiting",\n  "message":"No response yet"\n}'; } });
+
+  rReset.addEventListener('click', ()=>{
+    if(!CURRENT) return;
+    fillParamFields(CURRENT.item);
+    updateRunnerCode();
+    rStatus.textContent='ready';
+    rResp.textContent='{ "status":"waiting", "message":"No response yet" }';
+    rResp.dataset.raw='';
+  });
 
   function fillParamFields(item){
     const params = parseParamsFromPath(item.path||'');
     R_MAIN_PARAM = pickMainParam(params);
-    // isi nilai default
     params.forEach(p=>{
       if(p.key.toLowerCase()==='apikey' && !p.value) p.value = rGlobalKey.value || 'free';
       if(!p.value && item.example && p.key.toLowerCase()===R_MAIN_PARAM) p.value = item.example;
@@ -268,20 +336,29 @@
         <input data-param="${p.key}" value="${(p.value||'').replace(/"/g,'&quot;')}" placeholder="${p.key} value"/>
       </div>`).join('') || `<div class="tag">Endpoint ini tidak memiliki parameter query.</div>`;
   }
+
   function updateRunnerCode(){
     const fieldEls = [...rParams.querySelectorAll('[data-param]')];
     const fields = fieldEls.map(el=>({key:el.dataset.param, value:el.value}));
     const s = samples(CURRENT.item.path, fields, R_MAIN_PARAM);
     rCode.textContent = s[R_MODE];
   }
+
   function openRunner(cat,item){
     CURRENT = {cat,item};
     rTitle.textContent = `${item.title || 'Endpoint'} — ${cat.title || ''}`;
-    fillParamFields(item); updateRunnerCode();
-    rStatus.textContent='ready'; rResp.textContent='{\n  "status":"waiting",\n  "message":"No response yet"\n}';
+    fillParamFields(item);
+    updateRunnerCode();
+    rStatus.textContent='ready';
+    rResp.textContent='{ "status":"waiting", "message":"No response yet" }';
+    rResp.dataset.raw='';
+    // reset view to Clean by default
+    R_VIEW='clean';
+    document.querySelectorAll('.rview').forEach(b=>b.classList.toggle('active', b.dataset.view===R_VIEW));
     runner.classList.add('show');
   }
 
+  // ---------- render docs ----------
   async function main(){
     const res = await fetch('/src/web-set.json',{cache:'no-store'});
     const cfg = await res.json();
@@ -337,12 +414,9 @@
         card.appendChild(meta);
 
         const actions = document.createElement('div'); actions.className='actions';
-
         if(it.path){
           const go=document.createElement('a'); go.className='open'; go.textContent='Open Endpoint';
-          // tetap buka ke endpoint asli (untuk user yang ingin langsung klik)
-          go.href = location.origin + it.path;
-          go.target = '_blank';
+          go.href = location.origin + it.path; go.target = '_blank';
           actions.appendChild(go);
 
           const codeBtn=document.createElement('button'); codeBtn.type='button'; codeBtn.className='codebtn'; codeBtn.textContent='Example Code';
@@ -362,4 +436,4 @@
   });
   </script>
 </body>
-          </html>
+</html>
