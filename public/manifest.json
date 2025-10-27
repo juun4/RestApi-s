@@ -1,0 +1,16 @@
+{
+  "name": "JunnAPIs REST API Platform",
+  "short_name": "JunnAPIs",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "description": "Simple Free REST API.",
+  "icons": [
+    {
+      "src": "/src/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
