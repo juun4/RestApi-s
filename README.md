@@ -35,36 +35,34 @@
 ## 🖼️ Cuplikan UI
 
 **Landing / Hero**  
-> Halaman Beranda  
 > ![JunnAPIs Home](https://qu.ax/ouxKU.jpg)
 
 **Docs Interaktif**  
-> Halaman Dokumentasi  
 > ![JunnAPIs Docs](https://qu.ax/OsSgb.jpg)
 
 ---
 
 ## 🗂️ Struktur Proyek
 
-RestApi-s 
-├─ api-setting/ 
-│  └─ Scrape/ 
-│     ├─ downloader/ 
-│     │  ├─ tiktok.js 
-│     │  ├─ capcut.js 
-│     │  └─ facebook.js 
-│     ├─ instagram.js 
-│     └─ ai/ 
-│        └─ gemini-text.js 
-├─ public/ 
-│  ├─ index.html 
-│  ├─ docs.html 
-│  └─ 404.html 
-├─ src/ 
-│  └─ web-set.json 
-├─ index.js 
-├─ vercel.json 
-└─ README.md
+RestApi-s   
+├─ api-setting/   
+│  └─ Scrape/   
+│     ├─ downloader/   
+│     │  ├─ tiktok.js   
+│     │  ├─ capcut.js   
+│     │  └─ facebook.js   
+│     ├─ instagram.js   
+│     └─ ai/   
+│        └─ gemini-text.js   
+├─ public/   
+│  ├─ index.html   
+│  ├─ docs.html   
+│  └─ 404.html   
+├─ src/   
+│  └─ web-set.json   
+├─ index.js   
+├─ vercel.json   
+└─ README.md  
 
 ---
 
@@ -165,7 +163,8 @@ path: boleh berisi query agar docs bisa membangkitkan contoh otomatis.
 
 ➕ Menambah Endpoint
 
-1. Buat file handler di api-setting/Scrape/... sesuai kategori:
+1. Buat file handler di api-setting/Scrape/...
+contoh api-setting/Scrape/downloader/capcut.js:
 
 const axios = require('axios');
 
@@ -181,12 +180,7 @@ async function capcutDl(url) {
       'user-agent': 'Mozilla/5.0'
     };
 
-    const { data } = await axios.post(
-      'https://3bic.com/api/download',
-      { url },
-      { headers }
-    );
-
+    const { data } = await axios.post('https://3bic.com/api/download', { url }, { headers });
     if (!data || !data.originalVideoUrl) {
       return { status: false, msg: 'Gagal ambil data' };
     }
@@ -205,9 +199,9 @@ async function capcutDl(url) {
   } catch (err) {
     return { status: false, msg: err.message || String(err) };
   }
-};
+}
 
-module.exports = async function(url){
+module.exports = async function(url) {
   if (!url) throw new Error('Parameter "url" wajib');
   return capcutDl(url.toString());
 };
@@ -224,7 +218,7 @@ module.exports = async function(url){
 }
 
 
-3. Deploy — route akan terdaftar otomatis dan muncul di docs.
+3. Deploy — route akan terdaftar otomatis dan tampil di docs.
 
 
 
