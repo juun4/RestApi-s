@@ -44,25 +44,7 @@
 
 ## 🗂️ Struktur Proyek
 
-RestApi-s   
-├─ api-setting/   
-│  └─ Scrape/   
-│     ├─ downloader/   
-│     │  ├─ tiktok.js   
-│     │  ├─ capcut.js   
-│     │  └─ facebook.js   
-│     ├─ instagram.js   
-│     └─ ai/   
-│        └─ gemini-text.js   
-├─ public/   
-│  ├─ index.html   
-│  ├─ docs.html   
-│  └─ 404.html   
-├─ src/   
-│  └─ web-set.json   
-├─ index.js   
-├─ vercel.json   
-└─ README.md  
+RestApi-s ├─ api-setting/ │  └─ Scrape/ │     ├─ downloader/ │     │  ├─ tiktok.js │     │  ├─ capcut.js │     │  └─ facebook.js │     ├─ instagram.js │     └─ ai/ │        └─ gemini-text.js ├─ public/ │  ├─ index.html │  ├─ docs.html │  └─ 404.html ├─ src/ │  └─ web-set.json ├─ index.js ├─ vercel.json └─ README.md
 
 ---
 
@@ -166,6 +148,8 @@ path: boleh berisi query agar docs bisa membangkitkan contoh otomatis.
 1. Buat file handler di api-setting/Scrape/...
 contoh api-setting/Scrape/downloader/capcut.js:
 
+
+
 const axios = require('axios');
 
 async function capcutDl(url) {
@@ -206,8 +190,9 @@ module.exports = async function(url) {
   return capcutDl(url.toString());
 };
 
-
 2. Tambahkan ke src/web-set.json:
+
+
 
 {
   "title": "CapCut Downloader",
@@ -216,7 +201,6 @@ module.exports = async function(url) {
   "requireKey": true,
   "example": "https://www.capcut.com/t/1234567890"
 }
-
 
 3. Deploy — route akan terdaftar otomatis dan tampil di docs.
 
