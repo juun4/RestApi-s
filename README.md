@@ -212,4 +212,4 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
 <p align="center">
   <img src="./.github/rgb-text.svg" alt="Made with by juun4" height="22">
 </p>
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/></div>
+</div>
