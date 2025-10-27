@@ -12,11 +12,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// static files
-app.use(express.static('public'));       // /, assets umum
-app.use('/src', express.static('src'));  // expose web-set.json, dll
+// Direktori absolut
+const PUBLIC_DIR = path.join(__dirname, 'public');
+const SRC_DIR = path.join(__dirname, 'src');
 
-// config UI / API
+// Static files
+app.use(express.static(PUBLIC_DIR)); // serve semua file public
+app.use('/src', express.static(SRC_DIR)); // expose web-set.json, dll
+
+// Config UI / API
 const apiConfig = require('./src/web-set.json');
 
 // ---------- Utils ----------
@@ -29,19 +33,18 @@ const loadScrapers = () => {
   const endpointConfigs = {};
   const baseDir = path.join(__dirname, 'api-setting', 'Scrape');
 
-  // ambil konfigurasi endpoint dari web-set.json (sinkron sama UI)
   if (apiConfig && Array.isArray(apiConfig.categories)) {
     for (const cat of apiConfig.categories) {
       for (const item of (cat.items || [])) {
         const rawPath = (item.path || '').trim();
         if (!rawPath) continue;
-        const cleanPath = toLc(rawPath.split('?')[0]); // base path tanpa query
+        const cleanPath = toLc(rawPath.split('?')[0]);
         endpointConfigs[cleanPath] = {
           requireKey:
             item.requireKey !== undefined
               ? !!item.requireKey
               : !!apiConfig.apiSettings?.defaultRequireKey,
-          path: rawPath,           // simpan path original (bisa mengandung ?)
+          path: rawPath,
           example: item.example || null
         };
       }
@@ -81,7 +84,7 @@ const scrapers = loadScrapers();
 const checkApiKey = (req, res, next) => {
   const reqPath = toLc(req.path);
   const endpoint = scrapers[reqPath];
-  if (!endpoint) return next();                 // bukan scraper → lanjut
+  if (!endpoint) return next();
 
   if (!endpoint.config.requireKey) return next();
 
@@ -100,7 +103,6 @@ const checkApiKey = (req, res, next) => {
 Object.entries(scrapers).forEach(([route, { handler, config }]) => {
   app.get(route, checkApiKey, async (req, res) => {
     try {
-      // ambil semua query (kecuali apikey) sebagai argumen handler (urutan by key)
       const params = Object.keys(req.query || {})
         .filter((k) => k.toLowerCase() !== 'apikey')
         .sort()
@@ -122,24 +124,19 @@ Object.entries(scrapers).forEach(([route, { handler, config }]) => {
     }
   });
 
-  // bila di web-set.json path mengandung query (contoh: /download/tiktok?url=&apikey=)
-  // sediakan helper di base path untuk kasih contoh pemakaian
   const hasQuery = !!(config.path && config.path.includes('?'));
   if (hasQuery) {
     const base = toLc((config.path || '').split('?')[0]);
     app.get(base, checkApiKey, (req, res) => {
       const exampleLink = (() => {
-        // rakit contoh URL dari config.path + example (RAW, tidak di-encode)
         const raw = config.path || '';
         if (!config.example) return `${req.protocol}://${req.get('host')}${raw}param_value`;
-        // isi 'url=' bila ada
         if (raw.includes('url=')) {
           const [prefix, q] = raw.split('?');
           const sp = new URLSearchParams(q);
           if (sp.has('url')) sp.set('url', config.example);
           return `${req.protocol}://${req.get('host')}${prefix}?${sp.toString()}`;
         }
-        // fallback
         return `${req.protocol}://${req.get('host')}${raw}${config.example}`;
       })();
 
@@ -152,26 +149,38 @@ Object.entries(scrapers).forEach(([route, { handler, config }]) => {
   }
 });
 
+// ---------- PWA assets ----------
+app.get('/manifest.json', (req, res) => {
+  const f = path.join(PUBLIC_DIR, 'manifest.json');
+  if (exists(f)) {
+    res.type('application/manifest+json');
+    return res.sendFile(f);
+  }
+  return res.status(404).json({ status: false, message: 'manifest.json not found' });
+});
+
+app.get('/icon.png', (req, res) => {
+  const f = path.join(PUBLIC_DIR, 'icon.png');
+  if (exists(f)) return res.sendFile(f);
+  return res.status(404).json({ status: false, message: 'icon.png not found' });
+});
+
 // ---------- Pages ----------
-// Landing page (bio/penjelasan)
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
-// Docs page (daftar fitur)
 app.get('/docs', (req, res) => {
-  const docsFile = path.join(__dirname, 'public', 'docs.html');
+  const docsFile = path.join(PUBLIC_DIR, 'docs.html');
   if (exists(docsFile)) return res.sendFile(docsFile);
-  // fallback kalau belum ada docs.html
-  res.redirect('/'); // atau ganti ke 404 sesuai selera
+  res.redirect('/');
 });
 
-// Opsional: health check
 app.get('/status', (req, res) => res.json({ ok: true }));
 
-// 404 handler
+// ---------- 404 handler ----------
 app.use((req, res) => {
-  const f404 = path.join(__dirname, 'public', '404.html');
+  const f404 = path.join(PUBLIC_DIR, '404.html');
   if (exists(f404)) return res.status(404).sendFile(f404);
   res.status(404).json({ status: false, message: 'Halaman tidak ditemukan' });
 });
