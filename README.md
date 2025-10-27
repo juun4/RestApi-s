@@ -35,7 +35,6 @@
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Bottom"/>
 </div>
 
----
 
 ## ✨ Fitur Utama
 
@@ -48,7 +47,6 @@
 | 🖥️ **Docs Interaktif** | Jalankan API langsung dari browser |
 | ☁️ **Deploy Cepat (Vercel)** | Tanpa setup server — langsung online |
 
----
 
 ## 🖼️ Cuplikan UI
 
@@ -63,7 +61,6 @@
 </tr>
 </table>
 
----
 
 ## 🗂️ Struktur Proyek
 
