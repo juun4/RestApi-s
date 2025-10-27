@@ -193,13 +193,18 @@ Sertakan contoh pada web-set.json supaya muncul di /docs
 
 MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
 
-<div align="center"><!-- FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p>
+<div align="center">
+
+<!-- FOOTER -->
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/>
+
+<p>
   <a href="https://github.com/juun4/RestApi-s">
     <img alt="GitHub" height="28"
          src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white">
   </a>
   &nbsp;
-  <a href="https://wa.me/628672763507">
+  <a href="https://wa.me/628572763507">
     <img alt="WhatsApp" height="28"
          src="https://img.shields.io/badge/WhatsApp-25D366?logo=whatsapp&logoColor=white">
   </a>
@@ -208,6 +213,29 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
     <img alt="YouTube" height="28"
          src="https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=white">
   </a>
-</p><sub>Made with 💙 by <b>juun4</b></sub>
+</p>
 
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/></div>
+<!-- RGB TEXT -->
+<p style="
+  font-weight:600;
+  font-size:14px;
+  background: linear-gradient(90deg,#ff004c,#00e5ff,#00ff85,#ff004c);
+  background-size: 400% 400%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation: rgbText 6s ease infinite;">
+  Made with 💙 by <b>juun4</b>
+</p>
+
+<!-- ANIMATION -->
+<style>
+@keyframes rgbText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+</style>
+
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/>
+
+</div>
