@@ -83,15 +83,17 @@ RestApi-s/
 ├─ vercel.json
 └─ README.md
 
-📄 Penjelasan singkat
+## 📄 Penjelasan singkat
 api-setting/Scrape → semua handler endpoint (auto-register)
 src/web-set.json → branding, kategori, path, example
 public/docs.html → dokumentasi interaktif
 index.js → router otomatis untuk Vercel
+```
 
----
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
-⚙️ Konfigurasi (src/web-set.json)
+```plaintext
+## ⚙️ Konfigurasi (src/web-set.json)
 
 {
   "branding": {
@@ -137,7 +139,7 @@ index.js → router otomatis untuk Vercel
 ```
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
-☁️ Deploy ke Vercel
+## ☁️ Deploy ke Vercel
 
 Fork repo ini
 
@@ -152,7 +154,7 @@ Docs → https://<project>.vercel.app/docs
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
-💬 FAQ
+## 💬 FAQ
 
 ❓ 401 / 403 Unauthorized?
 
@@ -174,7 +176,7 @@ Docs → https://<project>.vercel.app/docs
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
-🤝 Kontribusi
+## 🤝 Kontribusi
 
 Fork → buat branch → PR
 
@@ -185,7 +187,7 @@ Sertakan contoh pada web-set.json supaya muncul di /docs
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
-⚖️ Lisensi
+## ⚖️ Lisensi
 
 MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
 
