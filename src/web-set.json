@@ -10,6 +10,24 @@
     "repo": "https://github.com/juun4/RestApi-s",
     "deployUrl": "https://junnapi.vercel.app"
   },
+  "musicSettings": {
+  "autoplay": true,
+  "volume": 0.8,
+  "playlist": [
+    {
+      "title": "Payphone - Maroon 5",
+      "artist": "Maroon 5 ft. Wiz Khalifa",
+      "image": "https://qu.ax/wwMXY.png",
+      "url": "https://cdn.example.com/audio/payphone.mp3"
+    },
+    {
+      "title": "Multo - Cup of Joe",
+      "artist": "Cup of Joe",
+      "image": "https://qu.ax/wwMXY.png",
+      "url": "https://cdn.example.com/audio/multo.mp3"
+    }
+  ]
+  }
   "categories": [
     {
       "title": "Downloader",
