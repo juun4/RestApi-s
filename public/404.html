@@ -2,90 +2,110 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>404 - Halaman Tidak Ditemukan</title>
-
   <style>
+    :root {
+      --bg1: #0b0c10;
+      --bg2: #151a24;
+      --accent1: #ff004c;
+      --accent2: #00e5ff;
+      --accent3: #00ff85;
+      --text: #f4f4f9;
+      --muted: #a2abb8;
+    }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
       font-family: "Poppins", "Segoe UI", sans-serif;
     }
 
     body {
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
-      background: radial-gradient(circle at top, #111 0%, #0b0b0b 100%);
-      color: #fff;
+      background: radial-gradient(circle at top, var(--bg2), var(--bg1) 80%);
+      color: var(--text);
       overflow: hidden;
     }
 
-    .image-container {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      flex: 1;
+    .container {
+      animation: fadeIn 1s ease forwards;
     }
 
-    .image-container img {
-      max-width: 340px;
-      width: 80%;
-      height: auto;
+    .emoji {
+      font-size: 5rem;
+      margin-bottom: 1rem;
       animation: float 4s ease-in-out infinite;
-      filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.3));
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      color: var(--muted);
+      max-width: 420px;
+      margin: 0 auto 2rem;
+      line-height: 1.5;
+    }
+
+    a {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent2), var(--accent3));
+      color: #0b0c10;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    a:hover {
+      transform: translateY(-3px);
+      opacity: 0.9;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 16px;
+      font-size: 0.9rem;
+      color: var(--muted);
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-10px); }
     }
 
-    .footer {
-      text-align: center;
-      padding-bottom: 10px;
-      width: 100%;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .footer img {
-      display: block;
-      margin: 0 auto 8px;
-    }
-
-    .footer-text {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-direction: column;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
-    .footer-text img {
-      height: 22px;
-      margin-top: 4px;
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
-
 <body>
-  <div class="image-container">
-    <img src="https://cdn.jsdelivr.net/gh/juun4/RestApi-s@main/.github/404-construction.jpg" alt="404 Page Not Found" />
+  <div class="container">
+    <div class="emoji">🚧</div>
+    <h1>404</h1>
+    <p>Ups! Halaman yang kamu cari tidak ditemukan atau telah dipindahkan.</p>
+    <a href="/">Kembali ke Beranda</a>
   </div>
-
-  <div class="footer">
-    <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Top" />
-    <div class="footer-text">
-      <img src="./.github/rgb-text.svg" alt="Made with 💙 by juun4" />
-    </div>
-    <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Bottom" />
-  </div>
+  <div class="footer">Made with 💙 by <b>juun4</b></div>
 </body>
 </html>
