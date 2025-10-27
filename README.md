@@ -1,8 +1,4 @@
 <div align="center">
-
-<!-- RGB TOP -->
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
-
 <img src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" width="120" style="border-radius:20px;" alt="JunnAPIs Logo"/>
 
 <h1 style="font-weight:800; font-size:2.2em; margin-top:10px;">
@@ -92,9 +88,9 @@ api-setting/Scrape → semua handler endpoint (auto-register)
 src/web-set.json → branding, kategori, path, example
 public/docs.html → dokumentasi interaktif
 index.js → router otomatis untuk Vercel
+```
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
----
 
 ⚙️ Konfigurasi (src/web-set.json)
 
@@ -139,7 +135,6 @@ index.js → router otomatis untuk Vercel
     }
   ]
 }
-```
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
 ☁️ Deploy ke Vercel
@@ -156,7 +151,6 @@ Landing → https://<project>.vercel.app
 Docs → https://<project>.vercel.app/docs
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
----
 
 💬 FAQ
 
@@ -179,7 +173,6 @@ Docs → https://<project>.vercel.app/docs
 
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
----
 
 🤝 Kontribusi
 
@@ -191,14 +184,13 @@ Sertakan contoh pada web-set.json supaya muncul di /docs
 
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
----
 
 ⚖️ Lisensi
 
 MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
----
+
 
 <div align="center"><!-- FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p>
   <a href="https://github.com/juun4/RestApi-s">
