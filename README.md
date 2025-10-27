@@ -1,118 +1,107 @@
----
+Siap. Berikut README.md lengkap yang sudah rapi (mobile-friendly), fokus deploy via Vercel, struktur proyek ringkas + tabel deskripsi, fitur, cuplikan antarmuka, contoh konfigurasi, cara tambah endpoint, FAQ, kontribusi, dan lisensi. Tinggal salin ke README.md repo kamu.
 
-<!-- Banner -->
-<p align="center">
-  <img src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" width="120" height="120" style="border-radius:16px" alt="JunnAPIs Logo" />
-</p>
+<div align="center">
+  <img src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" alt="JunnAPIs" width="96" style="border-radius:16px" />
+  <h1>JunnAPIs — RestApi-s</h1>
 
-<h1 align="center">JunnAPIs — Free & Simple REST Endpoints</h1>
+  <p>
+    Kumpulan endpoint REST minimalis untuk kebutuhan harian:
+    downloader, AI tools, searching utilities, dan banyak lagi —
+    dengan dokumentasi interaktif & eksekusi langsung di web.
+  </p>
 
-<p align="center">
-  API ringan berbasis Node.js untuk kebutuhan dev harian — Downloader, AI Tools, Search Utility, dan banyak lagi!
-</p>
-
-<p align="center">
-  <a href="https://junnapi.vercel.app"><img alt="Website" src="https://img.shields.io/badge/🌐_Live_Site-junnapi.vercel.app-7aa2ff?style=for-the-badge"></a>
-  <a href="https://junnapi.vercel.app/docs"><img alt="Docs" src="https://img.shields.io/badge/Open_Docs-4ad295?style=for-the-badge&logo=swagger"></a>
-  <a href="https://vercel.com/new/clone?repository-url=https://github.com/juun4/RestApi-s"><img alt="Deploy to Vercel" src="https://vercel.com/button"></a>
-  <img alt="Node" src="https://img.shields.io/badge/Node-18+-111736?style=for-the-badge&logo=node.js">
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-0e1430?style=for-the-badge">
-</p>
+  <!-- Badges -->
+  <p>
+    <a href="https://junnapi.vercel.app"><img src="https://img.shields.io/badge/Live%20Demo-junnapi.vercel.app-7aa2ff?style=for-the-badge" /></a>
+    <a href="https://junnapi.vercel.app/docs"><img src="https://img.shields.io/badge/Docs-Interactive-4ad295?style=for-the-badge" /></a>
+    <img src="https://img.shields.io/badge/Runtime-Node.js%2018+-18181b?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge&logo=vercel" />
+  </p>
+</div>
 
 ---
 
 ## ✨ Fitur Utama
 
-- ⚡ **Cepat & Sederhana** — Respons JSON ringan dan konsisten.
-- 🔐 **Support API Key** — Bisa diaktifkan per endpoint.
-- 📦 **Auto-Register Scraper** — File di `api-setting/Scrape/` langsung jadi route.
-- 🧭 **Docs Interaktif** — Jalankan endpoint langsung dari browser.
-- ☁️ **100% Vercel Ready** — Deploy satu klik, tidak butuh konfigurasi tambahan.
+- ⚡ **Cepat & Sederhana** — JSON konsisten, parameter jelas.
+- 🔐 **API Key Support** — aktifkan per-endpoint sesuai kebutuhan.
+- 🧩 **Modular Scrapers** — auto-register dari folder `api-setting/Scrape`.
+- 📘 **Docs Interaktif** — tombol **Open Endpoint** + **Example Code** (cURL / CJS / ESM) + **Execute** langsung di web.
+- ☁️ **Siap Vercel** — cukup satu klik deploy, tanpa setup server.
+- 🗂️ **Kategori Terorganisir** — tab + *badge* jumlah endpoint per kategori.
 
 ---
 
 ## 🖼️ Cuplikan UI
 
-> Halaman Beranda  
-> ![JunnAPIs Home](https://qu.ax/ouxKU.jpg)
+**Landing / Hero**
+> Halaman depan dengan tombol **Get Started** (scroll ke highlight) & **View Documentation**.
 
-> Halaman Dokumentasi  
-> ![JunnAPIs Docs](https://qu.ax/OsSgb.jpg)
+**Docs Interaktif**
+> Kartu endpoint per kategori, tombol **Open Endpoint** + **Example Code** (modal runner dengan parameter, cURL/CJS/ESM, dan tombol **Execute**).
+
+> *Cuplikan hanya pratinjau — kunjungi live demo untuk pengalaman penuh.*
 
 ---
 
-## 🗂 Struktur Proyek
+## 🗂️ Struktur Proyek
 
-RestApi-s/ 
-├─ api-setting/ 
-│  └─ Scrape/ # Semua scraper / handler endpoint 
-│     ├─ download/ 
-│     │  ├─ tiktok.js 
-│     │  ├─ capcut.js 
-│     │  ├─ facebook.js 
-│     │  └─ instagram.js 
-│     └─ ai/ 
-│        └─ gemini-text.js 
-├─ public/ 
-│  ├─ index.html # Landing page 
-│  ├─ docs.html # Dokumentasi interaktif 
-│  └─ 404.html 
-├─ src/ 
-│  └─ web-set.json # Branding, kategori, path, example, requireKey 
-├─ index.js # Express adapter (dipanggil oleh Vercel) 
-├─ vercel.json # Routing otomatis → server.js 
-└─ README.md
+RestApi-s ├─ api-setting/ │  └─ Scrape/ │     ├─ downloader/ │     │  ├─ tiktok.js │     │  ├─ capcut.js │     │  └─ facebook.js │     ├─ instagram.js │     └─ ai/ │        └─ gemini-text.js ├─ public/ │  ├─ index.html │  ├─ docs.html │  └─ 404.html ├─ src/ │  └─ web-set.json ├─ index.js ├─ vercel.json └─ README.md
+
+**Ringkasan direktori**
+
+| Path | Fungsi |
+|---|---|
+| `api-setting/Scrape/` | Tempat semua scraper/handler endpoint. Auto-register jadi route. |
+| `api-setting/Scrape/downloader/` | Sub-kategori downloader (`tiktok.js`, `capcut.js`, `facebook.js`, …). |
+| `api-setting/Scrape/ai/` | Sub-kategori AI (mis. `gemini-text.js`). |
+| `public/index.html` | Landing / hero page. |
+| `public/docs.html` | Docs interaktif (Open Endpoint, Example Code + Execute). |
+| `public/404.html` | Halaman 404. |
+| `src/web-set.json` | Branding, kategori, daftar item (`title`, `desc`, `path`, `example`, `requireKey`). |
+| `index.js` | Express adapter (dipanggil oleh Vercel). Auto route dari folder Scrape. |
+| `vercel.json` | Routing Vercel ke `index.js` dan file publik. |
 
 ---
 
 ## 🚀 Deploy ke Vercel (Direkomendasikan)
 
-> Proyek ini dibuat **khusus untuk platform Vercel**.  
-> Tidak perlu setup server — cukup klik satu tombol deploy.
+Proyek ini dibuat **khusus** untuk platform **Vercel** (tanpa setup VPS).
 
-### 🔘 1-Klik Deploy
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/juun4/RestApi-s)
+1. **Fork** repo ini.
+2. Buka [vercel.com](https://vercel.com) → **Add New Project** → pilih repo.
+3. **Root Directory**: `/` (default).
+4. **Build & Output**: tidak perlu build step (Node/Express).
+5. Pastikan `vercel.json` seperti di bawah:
 
----
-
-### ⚙️ Pengaturan Project
-- **Framework Preset:** *Other*
-- **Build Command:** `npm i`
-- **Output Directory:** `public`
-- **Node Version:** 18+
-
----
-
-### 🔁 Routing Otomatis (`vercel.json`)
 ```json
 {
   "version": 2,
-  "builds": [{ "src": "server.js", "use": "@vercel/node" }],
+  "functions": {
+    "api/index.js": { "runtime": "nodejs18.x" }
+  },
   "routes": [
     { "src": "/src/(.*)", "dest": "/src/$1" },
     { "src": "/docs", "dest": "/public/docs.html" },
-    { "src": "/", "dest": "/public/index.html" },
-    { "src": "/.*", "dest": "/server.js" }
+    { "src": "/(.*)", "dest": "/api/index.js" }
   ]
 }
 
+6. Klik Deploy.
+
+
+
+URL hasil:
+
+Landing: https://<project>.vercel.app/
+
+Docs: https://<project>.vercel.app/docs
+
+
 
 ---
 
-💻 Jalankan Lokal (Opsional)
-
-> Untuk test di lokal dengan environment yang sama seperti Vercel:
-
-
-
-npm i -g vercel
-vercel dev
-# buka http://localhost:3000
-
-
----
-
-⚙️ Konfigurasi web-set.json
+⚙️ Konfigurasi (src/web-set.json)
 
 {
   "branding": {
@@ -139,102 +128,141 @@ vercel dev
           "example": "https://vt.tiktok.com/ZGJBtcsDq/"
         }
       ]
+    },
+    {
+      "title": "AI",
+      "icon": "🤖",
+      "items": [
+        {
+          "title": "Gemini Text",
+          "desc": "Jawab pertanyaan berbasis teks",
+          "path": "/ai/gemini-text?text=&apikey=",
+          "requireKey": true,
+          "example": "jelaskan apa itu REST API"
+        }
+      ]
     }
   ]
 }
 
+> Catatan
 
----
+defaultRequireKey: jika true, semua endpoint butuh API key kecuali item menimpa dengan requireKey:false.
 
-🌐 Endpoint Contoh
+globalKey: daftar key yang diizinkan (contoh: "free" untuk demo).
 
-Kategori	Endpoint	Query	Perlu Key	Deskripsi
+path: boleh dengan query (?url=&apikey=) agar docs bisa membangkitkan contoh otomatis.
 
-Downloader	/download/tiktok?url=&apikey=	url	✅ Ya	TikTok video/info
-Downloader	/download/capcut?url=&apikey=	url	✅ Ya	CapCut video original
-Downloader	/download/facebook?url=&apikey=	url	✅ Ya	Facebook multi-quality
-Downloader	/download/instagram?url=&apikey=	url	✅ Ya	Instagram links
-AI	/ai/gemini-text?prompt=&apikey=	prompt	✅ Ya	Jawaban AI berbasis teks
-
-
-> Semua endpoint bisa diuji langsung di /docs.
 
 
 
 
 ---
 
-🧪 Contoh Pemakaian
+➕ Menambah Endpoint
 
-cURL
+1. Buat file handler di api-setting/Scrape/... sesuai kategori.
+Contoh: api-setting/Scrape/downloader/capcut.js
 
-curl -s "https://junnapi.vercel.app/download/tiktok?url=https://vt.tiktok.com/ZGJBtcsDq/&apikey=free" \
-  -H "Accept: application/json"
+import axios from "axios";
 
-JavaScript
+export default async function capcutDl(url) {
+  try {
+    const headers = {
+      "accept": "application/json, text/plain, */*",
+      "content-type": "application/json"
+    }
 
-async function fetchApi(url){
-  const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
-  return await res.json();
+    const { data } = await axios.post("https://3bic.com/api/download", { url }, { headers })
+    if (!data || !data.originalVideoUrl) {
+      return { status: false, msg: "Gagal ambil data" }
+    }
+
+    const base64url = data.originalVideoUrl.split("/api/cdn/")[1]
+    const video = Buffer.from(base64url, "base64").toString()
+
+    return {
+      status: true,
+      title: data.title || "",
+      author: data.authorName || "",
+      thumbnail: data.coverUrl || "",
+      video
+    }
+  } catch (err) {
+    return { status: false, msg: err.message }
+  }
 }
-const base = 'https://junnapi.vercel.app/download/tiktok';
-const qs   = new URLSearchParams({ url: 'https://vt.tiktok.com/ZGJBtcsDq/', apikey: 'free' });
-console.log(await fetchApi(`${base}?${qs}`));
+
+
+2. Tambahkan item-nya di src/web-set.json:
+
+{
+  "title": "CapCut Downloader",
+  "desc": "Unduh video CapCut",
+  "path": "/downloader/capcut?url=&apikey=",
+  "requireKey": true,
+  "example": "https://www.capcut.com/t/1234567890"
+}
+
+
+3. Deploy — route akan terdaftar otomatis (auto-register) dan tampil di docs.
+
+
 
 
 ---
 
-➕ Tambah Endpoint Baru
+🔌 Endpoint Contoh
 
-1. Buat file di api-setting/Scrape/ sesuai kategori, misalnya:
+GET /download/tiktok?url=<videoUrl>&apikey=<key>
+GET /downloader/capcut?url=<capcutUrl>&apikey=<key>
+GET /facebook?url=<facebookUrl>&apikey=<key>
+GET /instagram?url=<igUrl>&apikey=<key>
+GET /ai/gemini-text?text=<prompt>&apikey=<key>
 
-api-setting/Scrape/download/youtube.js
+Response (umum)
 
-
-2. Isi dengan handler:
-
-module.exports = async function youtube(url) {
-  return { status: true, result: { url, source: 'YouTube Downloader' } };
-};
-
-
-3. Tambahkan item di src/web-set.json
-(title, desc, path, example)
-
-
-4. Commit → push → Vercel auto-redeploy.
+{
+  "status": true,
+  "creator": "juun4",
+  "result": { "...": "..." }
+}
 
 
+---
+
+❓ FAQ
+
+Q: Kenapa dapat 401/403?
+A: Endpoint butuh API key. Pastikan mengirim apikey (query) atau x-api-key (header) dan nilainya termasuk dalam apiSettings.globalKey.
+
+Q: Bisa deploy di VPS?
+A: Proyek ini difokuskan untuk Vercel. Jalur VPS belum didokumentasikan di repo ini.
+
+Q: Bagaimana menambah kategori baru?
+A: Tambah folder / file handler di api-setting/Scrape/..., lalu daftarkan item di src/web-set.json.
 
 
 ---
 
 🤝 Kontribusi
 
-Pull Request & ide fitur baru selalu diterima!
+Fork → buat branch → PR.
 
-> Tips: Kamu bisa nonaktifkan requireKey kalau ingin api ini lebih simple
-
-
-
-
----
-
-📣 Sosial
-
-GitHub: @juun4
-
-WhatsApp: 628572763507
-
-YouTube: @JunaaInHeree
+Ikuti gaya kode yang ada, dan sertakan contoh di web-set.json agar tampil di docs.
 
 
 
 ---
 
-🪪 Lisensi
+📄 Lisensi
 
-MIT © 2025 juun4
-Gunakan dengan bijak — konten pihak ketiga tunduk pada aturan sumbernya.
+Lisensi MIT — bebas digunakan & dimodifikasi, tetap sertakan atribusi.
+
 
 ---
+
+<p align="center">
+  Made by <b>juun4</b> • <a href="https://github.com/juun4/RestApi-s">GitHub</a> • <a href="https://wa.me/628672763507">WhatsApp</a> • <a href="https://youtube.com/@JunaaInHeree">YouTube</a>
+</p>
+```
