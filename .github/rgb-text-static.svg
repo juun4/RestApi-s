@@ -1,13 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="360" height="26">
   <defs>
     <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"  stop-color="#ff004c"/>
-      <stop offset="50%" stop-color="#00e5ff"/>
-      <stop offset="100%" stop-color="#00ff85"/>
+      <stop offset="0%" stop-color="#ff004c">
+        <animate attributeName="stop-color"
+                 values="#ff004c;#00e5ff;#00ff85;#ff004c"
+                 dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#00e5ff">
+        <animate attributeName="stop-color"
+                 values="#00e5ff;#00ff85;#ff004c;#00e5ff"
+                 dur="6s" repeatCount="indefinite"/>
+      </stop>
     </linearGradient>
   </defs>
-  <text x="50%" y="60%" text-anchor="middle"
+
+  <text x="50%" y="60%"
+        text-anchor="middle"
         font-family="Segoe UI, system-ui, -apple-system, sans-serif"
         font-size="16" font-weight="600"
-        fill="url(#grad)">Made with 💙 by juun4</text>
+        fill="url(#grad)">
+    Made with 💙 by juun4
+  </text>
 </svg>
