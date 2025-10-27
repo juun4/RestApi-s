@@ -77,21 +77,17 @@
     .rtab{padding:8px 10px;border-radius:10px;background:#101c44;border:1px solid #213072;color:#cfe1ff;font-weight:800;cursor:pointer}
     .rtab.active{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;border-color:transparent}
 
-    /* codebox: tombol copy fixed di luar area scroll */
     .codebox{position:relative;background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px}
     .code-scroll{max-height:320px;overflow:auto}
     pre{margin:0;white-space:pre-wrap;word-break:break-word}
     .copy{position:absolute;top:8px;right:8px;font-size:12px;background:#0e1736;border:1px solid #213072;color:#cfe1ff;border-radius:8px;padding:6px 8px;cursor:pointer}
+
     .run{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
     .btn-run{padding:12px 14px;border-radius:12px;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;font-weight:800;border:none;cursor:pointer}
     .btn-reset{padding:12px 14px;border-radius:12px;background:#10193c;border:1px solid #1b2350;color:#cfe1ff;font-weight:800;cursor:pointer}
     .status{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:#0e1838;border:1px solid #25356f;color:#9fb2ff;font-weight:800}
 
-    /* response viewer */
-    .resp-wrap{margin-top:10px}
-    .rview-tabs{display:flex;gap:8px;margin-bottom:8px}
-    .rview{padding:6px 10px;border-radius:10px;background:#10193c;border:1px solid #1b2350;color:#cfe1ff;font-weight:700;cursor:pointer}
-    .rview.active{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;border-color:transparent}
+    /* response viewer (JSON pretty only) */
     .resp{background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px;overflow:auto;min-height:120px;max-height:420px}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;color:#cfe1ff}
 
@@ -171,13 +167,8 @@
           <span id="rStatus" class="status">ready</span>
         </div>
 
-        <div class="resp-wrap">
-          <div class="rview-tabs" id="rViewTabs">
-            <button class="rview active" data-view="clean">Clean</button>
-            <button class="rview" data-view="json">JSON</button>
-          </div>
-          <pre id="rResp" class="resp mono">{ "status":"waiting", "message":"No response yet" }</pre>
-        </div>
+        <!-- JSON pretty only -->
+        <pre id="rResp" class="resp mono" style="margin-top:10px">{ "status":"waiting", "message":"No response yet" }</pre>
       </div>
     </div>
   </div>
@@ -200,7 +191,6 @@
     return keys[0] || 'text';
   }
   function buildURL(basePath, fields){
-    // URL eksekusi nyata → aman (auto encode)
     const origin = location.origin;
     const root = basePath.split('?')[0];
     const qp = new URLSearchParams();
@@ -231,25 +221,6 @@
     };
   }
 
-  // Clean formatter (tanpa tanda kutip & koma)
-  function toCleanView(value, depth=0){
-    const pad = '  '.repeat(depth);
-    if (value === null) return 'null';
-    if (Array.isArray(value)) {
-      if (value.length === 0) return '[]';
-      return '[\n' + value.map(v => pad+'  - '+ (typeof v==='object' ? '\n'+toCleanView(v, depth+2) : String(v))).join('\n') + '\n'+pad+']';
-    }
-    if (typeof value === 'object') {
-      const entries = Object.entries(value);
-      if (!entries.length) return '{}';
-      return '{\n' + entries.map(([k,v])=>{
-        const valStr = (typeof v==='object') ? '\n'+toCleanView(v, depth+1) : String(v);
-        return `${pad}  ${k}: ${typeof v==='object' ? '' : valStr}${typeof v==='object' ? valStr : ''}`;
-      }).join('\n') + '\n' + pad + '}';
-    }
-    return String(value);
-  }
-
   // ---------- state ----------
   let CFG=null;
   let CURRENT=null;
@@ -257,8 +228,7 @@
   const rTabs = $('#rTabs'), rCode = $('#rCode'), rCopy = $('#rCopy');
   const rExec = $('#rExec'), rReset = $('#rReset'), rStatus = $('#rStatus'), rResp = $('#rResp');
   const rGlobalKey = $('#rGlobalKey');
-  const rViewTabs = $('#rViewTabs');
-  let R_MODE='cURL', R_MAIN_PARAM='text', R_VIEW='clean';
+  let R_MODE='cURL', R_MAIN_PARAM='text';
 
   rGlobalKey.value = localStorage.getItem('JUNN_DOCS_KEY') || '';
   rGlobalKey.addEventListener('input', ()=>localStorage.setItem('JUNN_DOCS_KEY', rGlobalKey.value.trim()));
@@ -271,21 +241,6 @@
     if(CURRENT) updateRunnerCode();
   });
 
-  rViewTabs.addEventListener('click', (e)=>{
-    const b = e.target.closest('.rview'); if(!b) return;
-    rViewTabs.querySelectorAll('.rview').forEach(t=>t.classList.remove('active'));
-    b.classList.add('active'); R_VIEW=b.dataset.view;
-    // re-render last response if we already have one
-    if (CURRENT && rResp.dataset.raw) {
-      try {
-        const obj = JSON.parse(rResp.dataset.raw);
-        rResp.textContent = (R_VIEW==='json')
-          ? JSON.stringify(obj, null, 2)
-          : toCleanView(obj, 0);
-      } catch { /* keep raw */ }
-    }
-  });
-
   rCopy.addEventListener('click', async ()=>{
     await navigator.clipboard.writeText(rCode.textContent||''); rCopy.textContent='Copied!'; setTimeout(()=>rCopy.textContent='Copy',800);
   });
@@ -294,23 +249,15 @@
     if(!CURRENT) return;
     const fields = [...rParams.querySelectorAll('[data-param]')];
     const url = buildURL(CURRENT.item.path, fields);
-    rStatus.textContent='fetching…'; rResp.textContent=''; rResp.dataset.raw='';
+    rStatus.textContent='fetching…'; rResp.textContent='{ }';
     try{
       const res = await fetch(url, { headers: { 'Accept':'application/json' } });
       const text = await res.text();
       rStatus.textContent = `${res.status} ${res.statusText}`;
-      // simpan raw utk toggle view
-      rResp.dataset.raw = text;
-      try{
-        const obj = JSON.parse(text);
-        rResp.textContent = (R_VIEW==='json')
-          ? JSON.stringify(obj, null, 2)
-          : toCleanView(obj, 0);
-      }catch{
-        rResp.textContent = text; // kalau bukan JSON
-      }
+      try{ rResp.textContent = JSON.stringify(JSON.parse(text), null, 2); }
+      catch{ rResp.textContent = text; }
     }catch(err){
-      rStatus.textContent='error'; rResp.textContent=String(err); rResp.dataset.raw='';
+      rStatus.textContent='error'; rResp.textContent=String(err);
     }
   });
 
@@ -320,7 +267,6 @@
     updateRunnerCode();
     rStatus.textContent='ready';
     rResp.textContent='{ "status":"waiting", "message":"No response yet" }';
-    rResp.dataset.raw='';
   });
 
   function fillParamFields(item){
@@ -351,10 +297,6 @@
     updateRunnerCode();
     rStatus.textContent='ready';
     rResp.textContent='{ "status":"waiting", "message":"No response yet" }';
-    rResp.dataset.raw='';
-    // reset view to Clean by default
-    R_VIEW='clean';
-    document.querySelectorAll('.rview').forEach(b=>b.classList.toggle('active', b.dataset.view===R_VIEW));
     runner.classList.add('show');
   }
 
