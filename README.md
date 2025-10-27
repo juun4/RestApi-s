@@ -195,7 +195,6 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
 
 <div align="center">
 
-<!-- FOOTER -->
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/>
 
 <p>
@@ -204,7 +203,7 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
          src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white">
   </a>
   &nbsp;
-  <a href="https://wa.me/628572763507">
+  <a href="https://wa.me/628672763507">
     <img alt="WhatsApp" height="28"
          src="https://img.shields.io/badge/WhatsApp-25D366?logo=whatsapp&logoColor=white">
   </a>
@@ -215,26 +214,23 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
   </a>
 </p>
 
-<!-- RGB TEXT -->
-<p style="
-  font-weight:600;
-  font-size:14px;
-  background: linear-gradient(90deg,#ff004c,#00e5ff,#00ff85,#ff004c);
-  background-size: 400% 400%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation: rgbText 6s ease infinite;">
-  Made with 💙 by <b>juun4</b>
-</p>
-
-<!-- ANIMATION -->
-<style>
-@keyframes rgbText {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-</style>
+<!-- SVG RGB TEXT -->
+<img src="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg' width='320' height='32'>
+  <defs>
+    <linearGradient id='grad' x1='0' y1='0' x2='1' y2='0'>
+      <stop offset='0%' stop-color='#ff004c'>
+        <animate attributeName='stop-color' values='#ff004c;#00e5ff;#00ff85;#ff004c' dur='6s' repeatCount='indefinite'/>
+      </stop>
+      <stop offset='100%' stop-color='#00e5ff'>
+        <animate attributeName='stop-color' values='#00e5ff;#00ff85;#ff004c;#00e5ff' dur='6s' repeatCount='indefinite'/>
+      </stop>
+    </linearGradient>
+  </defs>
+  <text x='50%' y='60%' text-anchor='middle' font-family='Segoe UI, sans-serif' font-size='16' font-weight='600' fill='url(%23grad)'>
+    Made with 💙 by juun4
+  </text>
+</svg>" alt="RGB Text"/>
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/>
 
