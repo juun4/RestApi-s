@@ -1,40 +1,36 @@
 <div align="center">
 
-<!-- RGB BORDER ATAS -->
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Top"/>
+<!-- RGB TOP -->
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
-<!-- KONTEN UTAMA -->
-<div align="center" style="position: relative; border-left: 8px solid transparent; border-right: 8px solid transparent;">
-  <img src="./.github/rgb-left.svg" align="left" height="220" alt="RGB Left Border"/>
-  <img src="./.github/rgb-right.svg" align="right" height="220" alt="RGB Right Border"/>
+<img src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" width="120" style="border-radius:20px;" alt="JunnAPIs Logo"/>
 
-  <img src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" width="120" style="border-radius:20px;" alt="JunnAPIs Logo"/>
+<h1 style="font-weight:800; font-size:2.2em; margin-top:10px;">
+  🌌 <span style="background:linear-gradient(90deg,#7aa2ff,#4ad295); -webkit-background-clip:text; color:transparent;">JunnAPIs</span>
+</h1>
 
-  <h1 style="font-weight:800; font-size:2.2em; margin-top:10px;">
-    🌌 <span style="background:linear-gradient(90deg,#7aa2ff,#4ad295); -webkit-background-clip:text; color:transparent;">JunnAPIs</span>
-  </h1>
+<p>
+  Koleksi REST API modular — siap pakai untuk <b>Downloader</b>, <b>AI</b>, <b>Search</b>, dan banyak lagi.<br/>
+  Dibangun ringan, otomatis, dan dengan dokumentasi interaktif langsung di browser.
+</p>
 
-  <p>
-    Koleksi REST API modular — siap pakai untuk <b>Downloader</b>, <b>AI</b>, <b>Search</b>, dan banyak lagi.<br/>
-    Dibangun ringan, otomatis, dan dengan dokumentasi interaktif langsung di browser.
-  </p>
+<p>
+  <a href="https://junnapi.vercel.app">
+    <img src="https://img.shields.io/badge/🌐_Live_Demo-junnapi.vercel.app-3b82f6?style=for-the-badge&logo=vercel"/>
+  </a>
+  <a href="https://junnapi.vercel.app/docs">
+    <img src="https://img.shields.io/badge/📘_Docs-Interactive-16a34a?style=for-the-badge"/>
+  </a>
+  <img src="https://img.shields.io/badge/Node.js-18%2B-18181b?style=for-the-badge&logo=node.js"/>
+  <img src="https://img.shields.io/badge/Vercel-Deploy_Ready-000000?style=for-the-badge&logo=vercel"/>
+</p>
 
-  <p>
-    <a href="https://junnapi.vercel.app">
-      <img src="https://img.shields.io/badge/🌐_Live_Demo-junnapi.vercel.app-3b82f6?style=for-the-badge&logo=vercel"/>
-    </a>
-    <a href="https://junnapi.vercel.app/docs">
-      <img src="https://img.shields.io/badge/📘_Docs-Interactive-16a34a?style=for-the-badge"/>
-    </a>
-    <img src="https://img.shields.io/badge/Node.js-18%2B-18181b?style=for-the-badge&logo=node.js"/>
-    <img src="https://img.shields.io/badge/Vercel-Deploy_Ready-000000?style=for-the-badge&logo=vercel"/>
-  </p>
+<!-- RGB BOTTOM -->
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
+
 </div>
 
-<!-- RGB BORDER BAWAH -->
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Bottom"/>
-</div>
-
+---
 
 ## ✨ Fitur Utama
 
@@ -47,6 +43,9 @@
 | 🖥️ **Docs Interaktif** | Jalankan API langsung dari browser |
 | ☁️ **Deploy Cepat (Vercel)** | Tanpa setup server — langsung online |
 
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
+
+---
 
 ## 🖼️ Cuplikan UI
 
@@ -61,10 +60,11 @@
 </tr>
 </table>
 
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
+
+---
 
 ## 🗂️ Struktur Proyek
-
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
 ```plaintext
 RestApi-s/
@@ -87,12 +87,18 @@ RestApi-s/
 ├─ vercel.json
 └─ README.md
 
+📄 Penjelasan singkat
+api-setting/Scrape → semua handler endpoint (auto-register)
+src/web-set.json → branding, kategori, path, example
+public/docs.html → dokumentasi interaktif
+index.js → router otomatis untuk Vercel
+
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
-```
+---
 
 ⚙️ Konfigurasi (src/web-set.json)
 
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>{
+{
   "branding": {
     "siteName": "JunnAPIs",
     "tagline": "Free & Simple REST Endpoints",
@@ -134,7 +140,7 @@ RestApi-s/
   ]
 }
 
-
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 ---
 
 ☁️ Deploy ke Vercel
@@ -146,11 +152,11 @@ Buka vercel.com → Add New Project → import repo
 Klik Deploy 🎉
 
 
-URL otomatis:
+URL otomatis
 Landing → https://<project>.vercel.app
 Docs → https://<project>.vercel.app/docs
 
-
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 ---
 
 💬 FAQ
@@ -173,7 +179,8 @@ Docs → https://<project>.vercel.app/docs
 
 
 
-
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
+---
 
 🤝 Kontribusi
 
@@ -184,22 +191,32 @@ Ikuti struktur folder
 Sertakan contoh pada web-set.json supaya muncul di /docs
 
 
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
+---
 
-️ Lisensi
+⚖️ Lisensi
 
 MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
 
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
+---
 
-<div align="center"><!-- RGB BORDER ATAS FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p align="center">
+<div align="center"><!-- FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p>
   <a href="https://github.com/juun4/RestApi-s">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg" width="24" alt="GitHub"/> 
-  </a>&nbsp;&nbsp;
+    <img alt="GitHub" height="28"
+         src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white">
+  </a>
+  &nbsp;
   <a href="https://wa.me/628672763507">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/whatsapp.svg" width="24" alt="WhatsApp"/>
-  </a>&nbsp;&nbsp;
+    <img alt="WhatsApp" height="28"
+         src="https://img.shields.io/badge/WhatsApp-25D366?logo=whatsapp&logoColor=white">
+  </a>
+  &nbsp;
   <a href="https://youtube.com/@JunaaInHeree">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/youtube.svg" width="24" alt="YouTube"/>
+    <img alt="YouTube" height="28"
+         src="https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=white">
   </a>
 </p><sub>Made with 💙 by <b>juun4</b></sub>
 
-<!-- RGB BORDER BAWAH FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/></div>
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/></div>
+```
