@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-module.exports = async function capcutDl(url) {
+async function capcutDl(url) {
   try {
     if (!url) throw new Error('Parameter url wajib diisi');
 
@@ -37,4 +37,9 @@ module.exports = async function capcutDl(url) {
   } catch (err) {
     return { status: false, msg: err.message || String(err) };
   }
+};
+
+module.exports = async function(url){
+  if (!url) throw new Error('Parameter "url" wajib');
+  return tiktokDl(url.toString());
 };
