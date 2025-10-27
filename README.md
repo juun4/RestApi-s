@@ -139,9 +139,8 @@ index.js → router otomatis untuk Vercel
     }
   ]
 }
-
+```
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
----
 
 ☁️ Deploy ke Vercel
 
@@ -219,4 +218,3 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
 </p><sub>Made with 💙 by <b>juun4</b></sub>
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/></div>
-```
