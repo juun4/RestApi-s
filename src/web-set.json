@@ -16,6 +16,13 @@
       "icon": "📥",
       "items": [
         {
+          "title": "Capcut Downloader",
+          "desc": "Download video capcut no watermark",
+          "path": "/download/capcut?url=&apikey=",
+          "requireKey": true,
+          "example": "https://www.capcut.com/tv2/ZSUoqc4Bd/"
+        }, 
+        {
           "title": "TikTok Downloader",
           "desc": "Ambil video (no wm / hd) atau image set",
           "path": "/download/tiktok?url=&apikey=",
