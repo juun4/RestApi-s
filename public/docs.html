@@ -60,13 +60,25 @@
     .player-info{flex:1;overflow:hidden;z-index:1}
     .player-title{font-weight:800;margin:0 0 4px 0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .player-artist{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .player-controls{display:flex;align-items:center;gap:8px;z-index:1}
+    
+    /* MODIFIKASI: Gunakan order untuk memastikan tombol next di kanan */
+    .player-controls{
+        display:flex;
+        align-items:center;
+        gap:8px;
+        z-index:1;
+        /* Tambahkan properti di sini jika perlu mengatur kontrol */
+    }
     .player-controls button{
       width:38px;height:38px;border-radius:10px;
       border:1px solid #24336e;background:#0f1736;color:#cfe1ff;
       display:flex;align-items:center;justify-content:center;
       cursor:pointer;transition:all .25s ease;
     }
+    .player-controls button#pPrev { order: 1; } /* Tetap di kiri */
+    .player-controls button#pPlay { order: 2; } /* Tetap di tengah */
+    .player-controls button#pNext { order: 3; } /* Geser ke kanan */
+
     .player-controls button:hover{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;border:none}
     .player-controls svg{width:18px;height:18px;fill:currentColor}
     .player-controls .playing{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;border:none}
