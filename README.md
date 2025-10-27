@@ -88,9 +88,8 @@ api-setting/Scrape → semua handler endpoint (auto-register)
 src/web-set.json → branding, kategori, path, example
 public/docs.html → dokumentasi interaktif
 index.js → router otomatis untuk Vercel
-```
 
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
+---
 
 ⚙️ Konfigurasi (src/web-set.json)
 
@@ -135,6 +134,7 @@ index.js → router otomatis untuk Vercel
     }
   ]
 }
+```
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
 ☁️ Deploy ke Vercel
