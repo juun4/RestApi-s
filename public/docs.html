@@ -32,56 +32,6 @@
     .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--acc),var(--acc2));
       color:#04102a;padding:8px 12px;border-radius:10px;font-weight:700}
 
-    /* 🎵 PLAYER */
-    .player-box{
-      background:var(--surface);
-      border:1px solid var(--line);
-      border-radius:16px;
-      box-shadow:0 8px 28px rgba(0,0,0,.25);
-      padding:14px 16px;
-      margin-bottom:22px;
-      display:flex;
-      align-items:center;
-      gap:14px;
-      position:relative;
-      overflow:hidden;
-    }
-    .player-box::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg,var(--acc) 0%,var(--acc2) 100%);
-      opacity:.15;
-      filter:blur(60px);
-      z-index:0;
-    }
-    .player-cover{
-      width:64px;height:64px;border-radius:12px;object-fit:cover;border:1px solid #24336e;z-index:1;
-    }
-    .player-info{flex:1;overflow:hidden;z-index:1}
-    .player-title{font-weight:800;margin:0 0 4px 0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .player-artist{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .player-controls{display:flex;align-items:center;gap:8px;z-index:1}
-    .player-controls button{
-      width:38px;height:38px;border-radius:10px;
-      border:1px solid #24336e;background:#0f1736;color:#cfe1ff;
-      display:flex;align-items:center;justify-content:center;
-      cursor:pointer;transition:all .25s ease;
-    }
-    .player-controls button:hover{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;border:none}
-    .player-controls svg{width:18px;height:18px;fill:currentColor}
-    .player-controls .playing{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;border:none}
-    .player-progress{display:flex;align-items:center;gap:6px;margin-top:6px;z-index:1}
-    .player-progress .bar{flex:1;height:6px;border-radius:10px;background:#1c2652;overflow:hidden;position:relative;cursor:pointer}
-    .player-progress .fill{
-      height:100%;
-      background:linear-gradient(90deg,var(--acc),var(--acc2));
-      width:0%;
-      transition:width 0.25s linear;
-      box-shadow:0 0 8px var(--acc2);
-    }
-    .player-progress span{font-size:12px;color:var(--muted);min-width:32px;text-align:center}
-
     .tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);scrollbar-width:none;margin-bottom:18px}
     .tabs::-webkit-scrollbar{display:none}
     .tab{padding:8px 14px;border-radius:10px;background:#141a3b;color:var(--muted);font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap}
@@ -96,17 +46,54 @@
     .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
     .title{font-weight:700;margin:0}
     .desc{color:var(--muted);font-size:14px;margin:0}
+
     .meta{display:flex;flex-direction:column;gap:6px}
     .pill{display:flex;align-items:flex-start;gap:6px;padding:6px 8px;border:1px solid var(--pill);
       border-radius:999px;color:#c6d2ff;font-size:12px;background:rgba(255,255,255,0.02);word-break:break-word}
     .pill b{color:#cfe1ff;white-space:nowrap;margin-right:4px}
     .pill .example-url{flex:1;white-space:normal;word-break:break-word;overflow-wrap:anywhere;line-height:1.5}
+
     .actions{display:flex;gap:8px;flex-wrap:wrap}
     .open{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--acc),var(--acc2));
       color:#04102a;padding:9px 12px;border-radius:10px;font-weight:800;margin-top:auto;width:max-content}
     .codebtn{display:inline-flex;align-items:center;justify-content:center;background:#141a3b;border:1px solid var(--line);
       color:#cfe1ff;padding:9px 12px;border-radius:10px;font-weight:800;margin-top:auto}
+
     footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+    .social{display:flex;gap:10px;justify-content:center;margin-top:8px}
+    .social a{display:inline-flex;align-items:center;gap:8px;background:#121a3a;border:1px solid #23306a;color:#cfe1ff;
+      padding:8px 12px;border-radius:10px;font-weight:700}
+
+    .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+    .backdrop.show{display:flex}
+    .modal{width:min(980px,100%);max-height:92vh;background:#0f1736;border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;flex-direction:column}
+    .modal-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+    .modal-tt{font-weight:800}
+    .x{border:1px solid var(--line);background:#101a3c;color:#cfe1ff;border-radius:10px;padding:8px 10px;cursor:pointer}
+    .modal-bd{padding:14px 16px;overflow:auto}
+
+    .kv{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+    .kv .field{display:flex;flex-direction:column;gap:6px}
+    .kv input{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0e1836;color:#cfe1ff}
+
+    .rtabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+    .rtab{padding:8px 10px;border-radius:10px;background:#101c44;border:1px solid #213072;color:#cfe1ff;font-weight:800;cursor:pointer}
+    .rtab.active{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;border-color:transparent}
+
+    .codebox{position:relative;background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px}
+    .code-scroll{max-height:320px;overflow:auto}
+    pre{margin:0;white-space:pre-wrap;word-break:break-word}
+    .copy{position:absolute;top:8px;right:8px;font-size:12px;background:#0e1736;border:1px solid #213072;color:#cfe1ff;border-radius:8px;padding:6px 8px;cursor:pointer}
+
+    .run{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn-run{padding:12px 14px;border-radius:12px;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#051028;font-weight:800;border:none;cursor:pointer}
+    .btn-reset{padding:12px 14px;border-radius:12px;background:#10193c;border:1px solid #1b2350;color:#cfe1ff;font-weight:800;cursor:pointer}
+    .status{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:#0e1838;border:1px solid #25356f;color:#9fb2ff;font-weight:800}
+
+    .resp{background:#0b1432;border:1px solid #1c2656;border-radius:12px;padding:12px;overflow:auto;min-height:120px;max-height:420px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;color:#cfe1ff}
+
+    .ico{width:16px;height:16px;display:inline-block}
   </style>
 </head>
 <body>
@@ -125,28 +112,6 @@
       </div>
     </header>
 
-    <!-- 🎵 Player -->
-    <div id="playerBox" class="player-box" style="display:none">
-      <img id="pCover" class="player-cover" src="" alt="cover">
-      <div class="player-info">
-        <div id="pTitle" class="player-title">Loading...</div>
-        <div id="pArtist" class="player-artist"></div>
-        <div class="player-progress">
-          <span id="pCurrent">0:00</span>
-          <div id="pBar" class="bar"><div id="pBarFill" class="fill"></div></div>
-          <span id="pDuration">0:00</span>
-        </div>
-      </div>
-      <div class="player-controls">
-        <button id="pPrev" title="Previous"><svg viewBox="0 0 24 24"><path d="M6 4v16l9-8zM19 4v16h-2V4z"/></svg></button>
-        <button id="pPlay" title="Play/Pause">
-          <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          <svg id="iconPause" style="display:none" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-        </button>
-        <button id="pNext" title="Next"><svg viewBox="0 0 24 24"><path d="M18 20V4l-9 8zM5 4v16h2V4z"/></svg></button>
-      </div>
-    </div>
-
     <div id="tabs" class="tabs"></div>
     <div id="content"></div>
 
@@ -160,80 +125,261 @@
     </footer>
   </div>
 
-  <!-- 🔊 Player Script -->
+  <!-- Runner Modal -->
+  <div id="runner" class="backdrop" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-hd">
+        <div class="modal-tt" id="rTitle">Example Code</div>
+        <button class="x" id="rClose">Close</button>
+      </div>
+      <div class="modal-bd">
+        <div class="kv" style="margin-bottom:10px">
+          <div class="field">
+            <label class="tag">Global API Key (tersimpan lokal)</label>
+            <input id="rGlobalKey" placeholder="Masukkan API key (opsional)"/>
+          </div>
+        </div>
+
+        <div class="tag" style="display:block;margin:6px 0 8px">Parameter</div>
+        <div id="rParams" class="kv"></div>
+
+        <div class="rtabs" id="rTabs">
+          <button class="rtab active" data-mode="cURL">cURL</button>
+          <button class="rtab" data-mode="CJS">Javascript (CJS)</button>
+          <button class="rtab" data-mode="ESM">Javascript (ESM)</button>
+        </div>
+
+        <div class="codebox">
+          <button class="copy" id="rCopy">Copy</button>
+          <div class="code-scroll"><pre id="rCode" class="mono"></pre></div>
+        </div>
+
+        <div class="run">
+          <button id="rExec" class="btn-run">Execute</button>
+          <button id="rReset" class="btn-reset">Reset</button>
+          <span id="rStatus" class="status">ready</span>
+        </div>
+
+        <pre id="rResp" class="resp mono" style="margin-top:10px">{ "status":"waiting", "message":"No response yet" }</pre>
+      </div>
+    </div>
+  </div>
+
   <script>
-  (async ()=>{
+  // ---------- helpers ----------
+  const $ = (q)=>document.querySelector(q);
+  function parseParamsFromPath(path){
+    const q = (path.split('?')[1]||'').trim();
+    if(!q) return [];
+    return q.split('&').filter(Boolean).map(kv=>{
+      const [k,v] = kv.split('=');
+      return {key:k, value: decodeURIComponent(v||'')};
+    });
+  }
+  function pickMainParam(params){
+    const keys = params.map(p=>p.key.toLowerCase()).filter(k=>k!=='apikey');
+    const prio = ['url','text','query','prompt'];
+    for(const k of prio){ if(keys.includes(k)) return k; }
+    return keys[0] || 'text';
+  }
+  function buildURL(basePath, fields){
+    const origin = location.origin;
+    const root = basePath.split('?')[0];
+    const qp = new URLSearchParams();
+    fields.forEach(f=> qp.set(f.dataset.param, f.value));
+    return `${origin}${root}?${qp.toString()}`;
+  }
+  function jsFunctionSample(basePath, paramName, requiresKey){
+    const origin = location.origin;
+    const root = basePath.split('?')[0];
+    const keyLine = requiresKey ? `  const apiKey = localStorage.getItem('JUNN_DOCS_KEY') || 'free';\n` : '';
+    const keyQS   = requiresKey ? `&apikey=\${apiKey}` : '';
+    return `async function fetchApi(${paramName}){\n${keyLine}  const url = \`${origin}${root}?${paramName}=\${${paramName}}${keyQS}\`;\n  const res = await fetch(url, { headers: { 'Accept':'application/json' } });\n  const json = await res.json();\n  return json;\n}\n\n// contoh pemanggilan\nfetchApi("${paramName==='url' ? 'https://example.com' : 'your text here'}")`;
+  }
+  function samples(basePath, fields, mainParam){
+    const requiresKey = fields.some(f=>f.key.toLowerCase()==='apikey');
+    const origin = location.origin;
+    const root = basePath.split('?')[0];
+
+    const current = {};
+    fields.forEach(f=> current[f.key] = f.value || '');
+    const curlQS = Object.entries(current).map(([k,v])=>`${k}=${v}`).join('&');
+    const curlURL = `${origin}${root}?${curlQS}`;
+
+    return {
+      cURL: `curl -s "${curlURL}" \\\n  -H "Accept: application/json"`,
+      CJS: jsFunctionSample(basePath, mainParam, requiresKey),
+      ESM: jsFunctionSample(basePath, mainParam, requiresKey),
+    };
+  }
+
+  // ---------- state ----------
+  let CFG=null;
+  let CURRENT=null;
+  const runner = $('#runner'), rTitle = $('#rTitle'), rParams = $('#rParams');
+  const rTabs = $('#rTabs'), rCode = $('#rCode'), rCopy = $('#rCopy');
+  const rExec = $('#rExec'), rReset = $('#rReset'), rStatus = $('#rStatus'), rResp = $('#rResp');
+  const rGlobalKey = $('#rGlobalKey');
+  let R_MODE='cURL', R_MAIN_PARAM='text';
+
+  rGlobalKey.value = localStorage.getItem('JUNN_DOCS_KEY') || '';
+  rGlobalKey.addEventListener('input', ()=>localStorage.setItem('JUNN_DOCS_KEY', rGlobalKey.value.trim()));
+  $('#rClose').addEventListener('click', ()=>runner.classList.remove('show'));
+
+  rTabs.addEventListener('click', (e)=>{
+    const b = e.target.closest('.rtab'); if(!b) return;
+    rTabs.querySelectorAll('.rtab').forEach(t=>t.classList.remove('active'));
+    b.classList.add('active'); R_MODE=b.dataset.mode;
+    if(CURRENT) updateRunnerCode();
+  });
+
+  rCopy.addEventListener('click', async ()=>{
+    await navigator.clipboard.writeText(rCode.textContent||''); rCopy.textContent='Copied!'; setTimeout(()=>rCopy.textContent='Copy',800);
+  });
+
+  rExec.addEventListener('click', async ()=>{
+    if(!CURRENT) return;
+    const fields = [...rParams.querySelectorAll('[data-param]')];
+    const url = buildURL(CURRENT.item.path, fields);
+    rStatus.textContent='fetching…'; rResp.textContent='{ }';
+    try{
+      const res = await fetch(url, { headers: { 'Accept':'application/json' } });
+      const text = await res.text();
+      rStatus.textContent = `${res.status} ${res.statusText}`;
+      try{ rResp.textContent = JSON.stringify(JSON.parse(text), null, 2); }
+      catch{ rResp.textContent = text; }
+    }catch(err){
+      rStatus.textContent='error'; rResp.textContent=String(err);
+    }
+  });
+
+  rReset.addEventListener('click', ()=>{
+    if(!CURRENT) return;
+    fillParamFields(CURRENT.item);
+    updateRunnerCode();
+    rStatus.textContent='ready';
+    rResp.textContent='{ "status":"waiting", "message":"No response yet" }';
+  });
+
+  function fillParamFields(item){
+    const params = parseParamsFromPath(item.path||'');
+    R_MAIN_PARAM = pickMainParam(params);
+    params.forEach(p=>{
+      if(p.key.toLowerCase()==='apikey' && !p.value) p.value = rGlobalKey.value || 'free';
+      if(!p.value && item.example && p.key.toLowerCase()===R_MAIN_PARAM) p.value = item.example;
+    });
+    rParams.innerHTML = params.map(p=>`
+      <div class="field">
+        <label class="tag">${p.key}</label>
+        <input data-param="${p.key}" value="${(p.value||'').replace(/"/g,'&quot;')}" placeholder="${p.key} value"/>
+      </div>`).join('') || `<div class="tag">Endpoint ini tidak memiliki parameter query.</div>`;
+  }
+
+  function updateRunnerCode(){
+    const fieldEls = [...rParams.querySelectorAll('[data-param]')];
+    const fields = fieldEls.map(el=>({key:el.dataset.param, value:el.value}));
+    const s = samples(CURRENT.item.path, fields, R_MAIN_PARAM);
+    rCode.textContent = s[R_MODE];
+  }
+
+  function openRunner(cat,item){
+    CURRENT = {cat,item};
+    rTitle.textContent = `${item.title || 'Endpoint'} — ${cat.title || ''}`;
+    fillParamFields(item);
+    updateRunnerCode();
+    rStatus.textContent='ready';
+    rResp.textContent='{ "status":"waiting", "message":"No response yet" }';
+    runner.classList.add('show');
+  }
+
+  // ---------- render docs ----------
+  async function main(){
     const res = await fetch('/src/web-set.json',{cache:'no-store'});
     const cfg = await res.json();
-    const music = cfg.musicSettings || {};
-    const playlist = music.playlist || [];
-    if(!playlist.length) return;
+    CFG = cfg;
 
-    const box = document.getElementById('playerBox');
-    const pCover = document.getElementById('pCover');
-    const pTitle = document.getElementById('pTitle');
-    const pArtist = document.getElementById('pArtist');
-    const pBar = document.getElementById('pBar');
-    const pBarFill = document.getElementById('pBarFill');
-    const pCurrent = document.getElementById('pCurrent');
-    const pDuration = document.getElementById('pDuration');
-    const btnPrev = document.getElementById('pPrev');
-    const btnPlay = document.getElementById('pPlay');
-    const btnNext = document.getElementById('pNext');
-    const iconPlay = document.getElementById('iconPlay');
-    const iconPause = document.getElementById('iconPause');
-    const audio = new Audio();
-    audio.volume = music.volume ?? 0.85;
+    // branding & socials
+    const site = cfg?.branding?.siteName ?? 'JunnAPIs';
+    document.getElementById('siteName').textContent = site;
+    document.getElementById('creator').textContent  = cfg?.apiSettings?.creator ?? 'unknown';
+    document.getElementById('repoLink').href = cfg?.branding?.repo || '#';
+    document.getElementById('socGH').href = cfg?.branding?.repo || '#';
+    document.getElementById('socWA').href = 'https://wa.me/628672763507';
+    document.getElementById('socYT').href = 'https://youtube.com/@JunaaInHeree';
 
-    let index = 0;
-    const fmt = s => isNaN(s) ? '0:00' : `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+    const cats = cfg.categories || [];
+    const tabs = document.getElementById('tabs');
+    const content = document.getElementById('content');
 
-    function load(i){
-      const s = playlist[i];
-      pCover.src = s.image || 'https://cdn.yupra.my.id/yp/rpvaywxy.jpg';
-      pTitle.textContent = s.title || 'Unknown';
-      pArtist.textContent = s.artist || '';
-      audio.src = s.url;
-      pBarFill.style.width='0%';
-      pCurrent.textContent='0:00';
-      pDuration.textContent='0:00';
-      iconPlay.style.display='block';
-      iconPause.style.display='none';
-      btnPlay.classList.remove('playing');
+    /* ======= NEW: All + jumlah per kategori ======= */
+    const allItems = cats.flatMap(c => (c.items||[]).map(it => ({...it, _cat:c.title})));
+    function makeTab(label, count, payload, active=false){
+      const el = document.createElement('div');
+      el.className = 'tab' + (active ? ' active' : '');
+      el.innerHTML = `${label} <span class="count">${count}</span>`;
+      el.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        el.classList.add('active');
+        render(payload);
+      });
+      tabs.appendChild(el);
     }
+    // Tab All
+    makeTab('All', allItems.length, allItems, true);
+    // Tabs kategori
+    cats.forEach(cat=> makeTab(cat.title || 'Category', (cat.items||[]).length, cat));
 
-    load(index);
-    box.style.display='flex';
+    // render awal: All
+    render(allItems);
+    /* ============================================== */
 
-    btnPlay.onclick = ()=>{
-      if(audio.paused){
-        audio.play();
-        iconPlay.style.display='none';
-        iconPause.style.display='block';
-        btnPlay.classList.add('playing');
-      } else {
-        audio.pause();
-        iconPlay.style.display='block';
-        iconPause.style.display='none';
-        btnPlay.classList.remove('playing');
-      }
-    };
-    btnNext.onclick=()=>{index=(index+1)%playlist.length;load(index);audio.play();iconPlay.style.display='none';iconPause.style.display='block';btnPlay.classList.add('playing');};
-    btnPrev.onclick=()=>{index=(index-1+playlist.length)%playlist.length;load(index);audio.play();iconPlay.style.display='none';iconPause.style.display='block';btnPlay.classList.add('playing');};
+    // renderer: bisa terima array items (All) atau object kategori
+    function render(source){
+      const items = Array.isArray(source) ? source : (source.items || []);
+      content.innerHTML='';
+      const section=document.createElement('section'); section.className='section';
+      const grid=document.createElement('div'); grid.className='grid';
 
-    audio.ontimeupdate=()=>{
-      if(audio.duration){
-        pBarFill.style.width=`${(audio.currentTime/audio.duration)*100}%`;
-        pCurrent.textContent=fmt(audio.currentTime);
-        pDuration.textContent=fmt(audio.duration);
-      }
-    };
-    pBar.onclick=(e)=>{
-      const x=e.offsetX/pBar.offsetWidth;
-      audio.currentTime=x*audio.duration;
-    };
-    audio.onended=()=>btnNext.click();
-  })();
+      items.forEach(it=>{
+        const card=document.createElement('div'); card.className='item';
+        const t=document.createElement('div'); t.className='title'; t.textContent=it.title||'Untitled';
+        const d=document.createElement('p'); d.className='desc'; d.textContent=it.desc||'';
+        card.appendChild(t); card.appendChild(d);
+
+        const meta=document.createElement('div'); meta.className='meta';
+        const key=document.createElement('div'); key.className='pill';
+        key.textContent=(it.requireKey ?? cfg.apiSettings?.defaultRequireKey) ? 'Requires API Key' : 'No Key';
+        meta.appendChild(key);
+
+        if(it.example){
+          const ex=document.createElement('div'); ex.className='pill';
+          const label=document.createElement('b'); label.textContent='Example:';
+          const url=document.createElement('span'); url.className='example-url'; url.textContent=it.example;
+          ex.appendChild(label); ex.appendChild(url); meta.appendChild(ex);
+        }
+        card.appendChild(meta);
+
+        const actions = document.createElement('div'); actions.className='actions';
+        if(it.path){
+          const go=document.createElement('a'); go.className='open'; go.textContent='Open Endpoint';
+          go.href = location.origin + it.path; go.target = '_blank';
+          actions.appendChild(go);
+
+          const codeBtn=document.createElement('button'); codeBtn.type='button'; codeBtn.className='codebtn'; codeBtn.textContent='Example Code';
+          codeBtn.addEventListener('click', ()=>openRunner({ title: it._cat || 'All' }, it));
+          actions.appendChild(codeBtn);
+        }
+        card.appendChild(actions);
+
+        grid.appendChild(card);
+      });
+
+      section.appendChild(grid); content.appendChild(section);
+    }
+  }
+  main().catch(e=>{
+    document.getElementById('content').innerHTML=`<div class='section'><div class='item'>Error: ${e.message}</div></div>`;
+  });
   </script>
 </body>
 </html>
