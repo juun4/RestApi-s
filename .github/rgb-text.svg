@@ -12,7 +12,7 @@
                  dur="6s" repeatCount="indefinite"/>
       </stop>
     </linearGradient>
-  </defs>
+  </defs> 
 
   <text x="50%" y="60%"
         text-anchor="middle"
