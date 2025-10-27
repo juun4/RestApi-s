@@ -36,6 +36,11 @@
     .tabs::-webkit-scrollbar{display:none}
     .tab{padding:8px 14px;border-radius:10px;background:#141a3b;color:var(--muted);font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap}
     .tab.active{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#04102a}
+    /* badge jumlah */
+    .tab .count{
+      margin-left:8px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:800;
+      background:#1a2250;border:1px solid #2a3471;color:#bcd0ff;
+    }
 
     .section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
     .grid{display:grid;gap:16px;grid-template-columns:1fr;}
@@ -319,24 +324,36 @@
     const tabs = document.getElementById('tabs');
     const content = document.getElementById('content');
 
-    cats.forEach((cat,i)=>{
-      const tab=document.createElement('div');
-      tab.className='tab'+(i===0?' active':'');
-      tab.textContent=cat.title||'Category';
-      tab.addEventListener('click',()=>{
+    /* ======= NEW: All + jumlah per kategori ======= */
+    const allItems = cats.flatMap(c => (c.items||[]).map(it => ({...it, _cat:c.title})));
+    function makeTab(label, count, payload, active=false){
+      const el = document.createElement('div');
+      el.className = 'tab' + (active ? ' active' : '');
+      el.innerHTML = `${label} <span class="count">${count}</span>`;
+      el.addEventListener('click', ()=>{
         document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-        tab.classList.add('active'); render(cat);
+        el.classList.add('active');
+        render(payload);
       });
-      tabs.appendChild(tab);
-    });
-    if(cats[0]) render(cats[0]);
+      tabs.appendChild(el);
+    }
+    // Tab All
+    makeTab('All', allItems.length, allItems, true);
+    // Tabs kategori
+    cats.forEach(cat=> makeTab(cat.title || 'Category', (cat.items||[]).length, cat));
 
-    function render(cat){
+    // render awal: All
+    render(allItems);
+    /* ============================================== */
+
+    // renderer: bisa terima array items (All) atau object kategori
+    function render(source){
+      const items = Array.isArray(source) ? source : (source.items || []);
       content.innerHTML='';
       const section=document.createElement('section'); section.className='section';
       const grid=document.createElement('div'); grid.className='grid';
 
-      (cat.items||[]).forEach(it=>{
+      items.forEach(it=>{
         const card=document.createElement('div'); card.className='item';
         const t=document.createElement('div'); t.className='title'; t.textContent=it.title||'Untitled';
         const d=document.createElement('p'); d.className='desc'; d.textContent=it.desc||'';
@@ -362,7 +379,7 @@
           actions.appendChild(go);
 
           const codeBtn=document.createElement('button'); codeBtn.type='button'; codeBtn.className='codebtn'; codeBtn.textContent='Example Code';
-          codeBtn.addEventListener('click', ()=>openRunner(cat,it));
+          codeBtn.addEventListener('click', ()=>openRunner({ title: it._cat || 'All' }, it));
           actions.appendChild(codeBtn);
         }
         card.appendChild(actions);
