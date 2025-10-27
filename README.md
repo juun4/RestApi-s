@@ -1,4 +1,4 @@
-Siap. Berikut README.md lengkap yang sudah rapi (mobile-friendly), fokus deploy via Vercel, struktur proyek ringkas + tabel deskripsi, fitur, cuplikan antarmuka, contoh konfigurasi, cara tambah endpoint, FAQ, kontribusi, dan lisensi. Tinggal salin ke README.md repo kamu.
+---
 
 <div align="center">
   <img src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" alt="JunnAPIs" width="96" style="border-radius:16px" />
@@ -23,44 +23,48 @@ Siap. Berikut README.md lengkap yang sudah rapi (mobile-friendly), fokus deploy 
 
 ## ✨ Fitur Utama
 
-- ⚡ **Cepat & Sederhana** — JSON konsisten, parameter jelas.
-- 🔐 **API Key Support** — aktifkan per-endpoint sesuai kebutuhan.
-- 🧩 **Modular Scrapers** — auto-register dari folder `api-setting/Scrape`.
-- 📘 **Docs Interaktif** — tombol **Open Endpoint** + **Example Code** (cURL / CJS / ESM) + **Execute** langsung di web.
-- ☁️ **Siap Vercel** — cukup satu klik deploy, tanpa setup server.
-- 🗂️ **Kategori Terorganisir** — tab + *badge* jumlah endpoint per kategori.
+- ⚡ **Cepat & Sederhana** — JSON konsisten, parameter jelas.  
+- 🔐 **API Key Support** — aktifkan per-endpoint sesuai kebutuhan.  
+- 🧩 **Modular Scrapers** — auto-register dari folder `api-setting/Scrape`.  
+- 📘 **Docs Interaktif** — tombol **Open Endpoint** + **Example Code** (cURL / CJS / ESM) + **Execute** langsung di web.  
+- ☁️ **Siap Vercel** — cukup satu klik deploy, tanpa setup server.  
+- 🗂️ **Kategori Terorganisir** — tab + *badge* jumlah endpoint per kategori.  
 
 ---
 
 ## 🖼️ Cuplikan UI
 
-**Landing / Hero**
-> Halaman depan dengan tombol **Get Started** (scroll ke highlight) & **View Documentation**.
+**Landing / Hero**  
+> Halaman Beranda  
+> ![JunnAPIs Home](https://qu.ax/ouxKU.jpg)
 
-**Docs Interaktif**
-> Kartu endpoint per kategori, tombol **Open Endpoint** + **Example Code** (modal runner dengan parameter, cURL/CJS/ESM, dan tombol **Execute**).
-
-> *Cuplikan hanya pratinjau — kunjungi live demo untuk pengalaman penuh.*
+**Docs Interaktif**  
+> Halaman Dokumentasi  
+> ![JunnAPIs Docs](https://qu.ax/OsSgb.jpg)
 
 ---
 
 ## 🗂️ Struktur Proyek
 
-RestApi-s ├─ api-setting/ │  └─ Scrape/ │     ├─ downloader/ │     │  ├─ tiktok.js │     │  ├─ capcut.js │     │  └─ facebook.js │     ├─ instagram.js │     └─ ai/ │        └─ gemini-text.js ├─ public/ │  ├─ index.html │  ├─ docs.html │  └─ 404.html ├─ src/ │  └─ web-set.json ├─ index.js ├─ vercel.json └─ README.md
-
-**Ringkasan direktori**
-
-| Path | Fungsi |
-|---|---|
-| `api-setting/Scrape/` | Tempat semua scraper/handler endpoint. Auto-register jadi route. |
-| `api-setting/Scrape/downloader/` | Sub-kategori downloader (`tiktok.js`, `capcut.js`, `facebook.js`, …). |
-| `api-setting/Scrape/ai/` | Sub-kategori AI (mis. `gemini-text.js`). |
-| `public/index.html` | Landing / hero page. |
-| `public/docs.html` | Docs interaktif (Open Endpoint, Example Code + Execute). |
-| `public/404.html` | Halaman 404. |
-| `src/web-set.json` | Branding, kategori, daftar item (`title`, `desc`, `path`, `example`, `requireKey`). |
-| `index.js` | Express adapter (dipanggil oleh Vercel). Auto route dari folder Scrape. |
-| `vercel.json` | Routing Vercel ke `index.js` dan file publik. |
+RestApi-s 
+├─ api-setting/ 
+│  └─ Scrape/ 
+│     ├─ downloader/ 
+│     │  ├─ tiktok.js 
+│     │  ├─ capcut.js 
+│     │  └─ facebook.js 
+│     ├─ instagram.js 
+│     └─ ai/ 
+│        └─ gemini-text.js 
+├─ public/ 
+│  ├─ index.html 
+│  ├─ docs.html 
+│  └─ 404.html 
+├─ src/ 
+│  └─ web-set.json 
+├─ index.js 
+├─ vercel.json 
+└─ README.md
 
 ---
 
@@ -68,11 +72,11 @@ RestApi-s ├─ api-setting/ │  └─ Scrape/ │     ├─ downloader/ │
 
 Proyek ini dibuat **khusus** untuk platform **Vercel** (tanpa setup VPS).
 
-1. **Fork** repo ini.
-2. Buka [vercel.com](https://vercel.com) → **Add New Project** → pilih repo.
-3. **Root Directory**: `/` (default).
-4. **Build & Output**: tidak perlu build step (Node/Express).
-5. Pastikan `vercel.json` seperti di bawah:
+1. **Fork** repo ini.  
+2. Buka [vercel.com](https://vercel.com) → **Add New Project** → pilih repo.  
+3. **Root Directory:** `/` (default).  
+4. **Build & Output:** tidak perlu build step.  
+5. Pastikan `vercel.json` seperti ini:
 
 ```json
 {
@@ -145,13 +149,13 @@ Docs: https://<project>.vercel.app/docs
   ]
 }
 
-> Catatan
+> Catatan:
 
 defaultRequireKey: jika true, semua endpoint butuh API key kecuali item menimpa dengan requireKey:false.
 
-globalKey: daftar key yang diizinkan (contoh: "free" untuk demo).
+globalKey: daftar key yang diizinkan ("free" untuk demo).
 
-path: boleh dengan query (?url=&apikey=) agar docs bisa membangkitkan contoh otomatis.
+path: boleh berisi query agar docs bisa membangkitkan contoh otomatis.
 
 
 
@@ -161,40 +165,55 @@ path: boleh dengan query (?url=&apikey=) agar docs bisa membangkitkan contoh oto
 
 ➕ Menambah Endpoint
 
-1. Buat file handler di api-setting/Scrape/... sesuai kategori.
-Contoh: api-setting/Scrape/downloader/capcut.js
+1. Buat file handler di api-setting/Scrape/... sesuai kategori:
 
-import axios from "axios";
+const axios = require('axios');
 
-export default async function capcutDl(url) {
+async function capcutDl(url) {
   try {
+    if (!url) throw new Error('Parameter url wajib diisi');
+
     const headers = {
-      "accept": "application/json, text/plain, */*",
-      "content-type": "application/json"
-    }
+      accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+      origin: 'https://3bic.com',
+      referer: 'https://3bic.com/',
+      'user-agent': 'Mozilla/5.0'
+    };
 
-    const { data } = await axios.post("https://3bic.com/api/download", { url }, { headers })
+    const { data } = await axios.post(
+      'https://3bic.com/api/download',
+      { url },
+      { headers }
+    );
+
     if (!data || !data.originalVideoUrl) {
-      return { status: false, msg: "Gagal ambil data" }
+      return { status: false, msg: 'Gagal ambil data' };
     }
 
-    const base64url = data.originalVideoUrl.split("/api/cdn/")[1]
-    const video = Buffer.from(base64url, "base64").toString()
+    const base64url = String(data.originalVideoUrl).split('/api/cdn/')[1];
+    if (!base64url) return { status: false, msg: 'Link video tidak ditemukan' };
+
+    const video = Buffer.from(base64url, 'base64').toString();
 
     return {
-      status: true,
-      title: data.title || "",
-      author: data.authorName || "",
-      thumbnail: data.coverUrl || "",
+      title: data.title || '',
+      author: data.authorName || '',
+      thumbnail: data.coverUrl || '',
       video
-    }
+    };
   } catch (err) {
-    return { status: false, msg: err.message }
+    return { status: false, msg: err.message || String(err) };
   }
-}
+};
+
+module.exports = async function(url){
+  if (!url) throw new Error('Parameter "url" wajib');
+  return capcutDl(url.toString());
+};
 
 
-2. Tambahkan item-nya di src/web-set.json:
+2. Tambahkan ke src/web-set.json:
 
 {
   "title": "CapCut Downloader",
@@ -205,7 +224,7 @@ export default async function capcutDl(url) {
 }
 
 
-3. Deploy — route akan terdaftar otomatis (auto-register) dan tampil di docs.
+3. Deploy — route akan terdaftar otomatis dan muncul di docs.
 
 
 
@@ -220,7 +239,7 @@ GET /facebook?url=<facebookUrl>&apikey=<key>
 GET /instagram?url=<igUrl>&apikey=<key>
 GET /ai/gemini-text?text=<prompt>&apikey=<key>
 
-Response (umum)
+Response (umum):
 
 {
   "status": true,
@@ -234,10 +253,10 @@ Response (umum)
 ❓ FAQ
 
 Q: Kenapa dapat 401/403?
-A: Endpoint butuh API key. Pastikan mengirim apikey (query) atau x-api-key (header) dan nilainya termasuk dalam apiSettings.globalKey.
+A: Endpoint butuh API key. Pastikan mengirim apikey (query) atau x-api-key (header).
 
 Q: Bisa deploy di VPS?
-A: Proyek ini difokuskan untuk Vercel. Jalur VPS belum didokumentasikan di repo ini.
+A: Proyek ini difokuskan untuk Vercel. Jalur VPS belum didokumentasikan.
 
 Q: Bagaimana menambah kategori baru?
 A: Tambah folder / file handler di api-setting/Scrape/..., lalu daftarkan item di src/web-set.json.
@@ -248,9 +267,7 @@ A: Tambah folder / file handler di api-setting/Scrape/..., lalu daftarkan item d
 🤝 Kontribusi
 
 Fork → buat branch → PR.
-
-Ikuti gaya kode yang ada, dan sertakan contoh di web-set.json agar tampil di docs.
-
+Ikuti gaya kode yang ada, dan sertakan contoh di web-set.json agar muncul di docs.
 
 
 ---
@@ -263,6 +280,10 @@ Lisensi MIT — bebas digunakan & dimodifikasi, tetap sertakan atribusi.
 ---
 
 <p align="center">
-  Made by <b>juun4</b> • <a href="https://github.com/juun4/RestApi-s">GitHub</a> • <a href="https://wa.me/628672763507">WhatsApp</a> • <a href="https://youtube.com/@JunaaInHeree">YouTube</a>
+  Made by <b>juun4</b> • 
+  <a href="https://github.com/juun4/RestApi-s">GitHub</a> • 
+  <a href="https://wa.me/628672763507">WhatsApp</a> • 
+  <a href="https://youtube.com/@JunaaInHeree">YouTube</a>
 </p>
 ```
+---
