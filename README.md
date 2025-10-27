@@ -1,18 +1,13 @@
 ---
-
-✅ Versi final README.md (langsung bisa ditempel di repo)
-
 <div align="center">
 
-<!-- RGB BORDER TOP -->
-<img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Divider Top"/>
+<!-- RGB BORDER ATAS -->
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Top"/>
 
-<table width="100%">
-<tr>
-<td width="16" valign="top">
-<img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-left.svg" height="100%" alt="RGB Left Border"/>
-</td>
-<td align="center">
+<!-- KONTEN UTAMA -->
+<div align="center" style="position: relative; border-left: 8px solid transparent; border-right: 8px solid transparent;">
+  <img src="./.github/rgb-left.svg" align="left" height="220" alt="RGB Left Border"/>
+  <img src="./.github/rgb-right.svg" align="right" height="220" alt="RGB Right Border"/>
 
   <img src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" width="120" style="border-radius:20px;" alt="JunnAPIs Logo"/>
 
@@ -35,6 +30,11 @@
     <img src="https://img.shields.io/badge/Node.js-18%2B-18181b?style=for-the-badge&logo=node.js"/>
     <img src="https://img.shields.io/badge/Vercel-Deploy_Ready-000000?style=for-the-badge&logo=vercel"/>
   </p>
+</div>
+
+<!-- RGB BORDER BAWAH -->
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Bottom"/>
+</div>
 
 ---
 
@@ -68,7 +68,7 @@
 
 ## 🗂️ Struktur Proyek
 
-<img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
 ```plaintext
 RestApi-s/
@@ -91,18 +91,12 @@ RestApi-s/
 ├─ vercel.json
 └─ README.md
 
-<img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>📄 Penjelasan singkat
-api-setting/Scrape → semua handler endpoint (auto-register)
-src/web-set.json → branding, kategori, path, example
-public/docs.html → dokumentasi interaktif
-index.js → router otomatis untuk Vercel
-
-
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 ---
 
 ⚙️ Konfigurasi (src/web-set.json)
 
-<img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>{
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>{
   "branding": {
     "siteName": "JunnAPIs",
     "tagline": "Free & Simple REST Endpoints",
@@ -149,14 +143,14 @@ index.js → router otomatis untuk Vercel
 
 ☁️ Deploy ke Vercel
 
-<img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>Fork repo ini
+Fork repo ini
 
 Buka vercel.com → Add New Project → import repo
 
 Klik Deploy 🎉
 
 
-URL otomatis
+URL otomatis:
 Landing → https://<project>.vercel.app
 Docs → https://<project>.vercel.app/docs
 
@@ -167,7 +161,7 @@ Docs → https://<project>.vercel.app/docs
 
 ❓ 401 / 403 Unauthorized?
 
-> Endpoint butuh API key (apikey atau header x-api-key)
+> Endpoint butuh API key (apikey atau header x-api-key).
 
 
 
@@ -205,7 +199,7 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
 
 ---
 
-<!-- FOOTER --><img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Divider Bottom"/><p align="center">
+<div align="center"><!-- RGB BORDER ATAS FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p align="center">
   <a href="https://github.com/juun4/RestApi-s">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg" width="24" alt="GitHub"/> 
   </a>&nbsp;&nbsp;
@@ -217,12 +211,6 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
   </a>
 </p><sub>Made with 💙 by <b>juun4</b></sub>
 
-</td>
-<td width="16" valign="top">
-<img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-right.svg" height="100%" alt="RGB Right Border"/>
-</td>
-</tr>
-</table><!-- RGB BORDER BOTTOM --><img src="https://raw.githubusercontent.com/juun4/RestApi-s/main/.github/rgb-divider.svg" width="100%" alt="RGB Divider Bottom"/>
-</div>
+<!-- RGB BORDER BAWAH FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/></div>
 ```
 ---
