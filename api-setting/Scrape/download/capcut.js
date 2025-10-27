@@ -28,7 +28,6 @@ async function capcutDl(url) {
     const video = Buffer.from(base64url, 'base64').toString();
 
     return {
-      status: true,
       title: data.title || '',
       author: data.authorName || '',
       thumbnail: data.coverUrl || '',
