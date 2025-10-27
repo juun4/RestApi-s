@@ -4,15 +4,11 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>JunnAPIs • REST API Platform</title>
-<!-- PWA Manifest & Favicon -->
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/icon.png" type="image/png">
-<link rel="apple-touch-icon" href="/icon.png">
-<meta name="theme-color" content="#0f172a">
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+
 <style>
 :root{
   --bg:#0b1020; --text:#e8edff; --muted:#9aa4c7; --line:#19224b;
@@ -21,15 +17,32 @@
   --card:#0f1736; --card-line:#1a234a; --shadow:0 16px 40px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
+html, body { height: 100%; }
+
 body{
-  margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:var(--text);
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Arial;
+  color:var(--text);
   background:
     radial-gradient(1200px 600px at 80% -10%, rgba(122,162,255,.18), transparent 60%),
     radial-gradient(900px 500px at -10% -10%, rgba(74,210,149,.14), transparent 60%),
+    radial-gradient(900px 420px at 50% 120%, rgba(122,162,255,.12), transparent 60%),
     linear-gradient(180deg, var(--grad-1), var(--grad-2) 40%, var(--grad-3));
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100svh; /* aman untuk mobile (dynamic viewport) */
 }
+
 a{color:inherit;text-decoration:none}
-.wrap{max-width:min(1100px,100vw - 32px);margin:0 auto;padding:20px 16px 40px}
+
+.wrap{
+  max-width:min(1100px,100vw - 32px);
+  margin:0 auto;
+  padding:20px 16px 40px;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+}
 
 /* NAV */
 .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -95,10 +108,23 @@ a{color:inherit;text-decoration:none}
 .why-title{font-size:22px;font-weight:800;margin:6px 0 10px} .why-desc{color:var(--muted);margin:0;line-height:1.7}
 
 /* FOOTER + socials */
-.footer{margin:40px 0 8px;text-align:center;color:#93a0c8;font-size:13px}
+.footer{
+  margin:40px 0 8px;
+  text-align:center;
+  color:#93a0c8;
+  font-size:13px;
+  margin-top:auto; /* dorong footer ke bawah */
+}
 .socials{display:flex;gap:12px;justify-content:center;margin-top:10px}
 .icon-btn{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;background:#0f1736;border:1px solid #1b2554}
-.icon-btn:hover{background:#0e1834} .icon{width:20px;height:20px;display:block}
+.icon-btn:hover{background:#0e1834}
+.icon{width:20px;height:20px;display:block}
+
+/* fallback untuk viewport lama */
+@supports (height: 100dvh) {
+  body{ min-height: 100dvh; }
+  .wrap{ min-height: 100dvh; }
+}
 </style>
 </head>
 <body>
@@ -228,4 +254,4 @@ function renderCategories(cfg){
 }
 </script>
 </body>
-                                                             </html>
+</html>
