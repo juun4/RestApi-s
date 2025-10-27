@@ -291,4 +291,3 @@ dengan tetap mencantumkan atribusi ke pembuat asli.
   <a href="https://youtube.com/@JunaaInHeree">YouTube</a>
 </div>
 ```
----
