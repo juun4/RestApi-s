@@ -14,16 +14,16 @@
   "volume": 0.8,
   "playlist": [
     {
-      "title": "Payphone - Maroon 5",
-      "artist": "BLACKPINK - ‘뚜두뚜두 (DDU-DU DDU-DU)’ M/V",
+      "title": "BLACKPINK - ‘뚜두뚜두 (DDU-DU DDU-DU)’ M/V",
+      "artist": "BLACKPINK",
       "image": "https://qu.ax/SZaeF.jpg",
       "url": "https://qu.ax/GEAmJ.mp3"
     },
     {
       "title": "LISA - 'MONEY'",
-      "artist": "Cup of Joe",
-      "image": "https://qu.ax/wwMXY.png",
-      "url": "https://qu.ax/HOdfK.jpg"
+      "artist": "LISA",
+      "image": "https://qu.ax/HOdfK.jpg",
+      "url": "https://qu.ax/qqhNi.mp3"
     }
   ]
   }, 
