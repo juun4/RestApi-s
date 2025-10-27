@@ -1,4 +1,5 @@
 <div align="center">
+
 <img src="https://cdn.yupra.my.id/yp/rpvaywxy.jpg" width="120" style="border-radius:20px;" alt="JunnAPIs Logo"/>
 
 <h1 style="font-weight:800; font-size:2.2em; margin-top:10px;">
@@ -19,6 +20,13 @@
   </a>
   <img src="https://img.shields.io/badge/Node.js-18%2B-18181b?style=for-the-badge&logo=node.js"/>
   <img src="https://img.shields.io/badge/Vercel-Deploy_Ready-000000?style=for-the-badge&logo=vercel"/>
+</p>
+
+<!-- Tombol Deploy ke Vercel -->
+<p>
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/juun4/RestApi-s&project-name=JunnAPIs&repository-name=RestApi-s">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel"/>
+  </a>
 </p>
 
 <!-- RGB BOTTOM -->
