@@ -11,20 +11,19 @@
     "deployUrl": "https://junnapi.vercel.app"
   },
   "musicSettings": {
-  "autoplay": true,
   "volume": 0.8,
   "playlist": [
     {
       "title": "Payphone - Maroon 5",
-      "artist": "Maroon 5 ft. Wiz Khalifa",
-      "image": "https://qu.ax/wwMXY.png",
-      "url": "https://cdn.example.com/audio/payphone.mp3"
+      "artist": "BLACKPINK - ‘뚜두뚜두 (DDU-DU DDU-DU)’ M/V",
+      "image": "https://qu.ax/SZaeF.jpg",
+      "url": "https://qu.ax/GEAmJ.mp3"
     },
     {
-      "title": "Multo - Cup of Joe",
+      "title": "LISA - 'MONEY'",
       "artist": "Cup of Joe",
       "image": "https://qu.ax/wwMXY.png",
-      "url": "https://cdn.example.com/audio/multo.mp3"
+      "url": "https://qu.ax/HOdfK.jpg"
     }
   ]
   }, 
