@@ -81,15 +81,15 @@ RestApi-s/
 ├─ vercel.json
 └─ README.md
 
-<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>📄 Penjelasan:
+<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>📄 Penjelasan singkat
 
-api-setting/Scrape → Semua handler endpoint (auto-register)
+api-setting/Scrape → semua handler endpoint (auto-register)
 
-src/web-set.json → Branding, kategori, path, dan contoh API
+src/web-set.json → branding, kategori, path, example
 
-public/docs.html → Halaman dokumentasi interaktif
+public/docs.html → dokumentasi interaktif
 
-index.js → Router otomatis untuk Vercel
+index.js → router otomatis untuk Vercel
 
 
 
@@ -97,7 +97,7 @@ index.js → Router otomatis untuk Vercel
 
 ⚙️ Konfigurasi (src/web-set.json)
 
-{
+<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>{
   "branding": {
     "siteName": "JunnAPIs",
     "tagline": "Free & Simple REST Endpoints",
@@ -139,142 +139,96 @@ index.js → Router otomatis untuk Vercel
   ]
 }
 
-
+<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
 ---
 
 🧩 Contoh Endpoint
 
-GET /downloader/capcut?url=<videoURL>&apikey=<key>
+<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>GET /downloader/capcut?url=<videoURL>&apikey=<key>
 GET /download/tiktok?url=<videoURL>&apikey=<key>
 GET /facebook?url=<fbURL>&apikey=<key>
 GET /instagram?url=<igURL>&apikey=<key>
 GET /ai/gemini-text?text=<prompt>&apikey=<key>
 
-Contoh Response:
+Response umum
 
 {
   "status": true,
   "creator": "juun4",
-  "result": {
-    "title": "Contoh Judul",
-    "url": "https://cdn.example.com/video.mp4"
-  }
+  "result": { "...": "..." }
 }
 
-
----
-
-🧱 Menambah Endpoint Baru
-
-1️⃣ Buat File
-
-api-setting/Scrape/downloader/capcut.js
-
-import axios from "axios";
-
-export default async function capcutDl(url) {
-  try {
-    const { data } = await axios.post("https://3bic.com/api/download", { url });
-    if (!data?.originalVideoUrl) return { status: false, msg: "Gagal ambil data" };
-    const video = Buffer.from(data.originalVideoUrl.split("/api/cdn/")[1], "base64").toString();
-    return { status: true, title: data.title || "", video };
-  } catch (err) {
-    return { status: false, msg: err.message };
-  }
-}
-
-2️⃣ Daftarkan di src/web-set.json
-
-{
-  "title": "CapCut Downloader",
-  "desc": "Unduh video dari CapCut",
-  "path": "/downloader/capcut?url=&apikey=",
-  "requireKey": true,
-  "example": "https://www.capcut.com/t/1234567890"
-}
-
-3️⃣ Deploy ke Vercel
-
-> Endpoint otomatis aktif dan muncul di halaman /docs.
-
-
-
-
+<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
 ---
 
 ☁️ Deploy ke Vercel
 
-1. Fork repo ini
+<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>1. Fork repo ini
 
 
-2. Buka vercel.com
+2. Buka https://vercel.com → Add New Project → import repo
 
 
-3. Pilih Add New Project → Import GitHub Repo
-
-
-4. Klik Deploy 🎉
+3. Klik Deploy 🎉
 
 
 
-URL Otomatis
+URL otomatis
 
 Landing → https://<project>.vercel.app
 
 Docs → https://<project>.vercel.app/docs
 
 
-
+<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
 ---
 
 💬 FAQ
 
-❓ 401 / 403 Unauthorized?
+<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>❓ 401 / 403 Unauthorized?
 
-> Endpoint membutuhkan API key (apikey atau header x-api-key).
-
-
-
-❓ Bisa jalan di VPS?
-
-> Fokus ke Vercel, tapi bisa manual via node index.js.
+> Endpoint butuh API key (apikey atau header x-api-key).
 
 
 
-❓ Nambah kategori baru?
+❓ Jalan di VPS?
 
-> Tambahkan folder/file di api-setting/Scrape/, lalu update web-set.json.
-
-
+> Fokus Vercel. Bisa manual via node index.js tapi tidak didokumentasikan di repo ini.
 
 
+
+❓ Tambah kategori baru?
+
+> Tambahkan file/folder di api-setting/Scrape/, lalu daftarkan item di src/web-set.json.
+
+
+
+<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
 ---
 
 🤝 Kontribusi
 
-Pull Request sangat diterima!
+<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>Fork → buat branch → PR
 
-Fork → buat branch → ubah → PR
+Ikuti struktur folder
 
-Sertakan contoh di web-set.json agar tampil di /docs
+Sertakan contoh pada web-set.json supaya muncul di /docs
 
 
-
+<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
 ---
 
 ⚖️ Lisensi
 
-MIT License — bebas digunakan, dikembangkan, & dimodifikasi
-asalkan tetap mencantumkan atribusi ke pembuat asli.
+<p align="center"><img src="./.github/neon-top.svg" width="100%"></p>MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
 
-
+<p align="center"><img src="./.github/neon-bottom.svg" width="100%"></p>
 ---
 
 <div align="center">
   <sub>Made with 💙 by <b>juun4</b></sub><br/>
-  <a href="https://github.com/juun4/RestApi-s">GitHub</a> • 
-  <a href="https://wa.me/628672763507">WhatsApp</a> • 
+  <a href="https://github.com/juun4/RestApi-s">GitHub</a> •
+  <a href="https://wa.me/628672763507">WhatsApp</a> •
   <a href="https://youtube.com/@JunaaInHeree">YouTube</a>
 </div>
 ```
----
