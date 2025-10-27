@@ -193,11 +193,7 @@ Sertakan contoh pada web-set.json supaya muncul di /docs
 
 MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
 
-<div align="center">
-
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/>
-
-<p>
+<div align="center"><!-- FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p>
   <a href="https://github.com/juun4/RestApi-s">
     <img alt="GitHub" height="28"
          src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white">
@@ -212,26 +208,9 @@ MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asl
     <img alt="YouTube" height="28"
          src="https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=white">
   </a>
+  
+<p align="center">
+  <img src="./.github/rgb-text.svg" alt="Made with by juun4" height="22">
 </p>
 
-<!-- SVG RGB TEXT -->
-<img src="data:image/svg+xml;utf8,
-<svg xmlns='http://www.w3.org/2000/svg' width='320' height='32'>
-  <defs>
-    <linearGradient id='grad' x1='0' y1='0' x2='1' y2='0'>
-      <stop offset='0%' stop-color='#ff004c'>
-        <animate attributeName='stop-color' values='#ff004c;#00e5ff;#00ff85;#ff004c' dur='6s' repeatCount='indefinite'/>
-      </stop>
-      <stop offset='100%' stop-color='#00e5ff'>
-        <animate attributeName='stop-color' values='#00e5ff;#00ff85;#ff004c;#00e5ff' dur='6s' repeatCount='indefinite'/>
-      </stop>
-    </linearGradient>
-  </defs>
-  <text x='50%' y='60%' text-anchor='middle' font-family='Segoe UI, sans-serif' font-size='16' font-weight='600' fill='url(%23grad)'>
-    Made with 💙 by juun4
-  </text>
-</svg>" alt="RGB Text"/>
-
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/>
-
-</div>
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Bottom"/></div>
