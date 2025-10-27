@@ -82,19 +82,21 @@ RestApi-s/
 ├─ index.js
 ├─ vercel.json
 └─ README.md
+```
+
+<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
 ## 📄 Penjelasan singkat
 api-setting/Scrape → semua handler endpoint (auto-register)
 src/web-set.json → branding, kategori, path, example
 public/docs.html → dokumentasi interaktif
 index.js → router otomatis untuk Vercel
-```
 
 <img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
 
-```plaintext
 ## ⚙️ Konfigurasi (src/web-set.json)
 
+```plaintext
 {
   "branding": {
     "siteName": "JunnAPIs",
@@ -190,9 +192,6 @@ Sertakan contoh pada web-set.json supaya muncul di /docs
 ## ⚖️ Lisensi
 
 MIT License — bebas digunakan & dimodifikasi, sertakan atribusi ke pembuat asli.
-
-<img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider"/>
-
 
 <div align="center"><!-- FOOTER --><img src="./.github/rgb-divider.svg" width="100%" alt="RGB Divider Footer Top"/><p>
   <a href="https://github.com/juun4/RestApi-s">
