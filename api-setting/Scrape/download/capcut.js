@@ -41,5 +41,5 @@ async function capcutDl(url) {
 
 module.exports = async function(url){
   if (!url) throw new Error('Parameter "url" wajib');
-  return tiktokDl(url.toString());
+  return capcutDl(url.toString());
 };
