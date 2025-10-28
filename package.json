@@ -1,7 +1,7 @@
 {
-  "name": "AnoApis",
+  "name": "JunnAPIs",
   "version": "1.0",
-  "description": "AnoApis- Koleksi API Gratis untuk Developer Indonesia",
+  "description": "JunnAPIs - Free & Simple REST API",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -14,7 +14,7 @@
     "indonesia",
     "scraper"
   ],
-  "author": "xyzan",
+  "author": "juun4_",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.2",
