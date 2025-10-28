@@ -60,7 +60,7 @@
 </tr>
 <tr>
 <td><img src="https://qu.ax/ouxKU.jpg" width="400"/></td>
-<td><img src="https://qu.ax/OsSgb.jpg" width="400"/></td>
+<td><img src="https://qu.ax/JhfgR.jpg" width="400"/></td>
 </tr>
 </table>
 
